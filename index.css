@@ -312,6 +312,23 @@ body::before {
 
 /* Responsive */
 @media (max-width: 902px){
+  /* Topbar Optimization for Mobile */
+  .topbar{
+    width: 100%; /* Use full width */
+    top: 0; /* Stick to the very top */
+    border-radius: 0; /* Remove rounded corners */
+  }
+  
+  .topbar__inner{
+    width: 94%; /* Maximize space within the topbar */
+    height: 80px; /* Slightly reduce height on mobile */
+  }
+
+  .brand__logo {
+    width: 200px; /* Reduced logo size */
+  }
+
+  /* Standard mobile layout changes */
   .nav{display:none}
   .hamburger{display:block; border: none; right:10px;}
   .vm__grid{grid-template-columns:1fr}
@@ -319,19 +336,77 @@ body::before {
   .features__grid{grid-template-columns:1fr 1fr}
   .stats__grid{grid-template-columns:1fr 1fr}
   .foot__top{grid-template-columns:1fr}
-  .hero__title{font-size:50px; line-height: 70px;}
-  .hero__title span{font-size: 90px;}
+
+  /* HERO specific adjustments */
+  .hero__title{font-size:40px; line-height: 55px;} /* Reduced size */
+  .hero__title span{font-size: 70px;} /* Reduced size */
   .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
+  
+  /* Planet Highlight image size adjustment */
+  .planet__image, .ph-rect{
+    height: 250px; /* Reduced height to save vertical space */
+  }
+  
+  /* Feature Media Optimization */
+  .feature__img video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure videos fill their container correctly */
+  }
 }
 
 @media (max-width: 640px){
+  /* HERO specific adjustments for 640px breakpoint */
+  .hero__title{font-size:26px; line-height: 40px;} /* Further reduced size */
+  .hero__lead{font-size:14px;} /* Adjusted lead text size */
+  .hero__title span{font-size: 40px;} /* Further reduced size */
+  
   .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
-  .hero__title{font-size:30px; line-height: 45px;}
-  .hero__lead{font-size:12px;}
-  .hero__title span{font-size: 45px;}
   .features__grid{grid-template-columns:1fr}
   .stats__grid{grid-template-columns:1fr}
+  
+  /* Gallery adjustments */
+  .gallery-assembly {
+    margin-top: 30px; /* Reduced top margin */
+    height: 30vh; /* Adjusted height relative to viewport */
+  }
 }
+
+@media (max-width: 480px) {
+    .gallery-assembly {
+      height: 35vh;
+      margin-top: 30px;
+    }
+    
+    .gallery-item {
+      --w: clamp(100px, 35vw, 180px);
+    }
+    
+    .section__title {
+      font-size: 1.8rem;
+    }
+    
+    .section__lead {
+      font-size: 1rem;
+    }
+    .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
+    .topbar__inner{width: max-content;}
+}
+
+@media (max-width: 344px) {
+  /* HERO specific adjustments for very small screens */
+  .hero__title{font-size:18px; line-height: 30px;}
+  .hero__lead{font-size:14px;}
+  .hero__title span{font-size: 35px;}
+  .topbar {width: 100%;}
+  .topbar__inner{width: 90%;} /* Adjust inner width */
+
+  /* Gallery adjustments for very small screens */
+  .gallery-assembly {
+    height: 25vh;
+  }
+}
+
 
 .discovery {
 align-content: center;
@@ -441,50 +516,9 @@ align-content: center;
     }
   }
   
-  @media (max-width: 480px) {
-    .gallery-assembly {
-      height: 35vh;
-      margin-top: 30px;
-    }
-    
-    .gallery-item {
-      --w: clamp(100px, 35vw, 180px);
-    }
-    
-    .section__title {
-      font-size: 1.8rem;
-    }
-    
-    .section__lead {
-      font-size: 1rem;
-    }
-    .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
-    .topbar__inner{width: max-content;}
+  /* New: Added to ensure media within feature cards cover the area */
+  .feature__img video, .feature__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-
-    @media (max-width: 344px) {
-    .gallery-assembly {
-      height: 35vh;
-      margin-top: 30px;
-    }
-    
-    .gallery-item {
-      --w: clamp(100px, 35vw, 180px);
-    }
-    
-    .section__title {
-      font-size: 1.8rem;
-    }
-    
-    .section__lead {
-      font-size: 1rem;
-    }
-    .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
-      .hero__title{font-size:20px; line-height: 45px;}
-  .hero__lead{font-size:15px;}
-  .hero__title span{font-size: 40px;}
-  .topbar {width: max-content;}
-  }
-
-
-  
