@@ -144,33 +144,55 @@ if (burger && mobile) {
         gallery.appendChild(galleryItem);
       });
       
-      // Start rotation
-      startRotation();
-    }
+      // --- START/STOP ROTATION LOGIC ---
+      let rotation = 0;
+      let animationFrameId = null;
 
-    // Rotation animation
-function startRotation() {
-  let rotation = 0;
-  let lastTime = 0;
-  
-  function animateGallery(timestamp) {
-    if (!lastTime) lastTime = timestamp;
-    const delta = timestamp - lastTime;
-    lastTime = timestamp;
-    
-    rotation += galleryConfig.rotationSpeed * (delta / 16);
-    
-    // Apply rotation to each gallery item individually
-    const items = document.querySelectorAll('.gallery-item');
-    items.forEach(item => {
-      item.style.setProperty('--rotation', rotation + 'turn');
-    });
-    
-    requestAnimationFrame(animateGallery);
-  }
-  
-  requestAnimationFrame(animateGallery);
-}
+      function animateGallery(timestamp) {
+        if (!animateGallery.lastTime) animateGallery.lastTime = timestamp;
+        const delta = timestamp - animateGallery.lastTime;
+        animateGallery.lastTime = timestamp;
+        
+        rotation += galleryConfig.rotationSpeed * (delta / 16);
+        
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach(item => {
+          item.style.setProperty('--rotation', rotation + 'turn');
+        });
+        
+        animationFrameId = requestAnimationFrame(animateGallery);
+      }
+
+      function stopRotation() {
+          if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+          }
+      }
+
+      function startRotation() {
+          if (!animationFrameId) {
+              animateGallery.lastTime = 0; // Reset time to prevent huge delta on startup
+              animationFrameId = requestAnimationFrame(animateGallery);
+          }
+      }
+
+      // Optimization: Use Intersection Observer to only animate when visible
+      const galleryObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  startRotation(); // Start if visible
+              } else {
+                  stopRotation(); // Stop if hidden (Huge CPU Saver)
+              }
+          });
+      }, { threshold: 0.1 }); 
+
+      if (gallery) {
+        galleryObserver.observe(gallery);
+      }
+      // ---------------------------------
+    }
 
     // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', initGallery);

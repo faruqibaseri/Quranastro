@@ -46,6 +46,7 @@ body::before {
   padding:10px 16px; border-radius:10px; border:1px solid var(--line); background:#fff;
   text-decoration:none; color:var(--ink); font-weight:600; box-shadow:var(--shadow);
   transition:transform 0.3s, box-shadow 0.3s;
+  will-change: transform, box-shadow; /* Optimization: Hint browser for performance */
 }
 .btn:hover{ box-shadow:var(--shadow);transform: translateY(-5px);transform: scale(1.05);}
 .btn--primary{background:linear-gradient(180deg, #5b84ff, #3866ff); color:#fff; border-color:#3866ff; transition:transform 0.3s, box-shadow 0.3s;}
@@ -249,6 +250,7 @@ body::before {
 /* Cards */
 .card{
   color:white; background: rgba(255, 255, 255, 0.05); border-radius:20px; padding: 18px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);transition: transform 0.3s;backdrop-filter: blur(20px);
+  will-change: transform; /* Optimization: Hint browser for hover animation */
 }
 
 .card:hover{
@@ -281,14 +283,18 @@ body::before {
 /* Stats */
 /* .stats{background:#fff;} */
 .stats__grid{display:grid; grid-template-columns:repeat(2, 1fr); align-items:center; gap:40px}
-.stat{text-align:center;background: rgba(255, 255, 255, 0.05); border-radius:20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); backdrop-filter: blur(20px); padding:16px;align-content: center;transition: transform 0.3s, box-shadow 0.3s;}
+.stat{text-align:center;background: rgba(255, 255, 255, 0.05); border-radius:20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); backdrop-filter: blur(20px); padding:16px;align-content: center;transition: transform 0.3s, box-shadow 0.3s;
+will-change: transform; /* Optimization: Hint browser for hover animation */
+}
 .stat:hover{transform: translateY(-5px) scale(1.03);}
 .stat h3{margin:4px 0 2px; font-size:28px; color:white;padding:0px 0 20px;}
 .stat p{margin:0; color:white;padding:20px 0; font-weight: 500;}
 .ico, .ph-ico{width:28px; height:28px; border-radius:8px; background:#d3d8e7; margin:0 auto 6px}
 
 /* Reveal on scroll */
-.reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+.reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;
+will-change: opacity, transform; /* Optimization: Hint browser for animation */
+}
 .reveal.is-visible{opacity:1;}
 
 /* Footer */
@@ -443,6 +449,7 @@ align-content: center;
   padding: 20px;
   height: 490px;
   place-items: center;
+  will-change: transform; /* Optimization: Hint browser for the continuous animation */
 }
 
 .gallery-item {
@@ -451,11 +458,14 @@ align-content: center;
   position: absolute;
   width: var(--w);
   aspect-ratio: 2/3;
+  /* Optimization: Use translateZ(0) to force GPU layer creation and use box-shadow */
   transform: 
+    translateZ(0)
     rotateY(calc(var(--i) * 1turn / var(--n) + var(--rotation, 0turn))) 
     translateZ(calc(var(--z) + 50px));
   transition: all 0.5s ease;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Optimization: Replaced slow filter: drop-shadow */
+  will-change: transform; /* Optimization: Hint browser for 3D transformation */
   overflow: hidden; 
 }
     
@@ -465,7 +475,7 @@ align-content: center;
       height: 100%;
       border-radius: 12px;
       backface-visibility: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); REMOVED: Shadow is now on .gallery-item */
       overflow: hidden;
     }
     
