@@ -16,32 +16,10 @@
   <link rel="stylesheet" href="index.css" />
   <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
   <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
-
-  <style>
-    /* Ensure the body background image is removed when the video is shown (desktop/large screens) */
-    @media (min-width: 903px) {
-        body::before {
-            background: none; 
-        }
-    }
-    
-    /* Ensure the hero media covers the section on all screens */
-    #bg-video, .hero picture source, .hero picture img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: translate(-50%, -50%);
-        z-index: -1;
-        border-radius: 10px;
-    }
-  </style>
-
 </head>
 
 <body>
+  <!-- Top Navigation -->
   <header class="topbar">
     <div class="topbar__inner">
       <a href="index.html" class="brand" aria-label="AstronoVerse home">
@@ -51,6 +29,7 @@
 <nav class="nav" aria-label="Main">
   <a href="index.html" class="nav__link">Home</a>
 
+  <!-- Dropdown Explore -->
   <div class="nav__item dropdown">
     <a href="explore.html" class="nav__link">Explore ▾</a>
     <div class="dropdown__menu">
@@ -75,6 +54,7 @@
     <nav id="mobileMenu" class="mobile" aria-label="Mobile">
   <a href="index.html" class="mobile__link">Home</a>
 
+  <!-- Dropdown Explore for mobile -->
   <div class="mobile__item">
     <button class="mobile__link mobile__toggle">Explore ▾</button>
     <div class="mobile__submenu">
@@ -90,16 +70,12 @@
 </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <picture>
-      <source media="(max-width: 902px)" srcset="1. HOMEPAGE/photo/background.jpg">
-      <video autoplay muted loop id="bg-video">
-        <source src="1. HOMEPAGE/video/bg_video.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-      </video>
-      <img src="1. HOMEPAGE/photo/background.jpg" alt="A dark, cosmic background with stars." style="display:none;">
-    </picture>
-
+        <video autoplay muted loop id="bg-video">
+            <source src="1. HOMEPAGE/video/bg_video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
     <div class="wrap hero__grid">
       <div class="hero__text reveal">
         <h1 class="hero__title">Welcome to<br> <span>AstronoVerse</span></h1>
@@ -134,6 +110,7 @@
 <hr style="width:50%; margin:0 auto; height: 1px; background: #ccc; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); opacity: 0.5;">
 
 
+  <!-- Vision & Mission -->
   <section class="section vm">
     <div class="wrap vm__grid">
       <article class="card reveal">
@@ -155,6 +132,7 @@
 
 <hr style="width:50%; margin:0 auto; height: 1px; background: #ccc; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); opacity: 0.5;">
 
+  <!-- Three Feature Cards -->
   <section id="astronomy" class="section features">
     <div class="wrap features__grid">
       <div class="content">
@@ -207,11 +185,13 @@
 <hr style="width:50%; margin:0 auto; height: 1px; background: #ccc; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); opacity: 0.5;">
 
 
-    <section id="planet" class="section planet">
+    <!-- Planet Highlight -->
+  <section id="planet" class="section planet">
     <div class="wrap planet__grid">
       <div class="planet__image ph-rect reveal tilt" aria-hidden="true">
         <span>E-book</span>
-        </div>
+        <!-- <img src="photo/moon1.jpg"> -->
+      </div>
       <div class="planet__text reveal">
         <h3 style="color: white;">Our E-Book</h3>
         <p>
@@ -227,6 +207,7 @@
 
   <hr style="width:50%; margin:40px auto 0 auto; height: 1px; background: #ccc; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); opacity: 0.5;"> 
 
+  <!-- Games -->
   <section class="section stats" id="articles">
     <div class="wrap stats__grid reveal">
       <div class="stat">
@@ -245,6 +226,7 @@
   <div class="games-button"><a class="btn btn--ghost" href="game_menu.html">Explore All Games</a></div>
     <audio id="clickSound" src="3. GAMES/audio/click.mp3"></audio>
 
+  <!-- Footer -->
   <footer id="faqs" class="footer">
     <div class="wrap foot__top">
       <div class="foot__brand">
