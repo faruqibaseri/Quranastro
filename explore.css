@@ -473,6 +473,13 @@ box-shadow:var(--shadow);transform: translateY(-5px);transform: scale(1.05);
     height: 350px;
   }
   
+  /* --- FIX: Force content visibility on mobile since JS scroll-reveal is disabled --- */
+  .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+  }
+  /* --------------------------------------------------------------------------------- */
+
   /* --- Optimization for mobile: Replace video with static image --- */
   .ph video {
       display: none; /* Hide video element */
@@ -516,4 +523,5 @@ box-shadow:var(--shadow);transform: translateY(-5px);transform: scale(1.05);
 
 @media (max-width: 344px) {
   .topbar__inner {width: max-content;
-  }}
+  }
+}
