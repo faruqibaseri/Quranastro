@@ -341,16 +341,73 @@ body::before {
     margin-right: 20px;
 }
 
+/* GALLERY STYLES (Desktop/Large Screen - 3D Rotation) */
+.discovery {
+align-content: center;
+}
+.gallery-container {
+  position: relative;
+  perspective: 1800px;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 0px 0px 0px;
+  place-self: center;
+  display: grid;
+  grid-template-columns:1.1fr .9fr;
+  overflow: hidden;
+  height: max-content;
+  padding-bottom: 40px;
+}
+.gallery-assembly {
+  --n: 8; /* Set by JS */
+  top:50%;
+  transform-style: preserve-3d;
+  transition: transform 0.1s linear;
+  align-self: center;
+  padding: 20px;
+  height: 490px;
+  place-items: center;
+}
+.gallery-item {
+  --w: clamp(150px, min(50vh, 25vw), 250px);
+  --z: calc(var(--f, 1.25) * -.5 * var(--w) / tan(.5turn / var(--n)));
+  position: absolute;
+  width: var(--w);
+  aspect-ratio: 2/3;
+  transform: 
+    rotateY(calc(var(--i) * 1turn / var(--n) + var(--rotation, 0turn))) 
+    translateZ(calc(var(--z) + 50px));
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  overflow: hidden; 
+}
+.gallery-figure {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--pos);
+  filter: saturate(1.1) contrast(1.05);
+}
+    
 /* Responsive */
 @media (max-width: 902px){
-  /* 1. Video Replacement for Mobile/Tablet */
+  /* 1. Video Replacement and Animation Removal */
   
   /* Main Hero Background: Hide video */
   .hero__bg-media #bg-video {
     display: none; 
   }
   .hero__bg-media {
-    /* Let the body's global background image (line 46) show */
+    /* Let the body's global background image show */
     background: none; 
   }
   
@@ -361,7 +418,7 @@ body::before {
   
   /* Feature Card Images: Show static image */
   .feature-image-mobile {
-      display: block; /* Show the new static image */
+      display: block; /* Show the static image */
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -370,17 +427,15 @@ body::before {
       left: 0;
   }
   
-  /* Feature card container background fallback (remove default color/hash) */
+  /* Feature card container background fallback */
   .media-container {
     background: none;
   }
     
   /* 2. Remove Unnecessary Animations for Optimization */
-  
-  /* Remove transform/scale on hover for features, cards, stats, and buttons */
   .card:hover, .feature:hover, .stat:hover, .btn:hover {
     transform: none !important;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important; /* Keep original shadow */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
   }
   
   .feature h4:hover, .feature p:hover, .content :hover {
@@ -418,99 +473,56 @@ body::before {
 align-content: center;
 }
 
-.gallery-wrapper {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-    
+/* Gallery Override: Horizontal Scroll on Mobile/Tablet */
+@media (max-width: 1274px) {
     .gallery-container {
-      position: relative;
-      perspective: 1800px;
-      flex-direction: column;
-      align-items: center;
-      padding: 70px 0px 0px 0px;
-      place-self: center;
-      display: grid;
-      grid-template-columns:1.1fr .9fr;
-      overflow: hidden;
-      height: max-content;
-      padding-bottom: 40px;
-    }
-    
-.gallery-assembly {
-  --n: 8; /* Set by JS */
-  top:50%;
-  transform-style: preserve-3d;
-  transition: transform 0.1s linear;
-  align-self: center;
-  padding: 20px;
-  height: 490px;
-  place-items: center;
-}
-
-.gallery-item {
-  --w: clamp(150px, min(50vh, 25vw), 250px);
-  --z: calc(var(--f, 1.25) * -.5 * var(--w) / tan(.5turn / var(--n)));
-  position: absolute;
-  width: var(--w);
-  aspect-ratio: 2/3;
-  transform: 
-    rotateY(calc(var(--i) * 1turn / var(--n) + var(--rotation, 0turn))) 
-    translateZ(calc(var(--z) + 50px));
-  transition: all 0.5s ease;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
-  overflow: hidden; 
-}
-    
-    .gallery-figure {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      backface-visibility: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-    }
-    
-    .gallery-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: var(--pos);
-      filter: saturate(1.1) contrast(1.05);
-    }
-    
-    @media (max-width: 1274px) {
-      .title h1 {
-        font-size: 2.2rem;
-      }
-      
-      .gallery-container {
-        height: 50vh;
-      }
-    }
-
-      @media (max-width: 1274px) {
-    .gallery-container {
-      height: auto;
-      grid-template-columns: 1fr;
+      perspective: none; /* Disable 3D perspective */
+      height: auto !important; /* Allow content to dictate height */
+      grid-template-columns: 1fr; /* Single column layout for discovery text and gallery */
       grid-template-rows: auto auto;
-      /* gap: 40px; */
       padding: 20px 0;
     } 
-    .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
     
     .gallery-assembly {
-      margin-top: 50px;
-      height: 40vh;
+      /* New Horizontal Scrolling Implementation */
+      display: flex; 
+      flex-wrap: nowrap; 
+      overflow-x: scroll; /* Enable horizontal scrolling */
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch; /* For smoother iOS scrolling */
+      
+      /* Reset 3D properties */
+      transform-style: flat;
+      transform: none !important;
+      position: static;
+      top: auto;
+      
+      height: auto; /* Important: reset fixed height for content flow */
+      margin-top: 40px;
+      padding: 0 20px 15px 20px; /* Padding for scroll visibility */
+      gap: 15px; /* Spacing between cards */
+    }
+
+    .gallery-item {
+      /* Configure flex item for horizontal scroll */
+      position: static !important;
+      flex-shrink: 0; /* Prevents shrinking */
+      
+      /* Set a consistent, readable width for mobile cards */
+      width: clamp(150px, 35vw, 250px);
+      aspect-ratio: 2/3;
+      
+      /* Reset all transforms/shadows */
+      transform: none !important; 
+      filter: none;
     }
     
-    .gallery-item {
-      --w: clamp(100px, 35vw, 180px);
+    .gallery-figure {
+      position: static;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+    
+    .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
     
     .discovery {
       text-align: center;
@@ -521,15 +533,16 @@ align-content: center;
       padding: 0;
     }
   }
-  
+
+  /* Refinements for smaller screens */
   @media (max-width: 480px) {
     .gallery-assembly {
-      height: 35vh;
+      height: auto; 
       margin-top: 30px;
+      padding: 0 15px 15px 15px;
     }
-    
     .gallery-item {
-      --w: clamp(100px, 35vw, 180px);
+      width: 150px; /* Lock to a smaller width for very small screens */
     }
     
     .section__title {
@@ -545,24 +558,31 @@ align-content: center;
 
     @media (max-width: 344px) {
     .gallery-assembly {
-      height: 35vh;
-      margin-top: 30px;
+      height: auto; 
     }
     
-    .gallery-item {
-      --w: clamp(100px, 35vw, 180px);
-    }
-    
-    .section__title {
-      font-size: 1.8rem;
-    }
-    
-    .section__lead {
-      font-size: 1rem;
-    }
     .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
       .hero__title{font-size:20px; line-height: 45px;}
   .hero__lead{font-size:15px;}
   .hero__title span{font-size: 40px;}
   .topbar {width: max-content;}
+  }
+
+  @media (max-width: 902px){
+  /* FIX: Hide video and show mobile background image */
+  #bg-video {
+    display: none;
+  }
+  
+  .hero__bg-media {
+    /* Apply image from data-mobile-src path */
+    background: url("1. HOMEPAGE/photo/background.png") no-repeat center center / cover;
+    /* Ensure proper positioning for the image */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    z-index: -1;
   }
