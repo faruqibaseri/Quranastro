@@ -32,8 +32,13 @@ if (burger && mobile) {
   }, {threshold:.12});
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-  /* Tilt effect (subtle) */
+  /* Tilt effect (subtle) - Optimized for mobile by disabling on small screens */
+  const isMobile = window.matchMedia("(max-width: 902px)").matches;
+  
   document.querySelectorAll('.tilt').forEach(el => {
+    // Skip adding listeners on mobile to save performance
+    if (isMobile) return; 
+    
     let rAF;
     function onMove(e){
       const rect = el.getBoundingClientRect();
