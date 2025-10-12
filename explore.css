@@ -318,6 +318,16 @@ box-shadow:var(--shadow);transform: translateY(-5px);transform: scale(1.05);
     filter: brightness(1.1);
 }
 
+/* Mobile image fallback style - hidden by default (desktop) */
+.ph-image-mobile {
+    display: none; /* Hide on desktop */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 10px;
+}
+
 
 .thumb-sm {
     width: 90px;
@@ -462,6 +472,22 @@ box-shadow:var(--shadow);transform: translateY(-5px);transform: scale(1.05);
     order: -1;
     height: 350px;
   }
+  
+  /* --- Optimization for mobile: Replace video with static image --- */
+  .ph video {
+      display: none; /* Hide video element */
+  }
+
+  .ph-image-mobile {
+      display: block; /* Show image fallback */
+  }
+
+  /* Disable video hover effects on mobile */
+  .ph:hover video {
+      transform: none;
+      filter: none;
+  }
+  /* ----------------------------------------------------------------- */
 }
 
 @media (max-width:600px) {
