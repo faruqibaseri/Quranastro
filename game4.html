@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Astronoverse — Drag & Drop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="game4.css" />
+</head>
+<body>
+
+  <!-- background decorative -->
+  <div class="bg-overlay"></div>
+
+  <!-- header / nav -->
+  <header class="app-header">
+    <div class="brand">
+      <h1>🚀 Astronoverse</h1>
+      <small>Drag & Drop Challenge</small>
+    </div>
+    <nav class="topnav">
+      <button class="nav-btn" id="btn-home">Home Page</button>
+      <button class="nav-btn" data-target="menu">Menu</button>
+      <button class="nav-btn" data-target="levels">Levels</button>
+      <button class="nav-btn" data-target="howto">How to Play</button>
+      <button class="nav-btn" data-target="leaderboard">Leaderboard</button>
+  <!-- Buttons -->
+      <button class="nav-btn" id="toggle-music">🎵 Music</button>
+      <button class="nav-btn" id="toggle-sound">🔊 Sound</button>
+
+      <!-- Add background music -->
+      <audio id="bg-music" src="3. GAMES/audio/music_bg4.mp3" loop></audio>    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- MENU -->
+    <section id="screen-menu" class="screen active">
+      <div class="card">
+        <h2>Welcome to the Drag & Drop Challenge</h2>
+        <p>Options: try a level, check leaderboard, or start playing.</p>
+        <div class="actions">
+          <button class="btn primary" id="startBtn">Start Level 1</button>
+          <button class="btn" data-target="levels">Choose Level</button>
+          <button class="btn" data-target="howto">How to Play</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEVELS -->
+    <section id="screen-levels" class="screen">
+      <div class="card">
+        <h2>Choose Level</h2>
+        <div class="levels-grid">
+          <button class="level-btn" data-level="1">Level 1 — Easy</button>
+          <button class="level-btn" data-level="2">Level 2 — Medium</button>
+          <button class="level-btn" data-level="3">Level 3 — Hard</button>
+        </div>
+        <div class="actions">
+          <button class="btn" data-target="menu">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO -->
+    <section id="screen-howto" class="screen">
+      <div class="card">
+        <h2>How to Play</h2>
+        <ul>
+          <li>Drag objects (Sun / Moon / Star) to the correct target.</li>
+          <li>Each level has a timer. Quick answers earn bonus points.</li>
+          <li>Each level increases objects and distractions.</li>
+        </ul>
+        <div class="actions">
+          <button class="btn" data-target="menu">Back</button>
+          <button class="btn primary" id="startBtn2">Start Level 1</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="screen-game" class="screen">
+      <div class="game-hud">
+        <div class="left">
+          <div class="hud-item"><small>Level</small><div id="hud-level" class="hud-value">1</div></div>
+          <div class="hud-item"><small>Score</small><div id="hud-score" class="hud-value">0</div></div>
+        </div>
+        <div class="center">
+          <div class="progress-wrap"><div id="hud-progress" class="progress"></div></div>
+        </div>
+        <div class="right">
+          <div class="hud-item"><small>Time</small><div id="hud-timer" class="hud-value">00:30</div></div>
+          <button class="btn" id="abortBtn">Quit</button>
+        </div>
+      </div>
+
+      <div class="game-stage card">
+        <div class="targets" id="targets"></div>
+        <div class="draggables" id="draggables"></div>
+
+        <div class="game-controls">
+          <button class="btn" id="shuffleBtn">Shuffle</button>
+          <button class="btn" id="hintBtn">Hint (-5s)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screen-result" class="screen">
+      <div class="card result-card">
+        <h2>Result</h2>
+        <p id="result-text">You have completed the level!</p>
+        <p id="result-score" class="big-score">Score: 0</p>
+        <form id="saveScoreForm" class="save-form">
+          <input id="playerName" placeholder="Your Name" maxlength="20" required />
+          <button class="btn primary" type="submit">Save to Leaderboard</button>
+        </form>
+        <div class="actions">
+          <button class="btn" data-target="menu">Menu</button>
+          <button class="btn primary" id="playAgain">Play Again</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="screen-leaderboard" class="screen">
+      <div class="card">
+        <h2>Leaderboard</h2>
+        <ol id="leaderboardList" class="board"></ol>
+        <div class="actions">
+          <button class="btn" data-target="menu">Menu</button>
+          <button class="btn danger" id="clearLb">Clear</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal small (for hints/info) -->
+  <div id="modal" class="modal">
+    <div class="modal-inner card">
+      <p id="modalText">Info</p>
+      <div class="actions">
+        <button class="btn" id="modalClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- audio -->
+  <audio id="sfx-drop" src="https://assets.mixkit.co/sfx/preview/mixkit-quick-win-video-game-notification-269.mp3"></audio>
+  <audio id="sfx-wrong" src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3"></audio>
+  <audio id="sfx-click" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
+
+  <script src="game4.js"></script>
+</body>
+</html>

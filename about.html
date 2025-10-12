@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <link rel="stylesheet" href="about.css" />
+</head>
+
+<body>
+
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+  
+
+
+    <!-- Our Team -->
+   <h2 class="OurTeam reveal">Our Team</h2>
+  <section class="team-section reveal">
+    <div class="team-container reveal">
+         
+
+      <!-- Team Member 1 -->
+      <div class="team-member">
+        <div class="member-photo">
+          <img src="5. ABOUT US/photo/Faruqi.png" alt="Alex Grinfield">
+        </div>
+        <h3>Muhammad Faruqi<br> Baseri</h3>
+        <p class="role">Programming Guru</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="team-member">
+        <div class="member-photo">
+          <img src="5. ABOUT US/photo/Amalia.png" alt="Ann Richmond">
+        </div>
+        <h3>Wan Nur Amalia <br> Wan Zaini</h3>
+        <p class="role">Creative Leader</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Team Member 3 -->
+      <div class="team-member">
+        <div class="member-photo">
+          <img src="5. ABOUT US/photo/Nafisah.png" alt="Jeffrey Brown">
+        </div>
+        <h3>Nurul Nafisah <br> Azmi</h3>
+        <p class="role">Manager</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+    <hr style="width:50%; margin:0 auto; height: 1px; background: #ccc; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); opacity: 0.5;">
+
+  <!-- Vision & Mission -->
+   <h2 class="OurTeam">Vision & Mission</h2>
+  <section class="section vm">
+    <div class="wrap vm__grid">
+      <article class="card reveal">
+        <h3>Our Vision</h3>
+        <p>
+          To inspire curiosity and appreciation of the universe from the Sun, Moon, and Stars
+          by integrating astronomy and Qur’anic knowledge into an engaging digital learning platform.
+        </p>
+      </article>
+      <article class="card reveal">
+        <h3>Our Mission</h3>
+        <p>
+          To build an engaging learning space that blends Qur’anic ayat, astronomy, and the wonders of the Sun, Moon,
+          and Stars
+          through interactive media for students and lifelong learners.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <hr style="width:50%; margin:0 auto; height: 1px; background: #ccc; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); opacity: 0.5;">
+
+  <!-- Journey -->
+  <section class="journey-section">
+    <h2>Our Journey</h2>
+    <div class="gallery">
+      <div class="gallery-track">
+        <img src="5. ABOUT US/photo/test (1).jpg" alt="">
+        <img src="5. ABOUT US/photo/test (2).jpg" alt="">
+        <img src="5. ABOUT US/photo/test (3).JPG" alt="">
+        <img src="5. ABOUT US/photo/test (4).jpg" alt="">
+        <img src="5. ABOUT US/photo/test (3).JPG" alt="">
+        <img src="5. ABOUT US/photo/test (6).jpg" alt="">
+        <!-- duplicate for infinite loop -->
+        <img src="5. ABOUT US/photo/test (3).JPG" alt="">
+        <img src="5. ABOUT US/photo/test (6).JPG" alt="">
+        <img src="5. ABOUT US/photo/test (3).jpg" alt="">
+        <img src="5. ABOUT US/photo/test (5).JPG" alt="">
+        <img src="5. ABOUT US/photo/test (5).jpg" alt="">
+        <img src="5. ABOUT US/photo/test (4).JPG" alt="">
+      </div>
+    </div>
+  </section>
+
+
+    <hr style="width:50%; margin:0 auto; height: 1px; background: #ccc; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); opacity: 0.5;">
+
+  <!-- FAQ -->
+  <section class="faq reveal">
+    <div class="wrap container" style="color: white;">
+      <h2>Frequently Asked Questions</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button id="accordion-button-1" aria-expanded="false">
+            <span class="accordion-title">What is AstronoVerse?</span>
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>
+             AstronoVerse is an educational platform that explores astronomy from both 
+             scientific and Islamic perspectives. It covers the wonders of the moon, the sun, 
+             and the stars, showing their roles in the universe and their significance in the Quran.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button id="accordion-button-2" aria-expanded="false">
+            <span class="accordion-title">Who is AstronoVerse for?</span>
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              AstronoVerse is for students, teachers, researchers, and anyone curious about the wonders of the universe. 
+              It is especially useful for those who want to learn about the moon, sun, and stars from both science and 
+              Islamic viewpoints.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button id="accordion-button-3" aria-expanded="false">
+            <span class="accordion-title">What are the main sources used in this website?</span>
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              The main sources used in this website are Quranic verses,
+               tafsir 'Ilmi (Islamic exegesis) and scientific references in astronomy.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button id="accordion-button-4" aria-expanded="false">
+            <span class="accordion-title">Can I use AstronoVerse for school projects and related work?</span>
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              Of course! The resources here are designed to support learning, research, and discovery. 
+              You can use AstronoVerse for school projects, assignments, and other related activities, 
+              especially when exploring the moon, sun, and stars.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button id="accordion-button-5" aria-expanded="false">
+            <span class="accordion-title">How can I contact the AstronoVerse team?</span>
+            <span class="icon" aria-hidden="true"></span>
+          </button>
+          <div class="accordion-content">
+            <p>
+              You can reach us through the <a href="#contactus" style="color: var(--bpPrimary-400);text-decoration: none;">Contact Us</a> section, we’d love to hear from you!           
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr style="width:50%; margin:0 auto; height: 1px; background: #ccc; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); opacity: 0.5;">
+
+  <!-- About Us -->
+   <h2 class="OurTeam" id="contactus" style="margin-bottom:0px">Contact Us!</h2>
+  <div class="arch_contact_us_duplicate">
+    <div class="wrap responsive-container-block big-container">
+      <div class="responsive-container-block container">
+        <div class="responsive-cell-block wk-mobile-12 wk-desk-5 wk-tab-10 wk-ipadp-5" id="ih6s">
+          <p class="text-blk section-head" style="color: white;">
+            Get in touch with us!
+          </p>
+          <p class="text-blk section-subhead" style="color: rgb(227 227 227);">
+          Feel free to reach out to us if you have any questions, 
+          ideas or your thoughts on our website. Your feedback are 
+          highly appreciated and help us grow brighter, together.               
+          </p>
+        </div>
+        <div class="responsive-cell-block wk-ipadp-6 wk-mobile-12 wk-desk-5 wk-tab-9" id="i6df">
+          <form class="form-wrapper" id="contact-us">
+            <input type="text" class="input input-element" name="name" id="name" placeholder="Name" required>
+            <input type="email" class="input input-element" name="email" id="email" placeholder="Email" required>
+            <textarea class="textinput input-element" id="message" placeholder="Message"></textarea required>
+            <button type="submit" class="button">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+  <script src="about.js"></script>
+
+ <script>
+    const { createClient } = supabase;
+    const SUPABASE_URL = "https://vosdeszexfquhrzrqtxh.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvc2Rlc3pleGZxdWhyenJxdHhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk2NjA4OTcsImV4cCI6MjA3NTIzNjg5N30.MjH2e1vaxnOmW5GgcofDiEhpcmso4PbDE5PxTlk3b5w";
+
+    const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    document.getElementById("contact-us").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const { error } = await db.from("contact_us").insert([
+        { name, email, message }
+      ]);
+
+      if (error) {
+        alert("Error: " + error.message);
+        console.error(error);
+      } else {
+        alert("We've received your message. Thank you!");
+        document.getElementById("contact-us").reset();
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>

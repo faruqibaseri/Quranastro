@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Difference Between ضياء and نور — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">🌟 The Difference Between ضياء and نور</h1><br>
+        <h3>Surah Yunus, Verse 5</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+      هُوَ ٱلَّذِي جَعَلَ ٱلشَّمۡسَ ضِيَآءٗ وَٱلۡقَمَرَ نُورٗا وَقَدَّرَهُۥ مَنَازِلَ لِتَعۡلَمُواْ عَدَدَ ٱلسِّنِينَ وَٱلۡحِسَابَۚ مَا خَلَقَ ٱللَّهُ ذَٰلِكَ إِلَّا بِٱلۡحَقِّۚ يُفَصِّلُ ٱلۡأٓيَٰتِ لِقَوۡمٖ يَعۡلَمُونَ٥
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/yunus-5.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Dia lah yang menjadikan matahari bersinar-sinar (terang-benderang) dan bulan bercahaya, dan Dia lah yang menentukan perjalanan tiap-tiap satu itu (berpindah-randah) pada tempat-tempat peredarannya masing-masing supaya kamu dapat mengetahui bilangan tahun dan kiraan masa. Allah tidak menjadikan semuanya itu melainkan dengan adanya faedah dan gunanya yang sebenar. Allah menjelaskan ayat-ayatNya (tanda-tanda kebesaranNya) satu persatu bagi kaum yang mahu mengetahui (hikmat sesuatu yang dijadikanNya).</p>
+       
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Allah SWT ialah Tuhan kamu yang telah menciptakan langit dan bumi. Dia menjadikan matahari yang menyinari alam semesta pada waktu siang sebagai sumber kehidupan, memancarkan haba yang amat diperlukan bagi kelangsungan hidup manusia, tumbuh-tumbuhan dan haiwan. Allah SWT juga menjadikan bulan yang bersinar pada waktu malam untuk menghilangkan kegelapan malam. Dia telah menetapkan peredaran bulan dalam susunan sistem suria pada manzilah-manzilahnya (kedudukan fasa-fasanya). Pada setiap malam, bulan bergerak menuruni satu manzilah, dan jumlah keseluruhan manzilah itu ialah dua puluh lapan, sebagaimana yang diketahui oleh bangsa Arab, di mana perubahan bentuk bulan dapat dilihat dengan mata kasar.</p>
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+<p><strong>Petunjuk Sains dalam Al-Quran: Perbezaan Antara "Dhiya’" (Cahaya) dan "Nur" (Sinaran)</strong></p>
+
+<ol>
+  <li><strong>Konsep Asas Cahaya (Dhiya’)</strong>
+    <p>Secara saintifik, cahaya (Ḍiyā’) ialah tenaga dalam bentuk gelombang elektromagnet yang boleh dilihat oleh mata manusia. Ia terdiri daripada gelombang foton yang berbeza panjang gelombang dan frekuensi. Spektrum elektromagnet meliputi sinar gamma, sinar-X, ultraungu, cahaya tampak, inframerah, dan gelombang radio. Mata manusia hanya mampu melihat cahaya tampak dalam julat 4000–7000 angstrom. Cahaya putih sebenarnya ialah campuran pelbagai panjang gelombang, dan apabila diuraikan melalui prisma, terbentuklah tujuh warna pelangi daripada ungu hingga merah.</p>
+  </li>
+
+  <li><strong>Asal Tenaga Cahaya Matahari</strong>
+    <p>Cahaya matahari terhasil melalui proses pelakuran nuklear (<em>nuclear fusion</em>) di teras matahari, apabila empat atom hidrogen bergabung menjadi satu atom helium. Perbezaan jisim ditukar kepada tenaga, dan sebahagian besarnya dikeluarkan sebagai sinar gamma. Matahari terdiri daripada kira-kira 90% hidrogen dan 9% helium, dengan suhu teras melebihi 15 juta°C dan permukaan sekitar 6,000°C. Tenaga yang terhasil disebarkan ke seluruh sistem suria dalam bentuk gelombang elektromagnet, menjadi sumber utama tenaga di bumi. Maka, istilah “Dhiya’” dalam al-Quran merujuk kepada cahaya yang keluar daripada sumber yang menyala, seperti matahari atau api.</p>
+  </li>
+
+  <li><strong>Makna “Nur” (Sinaran)</strong>
+    <p>Berbeza dengan <em>dhiya’</em>, “nur” ialah cahaya pantulan daripada objek yang tidak menyala. Contohnya, bulan tidak menghasilkan cahaya sendiri, tetapi memantulkan cahaya matahari ke bumi. Permukaan bulan yang terdiri daripada lapisan kaca halus dan batuan cair hasil hentaman meteorit menjadikan pantulan ini lebih efektif. Secara saintifik, pantulan cahaya berlaku apabila zarah seperti elektron bergetar akibat cahaya yang datang, lalu memancarkan semula sinaran ke pelbagai arah. Walaupun sinaran bulan lebih lemah, frekuensi cahaya tetap sama, cuma intensitinya berkurang.</p>
+  </li>
+
+  <li><strong>Al-Quran Membezakan “Dhiya’” dan “Nur”</strong>
+    <p>Al-Quran dengan jelas membezakan dua istilah ini. Dalam Surah Yunus: 5, Allah berfirman:</p>
+    <blockquote>“Dialah yang menjadikan matahari bersinar (<em>ḍiyā’an</em>) dan bulan bercahaya (<em>nūran</em>)”</blockquote>
+    <p>— menunjukkan bahawa matahari mengeluarkan cahaya sendiri, manakala bulan hanya memantulkan cahaya. Dalam Surah al-An‘am: 1, “nur” dipadankan dengan kegelapan (<em>zulumat</em>), bukan dengan “dhiya’”. Nabi Muhammad SAW juga digambarkan sebagai “pelita yang bercahaya (<em>sirājan munīrā</em>)” dalam Surah al-Ahzab: 46, membawa makna baginda menyebarkan cahaya petunjuk kepada manusia. Contoh lain menunjukkan penggunaan yang konsisten: api dan kilat menggunakan istilah <em>aḍā’a</em> (mengeluarkan cahaya), bukan <em>nur</em>, manakala dalam Surah an-Nur: 35, “<em>nur ‘ala nur</em>” menggambarkan pantulan cahaya petunjuk Ilahi.</p>
+  </li>
+
+  <li><strong>Penutup</strong>
+    <p>Secara konsisten, al-Quran membezakan antara “Dhiya’” (cahaya yang dihasilkan) dan “Nur” (cahaya yang dipantulkan) dengan ketepatan yang selaras dengan fakta sains moden. Pengetahuan ini mustahil diketahui manusia 1400 tahun lalu tanpa wahyu. Ini menjadi bukti bahawa al-Quran adalah kalam Allah SWT, penuh dengan isyarat sains dan kebesaran ciptaan-Nya, yang mendorong manusia berfikir tentang keagungan Pencipta alam semesta.</p>
+  </li>
+</ol>
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

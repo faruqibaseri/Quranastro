@@ -1,0 +1,166 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games - AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <link rel="stylesheet" href="game_menu.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <!-- 🌌 Background Stars -->
+  <canvas id="stars"></canvas>
+
+  <!-- 🌌 Header -->
+  <div class="header1 reveal">
+    <h1>🎮 Game Showcase</h1>
+    <p>Discover top-rated games across genres</p>
+  </div>
+
+<!-- 🌌 Games Section -->
+<section class="games-container reveal">
+  <div class="game-card">
+    <img src="3. GAMES/photo/game1.2.jpeg" alt="Astronomy Quiz">
+    <h2>Quiz Challenge</h2>
+    <p>Test your knowledge about stars, moon and sun!</p> </br>
+    <button class="play-btn" onclick="playAndRedirect('game1.html')">▶ Play</button>
+  </div>
+
+  <div class="game-card">
+    <img src="3. GAMES/photo/game1.2.jpeg" alt="Memory Game">
+    <h2>Memory Puzzle</h2>
+    <p>Match the pairs of stars and planets to win!</p> </br>
+    <button class="play-btn" onclick="playAndRedirect('game2.html')">▶ Play</button>
+  </div>
+
+  <div class="game-card">
+    <img src="3. GAMES/photo/game1.2.jpeg" alt="Solar Puzzle">
+    <h2>Word Search</h2>
+    <p>Arrange the planets and learn about the solar system.</p> </br>
+    <button class="play-btn" onclick="playAndRedirect('game3.html')">▶ Play</button>
+  </div>
+
+  <div class="game-card">
+    <img src="3. GAMES/photo/game1.2.jpeg" alt="Astronomy Quiz">
+    <h2>Drag & Drop</h2>
+    <p>Test your knowledge about stars, moon and sun!</p> </br>
+    <button class="play-btn" onclick="playAndRedirect('game4.html')">▶ Play</button>
+  </div>
+
+  <div class="game-card">
+    <img src="3. GAMES/photo/game1.2.jpeg" alt="Astronomy Quiz">
+    <h2>Catch</h2>
+    <p>Test your knowledge about stars, moon and sun!</p> </br>
+    <button class="play-btn" onclick="playAndRedirect('game5.html')">▶ Play</button>
+  </div>
+
+  <div class="game-card">
+    <img src="3. GAMES/photo/game1.2.jpeg" alt="Astronomy Quiz">
+    <h2>Fill in the blanks</h2>
+    <p>Test your knowledge about stars, moon and sun!</p> </br>
+    <button class="play-btn" onclick="playAndRedirect('game6.html')">▶ Play</button>
+  </div>
+
+   <div class="game-card">
+    <img src="3. GAMES/photo/game1.2.jpeg" alt="Astronomy Quiz">
+    <h2>Orbit</h2>
+    <p>Test your knowledge about stars, moon and sun!</p> </br>
+    <button class="play-btn" onclick="playAndRedirect('game7.html')">▶ Play</button>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+  <!-- 🌌 Sound Effect -->
+  <audio id="clickSound" src="3. GAMES/audio/click.mp3"></audio>
+
+  <script src="game_menu.js"></script>
+</body>
+</html>

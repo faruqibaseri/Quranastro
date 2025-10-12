@@ -1,0 +1,317 @@
+/* ========= Elements & State ========= */
+const SCREENS = {
+  menu: document.getElementById('screen-menu'),
+  howto: document.getElementById('screen-howto'),
+  game: document.getElementById('screen-game'),
+  result: document.getElementById('screen-result'),
+  leaderboard: document.getElementById('screen-leaderboard'),
+};
+const boardEl = document.getElementById('board');
+const hud = {
+  diff: document.getElementById('hud-diff'),
+  moves: document.getElementById('hud-moves'),
+  matches: document.getElementById('hud-matches'),
+  time: document.getElementById('hud-time'),
+  progress: document.getElementById('progress'),
+};
+
+const sfx = {
+  flip:  document.getElementById('sfx-flip'),
+  match: document.getElementById('sfx-match'),
+  wrong: document.getElementById('sfx-wrong'),
+  win:   document.getElementById('sfx-win'),
+  click: document.getElementById('sfx-click'),
+};
+let soundOn = true;
+
+const ITEMS = [
+  {id:'sun',   emoji:'☀️', label:'Sun'},
+  {id:'moon',  emoji:'🌙', label:'Moon'},
+  {id:'star',  emoji:'⭐', label:'Star'},
+  {id:'spark', emoji:'✨', label:'Spark'},
+  {id:'comet', emoji:'☄️', label:'Comet'},
+  {id:'earth', emoji:'🌍', label:'Earth'},
+  {id:'sat',   emoji:'🛰️', label:'Satellite'},
+  {id:'rocket',emoji:'🚀', label:'Rocket'},
+  {id:'ring',  emoji:'🪐', label:'Planet'},
+  {id:'telescope', emoji:'🔭', label:'Telescope'},
+];
+
+const DIFF_MAP = {
+  easy:   8,   // 4 pairs
+  medium: 12,  // 6 pairs
+  hard:   16,  // 8 pairs
+};
+
+let diff = 'medium';
+let deck = [];         // array of cards
+let first = null;      // first flipped element
+let lock = false;      // prevent rapid clicking
+let moves = 0;
+let matches = 0;
+let totalPairs = 0;
+
+let time = 0;          // seconds
+let timerId = null;
+
+/* ========= Helpers ========= */
+function show(id){
+  Object.values(SCREENS).forEach(s => s.classList.remove('active'));
+  SCREENS[id].classList.add('active');
+}
+function playSfx(a){ if(!soundOn) return; a.currentTime=0; a.play().catch(()=>{}); }
+function formatTime(s){
+  const m = Math.floor(s/60).toString().padStart(2,'0');
+  const r = (s%60).toString().padStart(2,'0');
+  return `${m}:${r}`;
+}
+function shuffle(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]] = [arr[j],arr[i]];
+  }
+  return arr;
+}
+
+/* ========= Game Setup ========= */
+function setupGame(selectedDiff){
+  diff = selectedDiff || diff;
+  const count = DIFF_MAP[diff];
+  totalPairs = count/2;
+
+  // build deck: pick N/2 unique items, duplicate and shuffle
+  const chosen = shuffle(ITEMS.slice()).slice(0, totalPairs);
+  deck = shuffle(chosen.flatMap(item => ([
+    { key:item.id+'-A', id:item.id, emoji:item.emoji },
+    { key:item.id+'-B', id:item.id, emoji:item.emoji },
+  ])));
+
+  // reset state
+  first = null; lock = false; moves = 0; matches = 0; time = 0;
+  hud.diff.textContent = diff.toUpperCase();
+  hud.moves.textContent = '0';
+  hud.matches.textContent = '0';
+  hud.time.textContent = '00:00';
+  hud.progress.style.width = '0%';
+
+  // render board
+  boardEl.innerHTML = '';
+  deck.forEach(card => {
+    const tile = document.createElement('button');
+    tile.className = 'card-tile';
+    tile.setAttribute('aria-label', 'Card');
+    tile.dataset.id = card.id;
+
+    tile.innerHTML = `
+      <div class="card-face card-front">🪄</div>
+      <div class="card-face card-back">
+        <span style="font-size:2.2rem">${card.emoji}</span>
+      </div>
+    `;
+    tile.addEventListener('click', ()=> onFlip(tile));
+    boardEl.appendChild(tile);
+  });
+
+  // timer
+  clearTimer();
+  timerId = setInterval(()=>{
+    time+=1; hud.time.textContent = formatTime(time);
+  },1000);
+
+  show('game');
+}
+
+function onFlip(tile){
+  if(lock) return;
+  if(tile.classList.contains('flipped') || tile.classList.contains('matched')) return;
+
+  tile.classList.add('flipped');
+  playSfx(sfx.flip);
+
+  if(!first){
+    first = tile;
+    return;
+  }
+
+  // second pick
+  moves++; hud.moves.textContent = moves;
+  const match = first.dataset.id === tile.dataset.id;
+
+  if(match){
+    // success
+    tile.classList.add('matched');
+    first.classList.add('matched');
+    matches++; hud.matches.textContent = matches;
+    const pct = Math.round((matches/totalPairs)*100);
+    hud.progress.style.width = pct + '%';
+    playSfx(sfx.match);
+    first = null;
+
+    if(matches === totalPairs){
+      endGame();
+    }
+  }else{
+    // wrong
+    lock = true;
+    tile.classList.add('wrong');
+    first.classList.add('wrong');
+    playSfx(sfx.wrong);
+    setTimeout(()=>{
+      tile.classList.remove('flipped','wrong');
+      first.classList.remove('flipped','wrong');
+      first = null; lock = false;
+    }, 700);
+  }
+}
+
+function endGame(){
+  clearTimer();
+  playSfx(sfx.win);
+  // result text
+  const stats = document.getElementById('final-stats');
+  stats.textContent = `Anda siap dalam ${formatTime(time)} dengan ${moves} moves (${diff.toUpperCase()}).`;
+  startConfetti();
+  show('result');
+}
+
+function clearTimer(){
+  if(timerId){ clearInterval(timerId); timerId = null; }
+}
+
+/* ========= Confetti ========= */
+let confettiActive = false;
+function startConfetti(){
+  const cvs = document.getElementById('confetti');
+  const parent = cvs.parentElement;
+  const {width, height} = parent.getBoundingClientRect();
+  cvs.width = width; cvs.height = height;
+  const ctx = cvs.getContext('2d');
+  const pieces = Array.from({length:140}).map(()=>({
+    x: Math.random()*width,
+    y: Math.random()*-height,
+    s: Math.random()*2+1,
+    r: Math.random()*6+4,
+    a: Math.random()*360
+  }));
+  confettiActive = true;
+  (function loop(){
+    if(!confettiActive) return;
+    ctx.clearRect(0,0,width,height);
+    pieces.forEach(p=>{
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a*Math.PI/180);
+      ctx.fillStyle = `hsl(${(p.a*3)%360} 80% 60%)`;
+      ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r);
+      ctx.restore();
+      p.y += p.s; p.a += 6; if(p.y>height){ p.y=-10; p.x=Math.random()*width; }
+    });
+    requestAnimationFrame(loop);
+  })();
+}
+function stopConfetti(){ confettiActive = false; }
+
+/* ========= Leaderboard ========= */
+const BOARD_KEY = 'astro_mixmatch_board_v1'; // store an object {easy:[], medium:[], hard:[]}
+
+function initBoardStore(){
+  const raw = localStorage.getItem(BOARD_KEY);
+  if(!raw){
+    localStorage.setItem(BOARD_KEY, JSON.stringify({easy:[], medium:[], hard:[]}));
+  }
+}
+function readBoard(){
+  try{ return JSON.parse(localStorage.getItem(BOARD_KEY)) || {easy:[],medium:[],hard:[]}; }
+  catch{ return {easy:[],medium:[],hard:[]}; }
+}
+function writeBoard(obj){ localStorage.setItem(BOARD_KEY, JSON.stringify(obj)); }
+function addScore(name, diff, time, moves){
+  const data = readBoard();
+  data[diff].push({name, time, moves, date: Date.now()});
+  // sort: time asc, then moves asc
+  data[diff].sort((a,b)=> a.time-b.time || a.moves-b.moves);
+  // keep top 10
+  data[diff] = data[diff].slice(0,10);
+  writeBoard(data);
+}
+function renderLeaderboard(){
+  const sel = document.getElementById('board-diff').value;
+  const list = document.getElementById('board-list');
+  const rows = readBoard()[sel];
+  list.innerHTML = '';
+  if(!rows || rows.length===0){
+    list.innerHTML = '<li>Belum ada rekod. Jadi yang pertama! 🚀</li>';
+    return;
+  }
+  rows.forEach((r,i)=>{
+    const li = document.createElement('li');
+    li.innerHTML = `<span>${i+1}. ${r.name}</span><span>${formatTime(r.time)} • ${r.moves} moves</span>`;
+    list.appendChild(li);
+  });
+}
+
+/* ========= Wiring ========= */
+// Menu -> pick difficulty
+document.querySelectorAll('[data-diff]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    playSfx(sfx.click);
+    setupGame(btn.getAttribute('data-diff'));
+  });
+});
+
+// Generic nav
+document.querySelectorAll('[data-target]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    playSfx(sfx.click);
+    const t = btn.getAttribute('data-target');
+    if(t==='leaderboard'){ renderLeaderboard(); }
+    if(t!=='result') stopConfetti();
+    show(t);
+  });
+});
+
+// Controls
+document.getElementById('btn-reshuffle').addEventListener('click', ()=>{
+  playSfx(sfx.click);
+  setupGame(diff);
+});
+document.getElementById('btn-restart').addEventListener('click', ()=>{
+  playSfx(sfx.click);
+  setupGame(diff);
+});
+document.getElementById('btn-play-again').addEventListener('click', ()=>{
+  playSfx(sfx.click);
+  setupGame(diff);
+});
+
+// Save result
+document.getElementById('save-form').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const name = (document.getElementById('player-name').value || 'Player').trim();
+  addScore(name, diff, time, moves);
+  renderLeaderboard();
+  show('leaderboard');
+  stopConfetti();
+});
+
+// Leaderboard filter change
+document.getElementById('board-diff').addEventListener('change', renderLeaderboard);
+
+// Clear board
+document.getElementById('clear-board').addEventListener('click', ()=>{
+  if(confirm('Padam semua rekod Leaderboard?')){
+    writeBoard({easy:[],medium:[],hard:[]});
+    renderLeaderboard();
+  }
+});
+
+// Sound toggle
+document.getElementById('toggle-sound').addEventListener('click', (e)=>{
+  soundOn = !soundOn;
+  e.currentTarget.textContent = soundOn ? '🔊' : '🔈';
+});
+
+// Init
+initBoardStore();
+renderLeaderboard();
+
+// Safety
+window.addEventListener('beforeunload', ()=> { if(timerId) clearInterval(timerId); });

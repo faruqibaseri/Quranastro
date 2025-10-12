@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shape and Rotation of the Earth — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">🌍 Shape and Rotation of the Earth</h1><br>
+        <h3>Surah Al-Zumar, Verse 5</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+      خَلَقَ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَ بِٱلۡحَقِّۖ يُكَوِّرُ ٱلَّيۡلَ عَلَى ٱلنَّهَارِ وَيُكَوِّرُ ٱلنَّهَارَ عَلَى ٱلَّيۡلِۖ وَسَخَّرَ ٱلشَّمۡسَ وَٱلۡقَمَرَۖ كُلّٞ يَجۡرِي لِأَجَلٖ مُّسَمًّىۗ أَلَا هُوَ ٱلۡعَزِيزُ ٱلۡغَفَّٰرُ ٥
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/al-zumar-5.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Ia menciptakan langit dan bumi dengan ada faedah dan gunanya yang sebenar; Ia pula menjadikan malam melingkari siang (dengan gelapnya), dan menjadikan siang melingkari malam (dengan cahayanya); dan Ia menjadikan matahari dan bulan beredar menurut perintahnya, - tiap-tiap satu dari keduanya, beredar untuk suatu masa yang telah ditetapkan. Ingatlah! Dia lah Yang Maha Kuasa, lagi Yang sentiasa Mengampuni.</p>
+       
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Allah SWT menciptakan alam semesta ini langit dan bumi dengan penciptaan yang berasaskan kebenaran, mengandungi pelbagai tujuan yang mendasar, hikmah yang mendalam, serta kemaslahatan bagi makhluk. Allah SWT tidak menciptakan keduanya secara sia-sia atau tanpa tujuan, tetapi dengan sistem yang luar biasa dan menakjubkan. Hal ini menjadi bukti kewujudan Allah Yang Maha Berkuasa, serta menunjukkan kemustahilan bagi-Nya memiliki sekutu, pasangan, atau anak, kerana Dia adalah Tuhan Yang Esa, Maha Kuasa, Maha Kaya, dan tidak memerlukan apa-apa daripada makhluk-Nya.</p><p>Allah SWT juga menutupkan malam dengan siang dan siang dengan malam, sehingga apabila datangnya siang, hilanglah kegelapan malam; dan apabila datang malam, lenyaplah cahaya siang. Dengan itu, malam dan siang silih berganti secara teratur, setiap satunya datang menggantikan yang lain dengan ketepatan yang sempurna.</p>
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+<ol>
+  <li>
+    <strong>Pengenalan Ayat</strong><br>
+    Ayat ini merupakan bukti kebesaran dan kekuasaan Allah SWT dalam mencipta alam semesta. 
+    Ia menyeru manusia agar mentadabbur ciptaan Allah sebagai tanda keesaan dan kekuasaan-Nya. 
+    Dalam ayat ini juga terdapat isyarat ilmiah yang menggambarkan kebulatan bumi dan pergerakannya pada paksi. 
+    Ketika ayat ini diturunkan lebih 1400 tahun dahulu, masyarakat masih mempercayai bahawa bumi itu rata dan tidak bergerak. 
+    Namun, al-Quran telah menyampaikan hakikat sebenar dengan cara yang halus dan berhikmah agar sesuai dengan kefahaman masyarakat ketika itu.
+  </li>
+
+  <li>
+    <strong>Penggunaan Perkataan “يُكَوِّرُ” (Yukawwiru)</strong><br>
+    Perkataan “yukawwiru” berasal daripada kata dasar (kawwara) yang bermaksud membalut, menggulung atau membulatkan sesuatu. 
+    Ia juga digunakan dalam ayat lain seperti “إِذَا الشَّمْسُ كُوِّرَتْ” (At-Takwir: 1) yang bermaksud cahaya matahari digulung. 
+    Dalam Surah Az-Zumar ayat 5, istilah ini menggambarkan pergantian siang dan malam yang saling membalut antara satu sama lain — satu isyarat halus bahawa bumi berbentuk sfera dan berputar pada paksinya.
+  </li>
+
+  <li>
+    <strong>Isyarat Saintifik dalam Ayat</strong><br>
+    Ayat ini memberikan dua isyarat utama yang selari dengan penemuan sains moden. 
+    Pertama, pembalutan siang dan malam hanya boleh berlaku jika bumi berbentuk sfera. 
+    Kedua, pertukaran siang dan malam berlaku kerana bumi berputar pada paksinya menghadap matahari. 
+    Kedua-dua fakta ini menunjukkan keajaiban dan ketepatan bahasa al-Quran dalam menjelaskan fenomena alam.
+  </li>
+
+  <li>
+    <strong>Kebulatan Bumi dalam Ilmu Pengetahuan</strong><br>
+    Sejak zaman purba, tamadun Mesopotamia telah mengemukakan idea tentang kebulatan bumi, dan tokoh Yunani seperti Pythagoras menganggap bentuk sfera sebagai bentuk paling sempurna. 
+    Namun, pandangan ini pernah ditolak oleh Aristotle sehingga kepercayaan bumi rata kembali tersebar. 
+    Pada zaman pemerintahan Khalifah Harun ar-Rashid dan al-Amin, sarjana Islam seperti Al-Biruni, Ibn Sina, Al-Kindi dan Al-Razi berhujah bahawa bumi berbentuk bulat berdasarkan fenomena seperti bayang-bayang bumi semasa gerhana bulan, perubahan kedudukan bintang kutub, bentuk horizon, dan cara kapal serta gunung kelihatan dari jauh. 
+    Mereka juga berjaya mengukur lilitan bumi dengan ketepatan tinggi lebih 700 tahun sebelum ilmuwan Barat. 
+    Khalifah al-Ma'mun mengesahkan bahawa bumi sfera tetapi sedikit leper di kutub — suatu pandangan yang kemudiannya disahkan oleh Isaac Newton dan dibuktikan secara visual melalui imej satelit moden.
+  </li>
+
+  <li>
+    <strong>Kebulatan Bumi dalam Al-Quran</strong><br>
+    Al-Quran menjelaskan kebulatan bumi secara halus melalui firman Allah:<br>
+    “يُكَوِّرُ اللَّيْلَ عَلَى النَّهَارِ وَيُكَوِّرُ النَّهَارَ عَلَى اللَّيْلِ” (Az-Zumar: 5)<br>
+    Makna “yukawwiru” iaitu “membalut” menunjukkan bahawa siang dan malam berganti-ganti di atas permukaan bumi yang berbentuk sfera. 
+    Sekiranya bumi tidak berbentuk bulat, pergantian ini tidak akan berlaku dengan teratur. 
+    Begitu juga jika bumi tidak berputar, pembalutan antara siang dan malam tidak akan wujud.
+  </li>
+
+  <li>
+    <strong>Isyarat-Isyarat Tambahan dalam Al-Quran</strong><br>
+    Beberapa ayat lain turut menyokong hakikat ini. 
+    Pertama, ayat tentang “membentang bumi” (مد الأرض) menunjukkan bentuk sfera kerana hanya bentuk bulat boleh dibentang tanpa tepi. 
+    Kedua, ayat mengenai “langit berlapis-lapis” dan “bumi yang seumpamanya” (Al-Mulk: 3, At-Talaq: 12) menggambarkan lapisan-lapisan berbentuk bulat yang saling membalut. 
+    Ketiga, penggunaan istilah “matahari terbit dan terbenam” dalam bentuk tunggal, dwi dan jamak seperti dalam surah Ar-Rahman: 17 dan Al-Ma‘arij: 40 menunjukkan pelbagai titik terbit dan tenggelam matahari di bumi — satu fenomena yang hanya berlaku apabila bumi berputar dengan paksi condong sebanyak 23.5 darjah.
+  </li>
+
+  <li>
+    <strong>Kesimpulan</strong><br>
+    Kesimpulannya, al-Quran telah lebih awal menjelaskan hakikat saintifik tentang kebulatan dan peredaran bumi dengan cara yang halus, tepat dan penuh hikmah. 
+    Pengetahuan ini tidak diketahui manusia ketika wahyu diturunkan, bahkan hanya dibuktikan berabad-abad kemudian melalui kajian saintifik moden. 
+    Hal ini menjadi bukti kukuh bahawa al-Quran ialah wahyu Ilahi daripada Allah SWT, Tuhan yang Maha Pencipta dan Maha Mengetahui segala rahsia alam semesta.
+  </li>
+</ol>
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

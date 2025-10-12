@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Astronoverse – Quiz Gempak</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <h1>🌌 Astronoverse Quiz</h1>
+    <nav class="top-nav">
+      <button class="nav-btn" data-target="menu">Menu</button>
+      <button class="nav-btn" data-target="howto">How to Play</button>
+      <button class="nav-btn" data-target="leaderboard">Leaderboard</button>
+      <button class="nav-btn" id="toggle-sound">🔊</button>
+    </nav>
+  </header>
+
+  <!-- Screens -->
+  <main>
+    <!-- MENU -->
+    <section id="screen-menu" class="screen active">
+      <div class="card">
+        <h2>Selamat datang! 🚀</h2>
+        <p>Uji pengetahuan anda tentang Matahari, Bulan & Bintang. Kumpul markah dan naik carta Leaderboard!</p>
+        <div class="menu-actions">
+          <button class="btn primary" id="btn-start">Start Quiz</button>
+          <button class="btn ghost" data-target="howto">How to Play</button>
+          <button class="btn ghost" data-target="leaderboard">Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO PLAY -->
+    <section id="screen-howto" class="screen">
+      <div class="card">
+        <h2>How to Play 🧭</h2>
+        <ul class="howto-list">
+          <li>Setiap soalan ada <strong>20 saat</strong>. Jawab sebelum masa tamat.</li>
+          <li>Pilih jawapan. Sistem akan highlight <span class="legend correct">betul</span> / <span class="legend wrong">salah</span>.</li>
+          <li>Lihat <strong>progress bar</strong> & <strong>skor live</strong> di atas.</li>
+          <li>Habis kuiz → Isi nama & simpan markah ke <strong>Leaderboard</strong>.</li>
+        </ul>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Back to Menu</button>
+          <button class="btn primary" id="btn-start-2">Start Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screen-quiz" class="screen">
+      <div class="hud">
+        <div class="hud-group">
+          <span class="label">Soalan</span>
+          <span id="qIndex" class="value">1/10</span>
+        </div>
+        <div class="progress-wrap">
+          <div id="progress" class="progress"></div>
+        </div>
+        <div class="hud-group">
+          <span class="label">Skor</span>
+          <span id="score" class="value">0</span>
+        </div>
+        <div class="hud-group timer">
+          <span class="label">Masa</span>
+          <span id="timer" class="value">20s</span>
+        </div>
+      </div>
+
+      <div class="quiz-card card">
+        <h3 id="question">Loading…</h3>
+        <div id="options" class="options"></div>
+        <p id="info" class="info"></p>
+        <div class="actions">
+          <button class="btn" id="btn-prev">⟵ Prev</button>
+          <button class="btn" id="btn-next">Next ⟶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screen-result" class="screen">
+      <canvas id="confetti"></canvas>
+      <div class="card result-card">
+        <h2>Keputusan 🎉</h2>
+        <p id="final-score">Anda dapat 0/0</p>
+        <form id="save-form" class="save-form">
+          <input type="text" id="player-name" placeholder="Nama anda" maxlength="20" required />
+          <button class="btn primary" type="submit">Simpan ke Leaderboard</button>
+        </form>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Menu</button>
+          <button class="btn" id="btn-retry">Main Lagi</button>
+          <button class="btn" data-target="leaderboard">Lihat Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="screen-leaderboard" class="screen">
+      <div class="card">
+        <h2>🏆 Leaderboard</h2>
+        <ol id="board" class="board"></ol>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Menu</button>
+          <button class="btn danger" id="clear-board">Clear Leaderboard</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Audio -->
+  <audio id="sfx-correct" src="https://assets.mixkit.co/sfx/preview/mixkit-game-success-2019.mp3" preload="auto"></audio>
+  <audio id="sfx-wrong"   src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" preload="auto"></audio>
+  <audio id="sfx-click"   src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

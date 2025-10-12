@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Movement of the Moon — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">🌕 The Movement of the Moon</h1><br>
+        <h3>Surah Ash-Shams, Verse 2</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+      وَٱلْقَمَرِ إِذَا تَلَىٰهَا ٢
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/al-syams-2.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Dan bulan apabila ia mengiringinya.</p>
+       
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Allah juga bersumpah dengan bulan yang bersinar ketika ia muncul selepas matahari terbenam, khususnya pada malam-malam bulan penuh iaitu antara malam ketiga 
+            belas hingga malam keenam belas dari waktu matahari terbenam hingga terbitnya fajar. Sumpah dengan cahaya ini merujuk kepada seluruh waktu malam.</p>
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+<ol>
+  <li>
+    <p><strong>Pengenalan Umum</strong></p>
+    <p>Bulan merupakan satu-satunya satelit semula jadi bagi bumi, berjarak kira-kira 384,000 kilometer dari planet kita. Ia berbentuk hampir bulat tetapi sedikit lonjong, menyerupai telur dengan hujung kecilnya menghala ke bumi. Bulan memainkan peranan penting dalam pelbagai fenomena semula jadi seperti pasang surut air laut, kitaran kalendar Islam, dan pencahayaan malam. Dalam konteks astronomi, bulan menjadi objek kajian utama kerana sifatnya yang unik yang tidak mempunyai atmosfera tebal, mempunyai kitaran cahaya sendiri hasil pantulan cahaya matahari, serta pergerakannya yang sangat teratur mengelilingi bumi.</p>
+  </li>
+
+  <li>
+    <p><strong>Ciri-ciri Fizikal Bulan</strong></p>
+    <ol type="a">
+      <li>
+        <p><strong>Struktur dan Saiz</strong></p>
+        <p>Bulan memiliki diameter 3,474 km, iaitu kira-kira 1/4 daripada saiz bumi, dan jisimnya hanya 1/81 daripada bumi. Ketumpatannya adalah 3.34 gram/cm³, lebih rendah daripada bumi yang menunjukkan kandungan logamnya sedikit.</p>
+      </li>
+      <li>
+        <p><strong>Suhu dan Graviti</strong></p>
+        <p>Disebabkan atmosfera yang sangat nipis (sekitar 1/1000 daripada atmosfera bumi), suhu di permukaan bulan berubah dengan ekstrem — 110°C pada waktu siang dan -120°C pada waktu malam. Graviti di permukaannya hanya 1/6 daripada graviti bumi, menjadikan pergerakan di sana lebih ringan dan melantun.</p>
+      </li>
+      <li>
+        <p><strong>Pantulan Cahaya</strong></p>
+        <p>Walaupun tidak mempunyai cahaya sendiri, bulan mampu memantulkan sekitar 7.3% cahaya matahari yang jatuh ke atasnya. Pantulan inilah yang menghasilkan fasa-fasa bulan seperti hilal, suku pertama, purnama, dan suku akhir, yang berubah mengikut kedudukannya terhadap bumi dan matahari.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <p><strong>Fenomena Astronomi Berkaitan Bulan</strong></p>
+    <ol type="a">
+      <li>
+        <p><strong>Gerhana Bulan dan Gerhana Matahari</strong></p>
+        <p>Fenomena gerhana berlaku apabila matahari, bumi, dan bulan berada pada satu garis lurus.</p>
+        <ul>
+          <li>Gerhana Matahari terjadi apabila bulan berada di antara bumi dan matahari, menutupi cahaya matahari buat sementara waktu.</li>
+          <li>Gerhana Bulan pula berlaku apabila bumi berada di antara matahari dan bulan, menyebabkan bayang bumi menutupi permukaan bulan.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Kekerapan dan Jenis Gerhana</strong></p>
+        <p>Gerhana matahari biasanya berlaku 2–3 kali setahun, manakala gerhana bulan lebih 4 kali setahun. Gerhana matahari terbahagi kepada tiga jenis iaitu penuh, sebahagian, dan cincin, bergantung pada kedudukan relatif bumi, bulan dan matahari.</p>
+      </li>
+      <li>
+        <p><strong>Kitaran Fasa Bulan</strong></p>
+        <p>Kitaran sinodik bulan mengambil masa 29.5 hari, bersamaan satu bulan Hijri. Ini bermaksud bulan mengelilingi bumi dan kembali ke kedudukan yang sama relatif kepada matahari dalam tempoh tersebut. Fasa-fasa bulan ini juga digunakan oleh masyarakat Islam dalam menentukan awal bulan Hijri dan tarikh penting keagamaan.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <p><strong>Struktur Dalaman dan Pergerakan Bulan</strong></p>
+    <ol type="a">
+      <li>
+        <p><strong>Lapisan Dalam Bulan</strong></p>
+        <p>Bulan terdiri daripada tiga lapisan utama:</p>
+        <ul>
+          <li>Kerak (68 km tebal): Lapisan luar yang pecah akibat hentaman meteorit.</li>
+          <li>Mantel (1,170 km): Mengandungi batuan seperti piroksin dan olivin.</li>
+          <li>Teras (500 km): Terbahagi kepada teras luar separa cair dan teras dalam pejal yang kaya dengan besi.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Permukaan Bulan</strong></p>
+        <p>Permukaannya dipenuhi kawah akibat hentaman meteorit, dengan sesetengah kawah mencapai kedalaman hingga 20 km. Kawasan datar yang dipanggil “Lautan Bulan” (Maria) bukan air, tetapi dataran basalt yang terbentuk daripada letusan gunung berapi purba.</p>
+      </li>
+      <li>
+        <p><strong>Pergerakan Bulan</strong></p>
+        <p>Bulan mempunyai beberapa jenis pergerakan:</p>
+        <ol>
+          <li>Putaran pada paksinya – sekali setiap 29.5 hari.</li>
+          <li>Orbit mengelilingi bumi – dalam laluan elips sepanjang 2.4 juta km.</li>
+          <li>Pergerakan bersama bumi mengelilingi matahari – setahun sekali.</li>
+        </ol>
+        <p>Disebabkan putaran dan pusingan yang serentak, hanya satu bahagian bulan dapat dilihat dari bumi, manakala bahagian belakangnya kekal tersembunyi.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <p><strong>Rumusan dan Renungan</strong></p>
+    <p>Kewujudan dan keunikan bulan membuktikan kekuasaan Allah dalam mencipta keseimbangan alam. Bulan bukan sekadar hiasan malam, tetapi juga berfungsi sebagai penentu waktu, alat kajian sains, dan tanda kebesaran Pencipta. Pengetahuan astronomi moden hanya mengesahkan kebenaran ayat-ayat Allah yang telah lama menjelaskan keajaiban ciptaan langit. Maka, setiap fasa, peredaran dan cahayanya adalah saksi kehebatan Tuhan yang menciptakan segala sesuatu dengan penuh hikmah dan keteraturan.</p>
+  </li>
+</ol>
+
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

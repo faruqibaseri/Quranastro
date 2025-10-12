@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Cycle of Night and Day — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">🌗 The Cycle of Night and Day</h1><br>
+        <h3>Surah Al-Fussilat, Verse 37</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+      وَمِنۡ ءَايَٰتِهِ ٱلَّيۡلُ وَٱلنَّهَارُ وَٱلشَّمۡسُ وَٱلۡقَمَرُۚ لَا تَسۡجُدُواْ لِلشَّمۡسِ وَلَا لِلۡقَمَرِ وَٱسۡجُدُواْۤ لِلَّهِۤ ٱلَّذِي خَلَقَهُنَّ إِن كُنتُمۡ إِيَّاهُ تَعۡبُدُونَ٣٧
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/al-fussilat-37.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Dan di antara tanda-tanda kekuasaanNya ialah malam dan siang, serta matahari dan bulan. Janganlah kamu sujud kepada matahari dan janganlah pula sujud kepada bulan, dan sebaliknya hendaklah kamu sujud kepada Allah yang menciptakannya, kalau betulah kamu hanya beribadat kepada Allah.</p>
+       
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Antara tanda kekuasaan, keagungan dan kebijaksanaan Allah SWT ialah adanya malam dan siang yang silih berganti. Dialah yang menciptakan matahari yang bersinar dan bulan yang bercahaya, serta menetapkan orbit dan tempoh peredaran masing-masing di langit agar dapat diketahui jangka masa malam, siang, minggu, bulan dan tahun. Dengan demikian, manusia dapat menentukan waktu pelaksanaan ibadah, pelunasan hak dan hutang, serta urusan muamalat. Matahari dan bulan merupakan ciptaan langit yang indah serta memberi manfaat besar kepada kehidupan, namun Allah SWT mengingatkan bahawa kedua-duanya hanyalah makhluk yang tunduk dan patuh kepada peraturan-Nya. Oleh itu, kedua-duanya tidak wajar diagungkan, kerana keagungan itu hanya milik Allah Tuhan yang menciptakannya.</p>
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+<ol>
+  <li>
+    <strong>Pengenalan Umum</strong><br>
+    Fenomena malam dan siang merupakan dua tanda kebesaran ciptaan Allah SWT yang menggambarkan keagungan, ketelitian dan keseimbangan sistem alam semesta. 
+    Kejadian ini berlaku hasil putaran bumi pada paksinya yang condong dengan sudut tertentu, sambil bergerak dalam orbit tetap mengelilingi matahari. 
+    Ia menjadi bukti bahawa setiap ciptaan Allah memiliki fungsi dan aturan yang sempurna bagi memastikan kesinambungan kehidupan di muka bumi.
+  </li>
+
+  <li>
+    <strong>Fenomena Astronomi di Sebalik Malam dan Siang</strong><br>
+    Putaran bumi pada paksinya menghasilkan pelbagai kesan astronomi seperti penetapan tahun, musim, hari, minggu serta pertukaran siang dan malam antara dua hemisfera. 
+    Satu tahun ditentukan oleh putaran lengkap bumi mengelilingi matahari, manakala bulan ditentukan oleh kitaran bulan mengelilingi bumi. 
+    Kedudukan buruj-buruj bintang pula menandakan peredaran bulan bagi setiap bulan hijri. 
+    Selain itu, waktu siang dapat diukur menggunakan jam matahari atau mizwalah, dari terbit hingga terbenamnya matahari. 
+    Berdasarkan fenomena ini, kalendar Islam atau tahun Hijrah bersifat suria-bulan, iaitu gabungan kiraan peredaran matahari dan bulan. 
+    Hal ini ditegaskan oleh firman Allah SWT dalam Surah Fussilat ayat 37 yang menyebut bahawa antara tanda kekuasaan-Nya ialah malam, siang, matahari dan bulan.
+  </li>
+
+  <li>
+    <strong>Pertukaran Malam dan Siang dari Sudut Sains Kosmik</strong><br>
+    Dari sudut sains kosmik, pertukaran siang dan malam memainkan peranan penting dalam mengekalkan keseimbangan ekosistem bumi. 
+    Ia mengawal pembahagian tenaga suria, suhu, kelembapan dan cahaya, sekali gus menyokong aktiviti biologi seperti pernafasan dan metabolisme manusia serta haiwan, transpirasi dan fotosintesis tumbuhan. 
+    Proses ini turut mempengaruhi kestabilan atmosfera, hidrosfera, kitaran air, angin, awan dan hujan. 
+    Selain itu, ia membantu proses luluhawa batuan serta pembentukan tanah dan mendapan mineral yang bernilai. 
+    Semua ini menunjukkan kehebatan sistem semula jadi yang diciptakan oleh Allah SWT dengan penuh keseimbangan.
+  </li>
+
+  <li>
+    <strong>Kepentingan Malam dan Siang kepada Manusia</strong><br>
+    Perbezaan antara malam dan siang membahagikan kehidupan manusia kepada dua fasa utama. 
+    Siang adalah masa untuk bergerak, bekerja, mencari rezeki dan beribadah secara aktif, manakala malam merupakan waktu untuk berehat, menenangkan fikiran dan mendekatkan diri kepada Allah SWT. 
+    Dari sudut kesihatan, tidur malam amat penting bagi memulihkan tenaga jasmani dan mental. 
+    Sebaliknya, tidur siang berlebihan boleh mengganggu sistem badan seperti peredaran darah, kejang otot, peningkatan lemak, pertambahan berat badan dan gangguan emosi. 
+    Dari aspek atmosfera, lapisan ionosfera dan tali pinggang radiasi melindungi bumi daripada sinaran berbahaya pada waktu siang, manakala perlindungan ini berkurang pada waktu malam — sesuai dengan fungsi malam sebagai waktu rehat bagi manusia.
+  </li>
+
+  <li>
+    <strong>Bukti Sains daripada Fenomena Malam dan Siang</strong><br>
+    Pertama, pertukaran siang dan malam secara berterusan membuktikan bumi berbentuk sfera; sekiranya bumi rata, pertukaran ini tidak akan berlaku. 
+    Kedua, fenomena ini juga menunjukkan bahawa bumi berputar pada paksinya, sebagaimana dinyatakan dalam al-Quran melalui frasa “memasukkan malam ke dalam siang” dan “menutupi siang dengan malam”. 
+    Ketiga, keseimbangan dimensi bumi dan kelajuan putarannya membuktikan kebijaksanaan ciptaan Allah — sekiranya saiz, kelajuan atau kecondongan bumi berbeza sedikit sahaja, kehidupan tidak akan stabil. 
+    Keempat, orbit bumi yang berbentuk elips menentukan jarak dari matahari, jumlah tenaga suria serta perubahan musim dan buruj bintang. 
+    Kecondongan paksi bumi sebanyak 66.5° pula menjadikan perubahan musim berlaku dengan harmoni. 
+    Kelima, lapisan siang yang sangat nipis dibandingkan dengan jarak bumi–matahari menunjukkan kehalusan ciptaan Allah sebagaimana disebut dalam Surah Yasin ayat 37. 
+    Keenam, Surah Al-Isra’ ayat 12 menjelaskan bahawa malam pada awal penciptaan bumi pernah bercahaya, yang kini masih dapat dilihat melalui fenomena aurora di kawasan kutub — satu lagi bukti kekuasaan Allah SWT.
+  </li>
+
+  <li>
+    <strong>Kesimpulan</strong><br>
+    Kesimpulannya, kejadian malam dan siang merupakan manifestasi kebijaksanaan dan kekuasaan Allah SWT dalam mengatur sistem alam semesta dengan penuh keseimbangan dan kesempurnaan. 
+    Ia menunjukkan hubungan harmoni antara masa, tenaga dan kehidupan di bumi. 
+    Mukjizat al-Quran telah menjelaskan hakikat ini berabad-abad sebelum sains moden membuktikannya. 
+    Firman Allah SWT dalam Surah Al-Isra’ ayat 12 menegaskan bahawa malam dan siang dijadikan sebagai tanda agar manusia dapat mencari rezeki, mengetahui bilangan tahun dan membuat perhitungan masa — bukti bahawa segala ciptaan Allah mempunyai tujuan dan hikmah yang mendalam.
+  </li>
+</ol>
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

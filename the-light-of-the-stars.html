@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Light of the Stars — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">✨ The Light of the Stars</h1><br>
+        <h3>Surah Al-Waqi‘ah, Verse 75</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+۞ فَلَآ أُقْسِمُ بِمَوَٰقِعِ ٱلنُّجُومِ ٧٥
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/al-waqi'ah-75.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Maka Aku bersumpah: Demi tempat-tempat dan masa-masa turunnya bahagian-bahagian Al-Quran.</p>
+       
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Aku bersumpah dengan tempat-tempat terbenamnya bintang-bintang.<p>Menurut pendapat jumhur ulama, Allah SWT bebas bersumpah dengan apa sahaja yang Dia kehendaki daripada makhluk-Nya, sebagai tanda kebesaran dan keagungan-Nya. Mengapa sumpah dalam ayat ini secara khusus menggunakan tempat-tempat terbenamnya bintang-bintang? </p>
+<p>Hal ini kerana ketika bintang-bintang terbenam, ia menandakan bahawa cahaya dan kewujudannya boleh hilang menunjukkan bahawa bintang itu sendiri tidak mempunyai sebarang kekuatan atau pengaruh, melainkan semuanya di bawah kekuasaan Allah SWT.
+</p>
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+
+<ol>
+  <li>
+    <strong>Pengenalan Umum</strong>
+    <p>Kedudukan bintang-bintang atau <em>mauqi‘ an-nujūm</em> merupakan satu konsep penting dalam ilmu astronomi dan juga dalam tafsir Al-Quran. Perkataan <em>mauqi‘</em> berasal daripada akar kata Arab <em>waqa‘a</em> yang bermaksud “jatuh” atau “berlaku”, menggambarkan tempat atau lintasan sesuatu yang sedang bergerak. Dalam konteks astronomi, ia merujuk kepada kedudukan atau laluan bintang di langit, yang berubah mengikut masa akibat putaran dan pergerakan galaksi.</p>
+    <p>Hakikatnya, manusia tidak melihat bintang pada kedudukannya yang sebenar. Disebabkan jarak yang amat jauh dan kelajuan cahaya yang terhad, apa yang dilihat di langit malam ialah imej masa lalu bintang — cahaya yang telah menempuh perjalanan berjuta tahun sebelum sampai ke bumi. Fenomena ini membuktikan betapa luas, kompleks, dan teratur ciptaan alam semesta yang diatur oleh kekuasaan Allah SWT.</p>
+  </li>
+
+  <li>
+    <strong>Hakikat Saintifik dalam Kedudukan Bintang</strong>
+    <ol type="a">
+      <li>
+        <strong>Manusia hanya melihat kedudukan, bukan bintang sebenar</strong>
+        <p>Cahaya dari bintang mengambil masa bertahun-tahun untuk sampai ke bumi. Sebagai contoh, bintang terdekat selepas matahari, Alpha Centauri, terletak sejauh 4.2 tahun cahaya, bermakna cahaya yang kita lihat hari ini adalah dari empat tahun lalu. Bagi bintang lain yang lebih jauh, cahaya yang dilihat bahkan mungkin datang dari bintang yang sudah pun mati berjuta tahun dahulu. Ini menjelaskan mengapa Allah menggunakan istilah “kedudukan bintang-bintang”, bukan bintang itu sendiri.</p>
+      </li>
+
+      <li>
+        <strong>Cahaya yang melengkung dan ruang masa</strong>
+        <p>Dalam teori relativiti Einstein, cahaya tidak bergerak dalam garisan lurus apabila melalui medan graviti besar; ia membengkok. Fenomena ini disebut dalam Al-Quran sebagai <em>al-ma‘ārij</em> — laluan yang mendaki atau melengkung. Maka, kedudukan bintang yang kelihatan di langit hanyalah tempat cahaya itu kelihatan bagi kita, bukan lokasi sebenar jasadnya.</p>
+      </li>
+
+      <li>
+        <strong>Hubungan masa dan ruang (Space-time)</strong>
+        <p>Kajian moden membuktikan bahawa masa dan ruang saling berkaitan. Setiap bintang yang kita lihat adalah cerminan masa lalu alam semesta. Ia membantu manusia memahami sejarah kosmos bahawa alam ini mempunyai permulaan, tidak kekal abadi, sejajar dengan petunjuk Al-Quran bahawa setiap ciptaan mempunyai titik mula dan akhir.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <strong>Keajaiban Ciptaan Bintang dalam Alam Semesta</strong>
+    <ol type="a">
+      <li>
+        <strong>Sifat fizikal bintang</strong>
+        <p>Bintang ialah jasad gas besar yang membara, terbentuk daripada gas hidrogen dan helium, yang menghasilkan tenaga melalui tindak balas nuklear. Ia bersinar sendiri dengan suhu yang amat tinggi dari 2,000 K (bintang merah) hingga 10,000 K (bintang biru). Matahari kita pula ialah bintang kuning sederhana (6,000 K).</p>
+      </li>
+
+      <li>
+        <strong>Jenis-jenis bintang</strong>
+        <p>Kira-kira 90% bintang tergolong dalam kumpulan <em>Main Sequence Stars</em>, manakala selebihnya berada dalam fasa akhir seperti kerdil putih, gergasi merah, bintang neutron, dan lubang hitam (<em>black hole</em>). Setiap fasa menggambarkan peringkat usia bintang, menunjukkan bahawa segala ciptaan Allah tertakluk kepada hukum perubahan dan kematian.</p>
+      </li>
+
+      <li>
+        <strong>Quasars – objek seakan bintang</strong>
+        <p><em>Quasars</em> ialah objek sangat jauh dan padat yang memancarkan tenaga luar biasa — 100 juta juta kali tenaga matahari. Ia ditemui di sempadan alam semesta dan bergerak menjauh dengan kelajuan amat tinggi. Penemuan <em>quasars</em> menunjukkan betapa luasnya alam ciptaan Allah, di mana bintang dan tenaga wujud dalam sistem yang sukar dicapai oleh daya akal manusia.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <strong>Hikmah dan Makna Sumpah Allah dengan Kedudukan Bintang</strong>
+    <p>Al-Quran dalam Surah Al-Waqi‘ah ayat 75–76 menyebut:</p>
+    <blockquote><i>
+      “Maka Aku bersumpah dengan kedudukan bintang-bintang. Dan sesungguhnya ia adalah sumpah yang sangat besar, kalau kamu mengetahui.”</i>  
+    </blockquote>
+    <p>Ayat ini menunjukkan bahawa kedudukan bintang-bintang memiliki makna saintifik yang mendalam dan nilai spiritual yang tinggi.</p>
+
+    <ol type="a">
+      <li>
+        <strong>Allah bersumpah dengan kedudukan, bukan bintang itu sendiri</strong>
+        <p>Kerana apa yang manusia lihat hanyalah pantulan dan kedudukan masa lalu, bukan hakikat sebenar bintang. Ini menggambarkan betapa terbatasnya penglihatan dan ilmu manusia terhadap realiti ciptaan Allah.</p>
+      </li>
+
+      <li>
+        <strong>Sistem graviti dan peraturan semesta</strong>
+        <p>Setiap bintang bergerak dalam orbit yang ditentukan oleh tarikan graviti. Walaupun Allah mampu menggerakkan segala sesuatu dengan perintah “Kun”, Dia menetapkan <em>sunnatullah</em> — hukum semula jadi agar manusia dapat mengkajinya dan memahami kebesaran-Nya.</p>
+      </li>
+
+      <li>
+        <strong>Bukti mukjizat Al-Quran dan kenabian Muhammad SAW</strong>
+        <p>Pengetahuan tentang cahaya bintang, kelajuan cahaya, dan ruang masa hanya diketahui selepas beribu tahun selepas Rasulullah SAW wafat. Oleh itu, kenyataan Al-Quran tentang “kedudukan bintang-bintang” adalah bukti bahawa Nabi Muhammad SAW menerima wahyu daripada Tuhan, bukan hasil pemikiran manusia semata-mata.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <strong>Rumusan dan Renungan</strong>
+    <p>Kesimpulannya, kedudukan bintang-bintang bukan hanya fenomena astronomi, tetapi bukti ketuhanan yang jelas. Ia mengajar manusia tentang keterbatasan akal, keagungan ciptaan, dan keperluan untuk tunduk kepada kebijaksanaan Pencipta. Sumpah Allah dengan kedudukan bintang-bintang adalah peringatan bahawa ilmu dan cahaya yang sebenar hanyalah datang daripada-Nya. Maka, setiap cahaya yang kita lihat di langit malam adalah tanda kebesaran Tuhan — saksi bahawa alam ini bukan terjadi secara kebetulan, tetapi dengan perancangan yang penuh hikmah dan rahmat.</p>
+  </li>
+</ol>
+
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

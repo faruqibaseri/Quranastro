@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calculation of Years — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">🗓️ Calculation of Years</h1><br>
+        <h3>Surah Al-An'am, Verse 96</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+      فَالِقُ ٱلۡإِصۡبَاحِ وَجَعَلَ ٱلَّيۡلَ سَكَنٗا وَٱلشَّمۡسَ وَٱلۡقَمَرَ حُسۡبَانٗاۚ ذَٰلِكَ تَقۡدِيرُ ٱلۡعَزِيزِ ٱلۡعَلِيمِ٩٦
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/al-an'am-96.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Allah jualah Yang membelah cahaya subuh (yang menyingsingkan fajar), dan yang menjadikan malam untuk tinggal berehat, dan menjadikan matahari dan bulan untuk mengira 
+          waktu (menurut peredarannya). Yang demikian itu adalah kuasa penentuan Allah Yang Maha Kuasa, lagi Maha Mengetahui.</p>
+       
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Dalam ayat ini, Allah menerangkan tiga tanda kebesaran-Nya yang terdapat di langit dan tiga tanda kebesaran-Nya yang terdapat di bumi. Pertama, munculnya waktu pagi dengan pancaran cahaya merupakan satu fenomena keindahan alam yang menjadi sarana untuk manusia merenungi ciptaan Allah. Kedua, Allah menjadikan malam sebagai waktu yang tenang, sebagai nikmat daripada-Nya agar tubuh dapat berehat, jiwa menjadi tenang, dan beristirahat daripada kegiatan yang melelahkan pada waktu siang. Ketiga, matahari dan bulan dijadikan sebagai alat perhitungan bagi keperluan manusia, untuk menentukan waktu ibadah, urusan muamalah, dan juga penentuan kalendar. Sebagaimana dijelaskan dalam ilmu astronomi, bumi mempunyai dua jenis putaran - putaran selama dua puluh empat jam yang digunakan untuk mengira hari (rotasi), dan putaran selama setahun yang menghasilkan empat musim bagi mengira tahun Masihi.</p>
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+<ol>
+  <li><strong>Pengenalan Umum</strong>
+    <p>Ayat ini tergolong dalam kategori ayat-ayat kauniyyah (ayat yang berkaitan dengan alam semesta) yang memperlihatkan bukti-bukti kekuasaan Allah SWT melalui pelbagai fenomena alam. Dalam Surah al-An‘ām, Allah SWT menegaskan banyak tanda kebesaran-Nya, antaranya pergerakan matahari dan bulan serta pertukaran siang dan malam yang berlaku secara teratur. Semua ini menjadi bukti bahawa seluruh sistem alam berjalan mengikut ketentuan dan aturan Allah SWT yang Maha Mengetahui, sekali gus menunjukkan keagungan dan kebijaksanaan-Nya dalam mengatur ciptaan-Nya.</p>
+  </li>
+
+  <li><strong>Tafsiran Berdasarkan Kitab Klasik</strong>
+    <ol type="a">
+      <li><strong>Tafsir al-Muntakhab</strong>
+        <p>Menurut Tafsir al-Muntakhab, Allah SWT membelah kegelapan malam dengan nur (cahaya sebenar) pada waktu subuh, bukan sekadar cahaya biasa. Waktu pagi dijadikan sebagai masa untuk manusia keluar mencari rezeki dan memenuhi keperluan hidup, manakala malam dijadikan sebagai waktu untuk berehat bagi menyegarkan tubuh dan jiwa. Selain itu, matahari dan bulan diatur dengan sistem yang sangat tepat agar manusia dapat mengenal pasti waktu bagi melaksanakan ibadah serta mengurus urusan harian mereka. Kesempurnaan sistem ini menggambarkan perancangan Tuhan Yang Maha Berkuasa lagi Maha Mengetahui, yang mengatur segala sesuatu dengan penuh hikmah dan keseimbangan.</p>
+      </li>
+
+      <li><strong>Tafsir Safwah al-Tafasir</strong>
+        <p>Perkataan “al-Isbah” membawa maksud pembelahan kegelapan malam dengan cahaya sebenar (nur) yang menandakan permulaan waktu subuh. Frasa “menjadikan malam sebagai tempat tinggal” pula bermaksud waktu malam dijadikan oleh Allah SWT sebagai masa untuk manusia berhenti daripada aktiviti harian dan berehat. Seterusnya, “matahari dan bulan sebagai alat kiraan” menunjukkan bahawa kedua-duanya berperanan sebagai penentu masa, membezakan antara siang dan malam. Penutup ayat, “itulah ketentuan Allah Yang Maha Perkasa lagi Maha Mengetahui”, menegaskan bahawa segala pergerakan dan aturan sistem alam ini merupakan perancangan Tuhan yang sempurna, menggambarkan kekuasaan dan kebijaksanaan-Nya yang tiada bandingan.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li><strong>Penjelasan Ayat Berdasarkan Ilmu Moden</strong>
+    <ol type="a">
+      <li><strong>Fenomena Siang dan Malam</strong>
+        <p>Allah SWT disifatkan sebagai “Faliqu al-Isbah”, iaitu Pembelah waktu subuh, yang menggambarkan perubahan berperingkat antara malam dan siang. Fenomena ini berlaku hasil daripada putaran bumi pada paksinya di hadapan matahari (rotasi). Waktu siang dijadikan sebagai masa untuk manusia bekerja, mencari rezeki dan menegakkan keadilan, manakala malam pula sebagai waktu untuk berehat, beribadah serta bertafakur.</p>
+      </li>
+
+      <li><strong>Fakta Saintifik</strong>
+        <p>Secara saintifik, bumi berputar pada paksinya dengan kelajuan kira-kira 1,674 km sejam, melengkapkan satu putaran penuh dalam tempoh 24 jam (23 jam, 56 minit dan 4 saat secara purata). Putaran ini menghasilkan fenomena siang dan malam serta mempengaruhi perbezaan panjang waktu antara musim. Kecondongan paksi bumi pula menyebabkan terjadinya empat musim utama, iaitu bunga, panas, luruh dan sejuk. Walaupun satu hari bersamaan dengan 86,400 saat, kadar putaran bumi semakin perlahan pada kadar sekitar 0.001 saat setiap 100 tahun. Oleh itu, pengukuran masa moden kini menggunakan jam atom cesium-133 bagi memastikan ketepatan dalam menentukan masa di seluruh dunia.</p>
+      </li>
+
+      <li><strong>Alat Ukuran Masa</strong>
+        <p>Manusia telah mencipta pelbagai alat pengukur masa — bermula daripada jam matahari dan bandul hingga kepada jam atom moden yang sangat tepat. Inovasi ini membolehkan manusia menentukan waktu solat, puasa, dan ibadah lain secara saintifik, sekaligus memastikan setiap amalan dilakukan selaras dengan ketentuan syarak.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li><strong>Tahun dan Bulan dalam Islam dan Astronomi</strong>
+    <ol type="a">
+      <li><strong>Tahun Qamariyyah (Bulan)</strong>
+        <p>Tahun Qamariyyah berpandukan peredaran bulan mengelilingi bumi sebanyak 12 kali setahun, bersamaan kira-kira 354 hari. Dalam tahun lompat (kabisat), jumlah harinya menjadi 355 hari. Setiap bulan ditentukan melalui penampakan anak bulan (hilal) selepas matahari terbenam, dengan tempoh purata sebulan sekitar 29 hari 12 jam 44 minit.</p>
+      </li>
+
+      <li><strong>Tahun Syamsiyyah (Matahari)</strong>
+        <p>Tahun Syamsiyyah berpandukan kedudukan matahari dalam buruj zodiak, dengan tempoh setahun ialah 365.25 hari, yang menjadi asas kepada kalendar Masihi.</p>
+      </li>
+
+      <li><strong>Perbezaan Sistem Waktu</strong>
+        <p>Dalam kalendar Islam (Qamariyyah), hari bermula dari terbenam matahari hingga terbenam matahari keesokannya. Manakala dalam kalendar Masihi (Syamsiyyah), hari bermula dari tengah malam hingga tengah malam berikutnya. Kawasan di barat melihat hilal lebih awal berbanding kawasan di timur, menyebabkan permulaan bulan baru berlaku lebih awal di barat.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li><strong>Hubungan antara Ayat al-Quran dan Ilmu Astronomi</strong>
+    <p>Firman Allah SWT dalam Surah al-Rahman (55:5):</p>
+    <blockquote>"Wa al-shamsu wa al-qamaru biḥusbān"<br><em>Maksudnya: Matahari dan bulan bergerak dengan hitungan yang sangat tepat.</em></blockquote>
+    <p>Ayat ini menunjukkan bahawa pergerakan alam semesta tersusun secara matematik dan saintifik, sejajar dengan penemuan ilmu astronomi moden. Menariknya, fakta-fakta ini hanya dibuktikan berabad-abad selepas penurunan al-Quran, sekaligus menjadi bukti bahawa al-Quran adalah wahyu daripada Allah SWT serta pengiktirafan terhadap kenabian Rasulullah SAW.</p>
+  </li>
+</ol>
+
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

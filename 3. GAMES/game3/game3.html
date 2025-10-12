@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Astronoverse – Word Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Subtle animated bg -->
+  <div class="bg"></div>
+
+  <header class="app-header">
+    <h1>🔎 Astronoverse Word Search</h1>
+    <nav class="top-nav">
+      <button class="nav-btn" data-screen="menu">Menu</button>
+      <button class="nav-btn" data-screen="howto">How to Play</button>
+      <button class="nav-btn" data-screen="leaderboard">Leaderboard</button>
+      <button class="nav-btn" id="toggle-sound" title="Sound">🔊</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- MENU -->
+    <section id="screen-menu" class="screen active">
+      <div class="card center">
+        <h2>Selamat Datang 🚀</h2>
+        <p>Pilih tahap & mula mencari perkataan bertema Astronomi (Sun, Moon, Stars)!</p>
+
+        <div class="grid-choices">
+          <label class="choice">
+            <input type="radio" name="level" value="easy" checked>
+            <span>Easy (10×10)</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="level" value="medium">
+            <span>Medium (12×12)</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="level" value="hard">
+            <span>Hard (14×14)</span>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" id="btn-start">Start Game</button>
+          <button class="btn ghost" data-screen="howto">How to Play</button>
+          <button class="btn ghost" data-screen="leaderboard">Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO -->
+    <section id="screen-howto" class="screen">
+      <div class="card">
+        <h2>How to Play 🧭</h2>
+        <ul class="howto">
+          <li>Seret (drag) dari huruf mula ke huruf akhir untuk pilih perkataan.</li>
+          <li>Perkataan boleh muncul <b>mendatar</b>, <b>menegak</b>, atau <b>diagonal</b> (hadapan & terbalik).</li>
+          <li>Gunakan <b>Hint</b> untuk dedahkan huruf pertama (tolak 5s).</li>
+          <li>Semua jumpaan akan bertanda <span class="tag found">FOUND</span>.</li>
+        </ul>
+        <div class="actions">
+          <button class="btn" data-screen="menu">Back</button>
+          <button class="btn primary" id="btn-start-2">Start Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="screen-game" class="screen">
+      <div class="hud card">
+        <div class="hud-group">
+          <span class="label">Level</span>
+          <span id="levelLabel" class="value">Easy</span>
+        </div>
+        <div class="hud-group">
+          <span class="label">Masa</span>
+          <span id="timeLabel" class="value">00:00</span>
+        </div>
+        <div class="hud-group">
+          <span class="label">Progress</span>
+          <span id="progressLabel" class="value">0/0</span>
+        </div>
+        <div class="hud-right">
+          <button id="btn-hint" class="btn small">💡 Hint (-5s)</button>
+          <button id="btn-pause" class="btn small">⏸️ Pause</button>
+          <button id="btn-restart" class="btn small">🔁 Restart</button>
+        </div>
+      </div>
+
+      <div class="game-wrap">
+        <div class="board card">
+          <div id="grid" class="grid"></div>
+        </div>
+        <div class="panel card">
+          <h3>Word List</h3>
+          <ul id="wordList" class="word-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screen-result" class="screen">
+      <canvas id="confetti"></canvas>
+      <div class="card center">
+        <h2>🎉 Tahniah!</h2>
+        <p id="resultText">Anda jumpa semua perkataan dalam 00:00</p>
+        <form id="saveForm" class="save-form">
+          <input type="text" id="playerName" placeholder="Nama anda" maxlength="20" required/>
+          <button class="btn primary" type="submit">Simpan ke Leaderboard</button>
+        </form>
+        <div class="actions">
+          <button class="btn" data-screen="menu">Menu</button>
+          <button class="btn" id="btn-play-again">Main Lagi</button>
+          <button class="btn" data-screen="leaderboard">Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="screen-leaderboard" class="screen">
+      <div class="card">
+        <h2>🏆 Leaderboard</h2>
+        <ol id="board" class="board-list"></ol>
+        <div class="actions">
+          <button class="btn" data-screen="menu">Menu</button>
+          <button class="btn danger" id="btn-clear-board">Clear</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sounds -->
+  <audio id="sfx-select"  src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+  <audio id="sfx-found"   src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3" preload="auto"></audio>
+  <audio id="sfx-win"     src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

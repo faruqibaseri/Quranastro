@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Sun as the Determiner of Shadows — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">☀️ The Sun as the Determiner of Shadows</h1><br>
+        <h3>Surah Al-Furqan, Verse 45</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+      أَلَمْ تَرَ إِلَىٰ رَبِّكَ كَيْفَ مَدَّ ٱلظِّلَّ وَلَوْ شَآءَ لَجَعَلَهُۥ سَاكِنًا ثُمَّ جَعَلْنَا ٱلشَّمْسَ عَلَيْهِ دَلِيلًا ٤٥
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/al-furqan-45.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Tidakkah engkau melihat kekuasaan Tuhanmu? - bagaimana Ia menjadikan bayang-bayang itu terbentang (luas kawasannya) dan jika Ia kehendaki tentulah Ia menjadikannya
+           tetap (tidak bergerak dan tidak berubah)! Kemudian Kami jadikan matahari sebagai tanda yang menunjukkan perubahan bayang-bayang itu.</p>
+       
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Kemudian Kami jadikan terbitnya matahari sebagai petunjuk (tanda) bagi bayang-bayang itu. Sekiranya bukan kerana terbitnya matahari, nescaya bayang-bayang itu tidak akan dapat dikenali, kerana sesungguhnya segala sesuatu dapat dibezakan dengan mengetahui lawannya.</p>
+          <p>Dari sini kita memahami bahawa Allah SWT telah menciptakan bayang-bayang terlebih dahulu, kemudian menjadikan matahari sebagai petunjuk terhadapnya. Setelah itu, Kami hilangkan bayang-bayang tersebut dan menggantinya secara beransur-ansur dengan sinar matahari, perlahan-lahan sesuai dengan pergerakan dan ketinggian matahari sehingga di permukaan bumi tidak ada lagi bayang-bayang kecuali di bawah bumbung atau di bawah pokok.</p>
+
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+<ol>
+  <li>
+    <p><strong>Pengenalan Umum</strong></p>
+    <p>Al-Quran bukan sahaja kitab petunjuk akidah dan akhlak, tetapi juga mengandungi isyarat kosmik yang mencerminkan keagungan ciptaan Allah SWT. Salah satu ayat yang menarik perhatian ahli tafsir dan saintis ialah firman Allah tentang bayang-bayang dan matahari, yang merujuk kepada fenomena cahaya, pergerakan bumi, serta sistem keseimbangan alam. Ayat ini bukan sekadar perumpamaan rohani, tetapi juga mengandungi hakikat saintifik yang hanya dapat difahami secara mendalam dengan kemajuan ilmu astronomi dan fizik moden.</p>
+  </li>
+
+  <li>
+    <p><strong>Petunjuk Bahasa daripada Ayat Al-Quran</strong></p>
+    <ol type="a">
+      <li>
+        <p><strong>Makna Akar Kata</strong></p>
+        <p>Perkataan (<em>مد</em>) berasal daripada maksud menarik atau memanjangkan, melahirkan istilah “<em>المدة</em>” (tempoh panjang) dan “<em>مدّ الظل</em>” (memanjangkan bayang). Ini menggambarkan bayang yang bergerak secara berperingkat seiring perubahan masa.</p>
+      </li>
+      <li>
+        <p><strong>Makna “الظل” (Bayang)</strong></p>
+        <p>Dalam bahasa Arab, “<em>الظل</em>” ialah lawan kepada cahaya terang — tidak sekelam “<em>الظلمة</em>” (kegelapan penuh), tetapi lebih umum daripada “<em>الفيء</em>” (bayang yang muncul selepas matahari naik). Maka, setiap kawasan yang tidak terkena cahaya matahari disebut “<em>ظل</em>”.</p>
+      </li>
+      <li>
+        <p><strong>Hubungan Bahasa dan Sains</strong></p>
+        <p>Ayat ini menunjukkan bahawa bayang bukan fenomena statik tetapi dinamik — bergerak dan berubah mengikut masa. Perubahan ini berkait rapat dengan putaran dan kedudukan bumi terhadap matahari, yang akhirnya menentukan siang dan malam.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <p><strong>Petunjuk Saintifik daripada Firman Allah SWT</strong></p>
+    <ol type="a">
+      <li>
+        <p><strong>Pembentukan Bayang dan Sifat Cahaya</strong></p>
+        <p>Bayang terbentuk apabila cahaya tampak (<em>visible light</em>) dihalang oleh objek legap. Ia sentiasa bertentangan dengan arah datangnya cahaya. Bentuk dan panjang bayang bergantung kepada kedudukan sumber cahaya — panjang ketika matahari terbit dan terbenam, serta pendek ketika tengah hari.</p>
+      </li>
+      <li>
+        <p><strong>Bukti Saintifik dalam Al-Quran</strong></p>
+        <p>Firman Allah tentang bayang membuktikan beberapa fakta astronomi:</p>
+        <ol>
+          <li>Bumi berbentuk sfera — kerana bayang beredar secara melengkung dan berubah bentuk.</li>
+          <li>Bumi berputar pada paksinya — kerana bayang bergerak dan berubah panjang sepanjang hari.</li>
+          <li>Bumi beredar dalam orbit dengan paksi condong — yang menyebabkan pertukaran siang malam dan perubahan musim.</li>
+        </ol>
+        <p>Jika bumi tidak berputar atau berbentuk rata, separuh permukaannya akan sentiasa disinari dan separuh lagi kekal gelap — mustahil bagi kehidupan untuk wujud.</p>
+      </li>
+      <li>
+        <p><strong>Kepantasan Putaran Bumi dan Keseimbangan Hidup</strong></p>
+        <p>Kajian menunjukkan bumi dahulu berputar lebih laju, menjadikan sehari hanya beberapa jam. Kini, dengan kadar putaran semasa (sekitar 24 jam), kestabilan suhu dan kehidupan dapat dicapai selaras dengan keseimbangan ciptaan Allah SWT.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <p><strong>Matahari sebagai Penentu Bayang</strong></p>
+    <ol type="a">
+      <li>
+        <p><strong>Hubungan Cahaya dan Bayang</strong></p>
+        <p style="text-align: center;"><i>"Kemudian Kami jadikan matahari sebagai petunjuk terhadap bayang itu."</i></p>
+        <p>Ayat ini menjelaskan bahawa bayang tidak wujud tanpa cahaya matahari. Sinaran matahari terdiri daripada spektrum gelombang elektromagnet — termasuk sinar gamma, sinar-X, UV, cahaya tampak, dan IR.</p>
+      </li>
+      <li>
+        <p><strong>Cahaya Tampak dan Warna Pelangi</strong></p>
+        <p>Manusia hanya dapat melihat cahaya dengan panjang gelombang 0.4–0.7 mikron, yang membentuk tujuh warna utama: merah, jingga, kuning, hijau, biru, nila, dan ungu. Jika sinar ini mampu menembusi bahan legap seperti sinar-X, bayang tidak akan wujud. Maka, matahari adalah faktor utama bagi kewujudan bayang.</p>
+      </li>
+      <li>
+        <p><strong>Fenomena Harian</strong></p>
+        <p>Ketika matahari rendah di ufuk, cahaya bergerak lebih jauh melalui atmosfera, menjadikan warna jingga-merah lebih ketara dan bayang lebih panjang. Sewaktu tengah hari, cahaya datang tegak, menyebabkan bayang menjadi paling pendek.</p>
+        <p>Jam bayang (<em>sundial</em>) dicipta berdasarkan fenomena ini — membuktikan manusia telah lama menggunakan pergerakan bayang untuk mengukur masa, seiring firman Allah SWT.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <p><strong>Rumusan dan Renungan</strong></p>
+    <p>Ayat-ayat tentang bayang dan matahari membuktikan bahawa Al-Quran selaras dengan realiti sains moden. Firman Allah bukan sekadar perumpamaan, tetapi menggambarkan hukum-hukum fizik yang mengawal alam semesta. Keseimbangan antara cahaya dan bayang menunjukkan kesempurnaan sistem ciptaan — putaran bumi, sinaran matahari, dan orbit yang stabil semuanya berfungsi dengan ketepatan luar biasa. Ini sekali lagi menjadi bukti ketuhanan Al-Quran dan kerasulan Nabi Muhammad SAW, yang menyampaikan kebenaran ilmiah jauh sebelum manusia menemui prinsip cahaya, bayang, dan pergerakan bumi.</p>
+  </li>
+</ol>
+
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

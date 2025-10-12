@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Sun and Modern Science — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">☀️ The Sun and Modern Science</h1><br>
+        <h3>Surah Ash-Shams, Verse 1</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+      وَٱلشَّمْسِ وَضُحَىٰهَا ١
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/al-syams-1.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Demi matahari dan cahayanya yang terang-benderang.</p>
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Allah bersumpah dengan matahari yang sentiasa bersinar, sama ada ketika terbit mahupun terbenam, kerana matahari merupakan ciptaan Allah yang agung. 
+            Allah juga bersumpah dengan cahayanya dan waktu dhuha iaitu ketika matahari terbit dengan sinarnya yang sempurna kerana pada waktu itulah kehidupan makhluk hidup 
+            mula bangkit dan bergerak.</p>
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+<ol>
+  <li>
+    <strong>Pengenalan Umum</strong>
+    <p>Ayat pertama Surah Asy-Syams membuka bicara dengan sumpah Allah terhadap matahari, satu makhluk agung yang menjadi sumber tenaga utama bagi seluruh kehidupan. Sumpah ini bukan sekadar pernyataan simbolik, tetapi satu isyarat kosmik dan psikologi yang mendalam, mengajak manusia untuk merenungi sistem ciptaan Allah yang penuh hikmah. Matahari bukan sekadar bintang biasa; ia adalah pusat sistem suria dan lambang kekuasaan Allah yang menzahirkan keindahan dan ketelitian ciptaan-Nya.</p>
+  </li>
+
+  <li>
+    <strong>Matahari dari Perspektif Sains Falak</strong>
+    <ol type="a">
+      <li>
+        <strong>Ciri-ciri Asas Matahari</strong>
+        <p>Matahari merupakan bintang bersaiz sederhana dengan diameter lebih 1.4 juta kilometer — 108 kali lebih besar daripada bumi. Ia terdiri daripada gas hidrogen dan helium yang terbakar melalui proses pelakuran nuklear (nuclear fusion) di terasnya. Setiap saat, sekitar 4.6 juta tan jisimnya ditukar menjadi tenaga, menghasilkan haba melebihi 15 juta darjah Kelvin.</p>
+      </li>
+
+      <li>
+        <strong>Struktur Dalaman Matahari</strong>
+        <p>Matahari terbahagi kepada beberapa lapisan:</p>
+        <ul>
+          <li><strong>Teras (Core):</strong> Zon tenaga utama, tekanan sangat tinggi, suhu &gt;15 juta K.</li>
+          <li><strong>Zon Radiasi &amp; Konveksi:</strong> Tenaga berpindah melalui sinaran dan arus perolakan.</li>
+          <li><strong>Fotosfera &amp; Kromosfera:</strong> Lapisan yang memancarkan cahaya tampak dan menghasilkan fenomena seperti bintik matahari (sunspots) dan lidah api suria (solar prominences).</li>
+          <li><strong>Korona:</strong> Lapisan luar yang bersuhu lebih sejuta Kelvin, hanya dapat dilihat semasa gerhana.</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Fenomena Tenaga dan Keseimbangan</strong>
+        <p>Matahari kekal stabil selama berbilion tahun kerana keseimbangan antara graviti ke dalam dan tekanan haba ke luar. Sekiranya keseimbangan ini terganggu walau sedikit, sistem suria akan hancur. Hal ini membuktikan kewujudan tadbir ilahi yang teratur dan penuh hikmah.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <strong>Matahari dan Sistem Suria</strong>
+    <ol type="a">
+      <li>
+        <strong>Peranan dalam Orbit Planet</strong>
+        <p>Matahari menampung 99.9% jisim keseluruhan sistem suria. Daya graviti yang kuat mengekalkan planet-planet dalam orbitnya, menghasilkan peredaran yang harmoni. Setiap planet bergerak dalam orbit elips, dengan kelajuan yang berbeza, cepat apabila dekat, dan perlahan apabila jauh. Keseimbangan antara daya tarikan graviti dan daya sentrifugal menjadikan orbit planet tetap stabil, menunjukkan adanya peraturan fizikal yang diciptakan oleh Allah SWT.</p>
+      </li>
+
+      <li>
+        <strong>Hubungan dengan Fenomena Alam</strong>
+        <p>Putaran bumi pada paksinya menghasilkan siang dan malam, manakala kecondongan paksi bumi menyebabkan perubahan musim. Semua ini berpunca daripada interaksi bumi dengan matahari, menjadikan kehidupan di bumi seimbang dan berirama.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <strong>Tenaga Matahari dan Kehidupan di Bumi</strong>
+    <ol type="a">
+      <li>
+        <strong>Sumber Tenaga Utama</strong>
+        <p>Matahari memancarkan tenaga setara 500 trilion kuasa kuda setiap saat. Walaupun hanya sebahagian kecil sampai ke bumi, tenaga inilah yang menyokong semua kehidupan dari tumbuhan hingga manusia.</p>
+      </li>
+
+      <li>
+        <strong>Fotosintesis dan Kitaran Tenaga</strong>
+        <p>Tumbuhan menggunakan cahaya matahari untuk melakukan fotosintesis, menyimpan tenaga dalam bentuk gula dan minyak. Manusia dan haiwan pula menggunakan tenaga ini melalui makanan. Bahkan, sumber tenaga moden seperti arang batu dan petroleum juga berasal daripada sisa makhluk hidup yang menyimpan tenaga matahari jutaan tahun dahulu.</p>
+      </li>
+
+      <li>
+        <strong>Sistem Biologi dan Irama Kehidupan</strong>
+        <p>Cahaya matahari juga mengawal kitaran biologi manusia, seperti penghasilan hormon melatonin. Apabila matahari terbit, hormon ini menurun menandakan masa aktif; apabila malam tiba, hormon meningkat memberi rehat kepada tubuh. Ini menunjukkan bahawa irama kehidupan manusia sendiri tunduk kepada sistem yang diatur oleh matahari.</p>
+      </li>
+    </ol>
+  </li>
+
+  <li>
+    <strong>Rumusan dan Renungan</strong>
+    <p>Sumpah Allah dalam Surah Asy-Syams membawa mesej mendalam — matahari ialah simbol kekuasaan, sumber kehidupan, dan bukti kebesaran Pencipta. Ia berfungsi bukan sahaja sebagai punca tenaga, tetapi juga penanda masa, pengatur kehidupan, dan bukti keagungan ilmu Allah SWT. Setiap sinar matahari yang menyentuh bumi adalah peringatan bahawa keseimbangan alam ini bukan hasil kebetulan, tetapi hasil susunan yang Maha Tepat dari Tuhan Yang Maha Mengetahui.</p>
+    <p style="text-align: center;"><em>“Maka nikmat Tuhan kamu yang manakah yang kamu dustakan?”</em><br>— Surah Ar-Rahman, Ayat 13</p>
+  </li>
+</ol>
+
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

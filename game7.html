@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Astronoverse – Orbit Alignment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="game7.css" />
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div>
+      <h1>🌌 AstronoVerse</h1>
+      <small>Orbit Alignment</small>
+    </div>
+    <nav class="top-nav">
+      <button class="nav-btn" id="btn-home">Home Page</button>
+      <button class="nav-btn" data-target="menu">Menu</button>
+      <button class="nav-btn" data-target="howto">How to Play</button>
+      <button class="nav-btn" data-target="leaderboard">Leaderboard</button>
+
+      <!-- Toggles -->
+      <button class="nav-btn" id="toggle-music">🎵 Music</button>
+      <button class="nav-btn" id="toggle-sound">🔊 Sound</button>
+
+      <!-- Background music -->
+      <audio id="bg-music" src="3. GAMES/audio/music_bg4.mp3" loop></audio>
+    </nav>
+  </header>
+
+  <main>
+    <!-- MENU -->
+    <section id="screen-menu" class="screen active">
+      <div class="card">
+        <h2>Welcome to Orbit Alignment! 🚀</h2>
+        <p>Drag celestial objects (Moon, Star, Planet) onto the correct orbit around the Sun. Beat the timer and rack up points!</p>
+        <div class="menu-actions">
+          <button class="btn primary" id="btn-start">Start Game</button>
+          <button class="btn ghost" data-target="howto">How to Play</button>
+          <button class="btn ghost" data-target="leaderboard">Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO -->
+    <section id="screen-howto" class="screen">
+      <div class="card">
+        <h2>How to Play 🧭</h2>
+        <ul class="howto-list">
+          <li>Sun stays in the center. There are three orbits: <b>Inner</b> (Moon), <b>Middle</b> (Star), <b>Outer</b> (Planet).</li>
+          <li>Drag items from the tray into the correct orbit slots.</li>
+          <li>Correct drop = score + time bonus. Wrong drop = -5s penalty.</li>
+          <li>Finish when all slots are correctly filled.</li>
+        </ul>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Back to Menu</button>
+          <button class="btn primary" id="btn-start-2">Start Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="screen-game" class="screen">
+      <div class="hud">
+        <div class="hud-group">
+          <span class="label">Targets</span>
+          <span id="hudTargets" class="value">0/0</span>
+        </div>
+        <div class="progress-wrap">
+          <div id="progress" class="progress"></div>
+        </div>
+        <div class="hud-group">
+          <span class="label">Score</span>
+          <span id="score" class="value">0</span>
+        </div>
+        <div class="hud-group timer">
+          <span class="label">Time</span>
+          <span id="timer" class="value">60s</span>
+        </div>
+      </div>
+
+      <div class="game-area card">
+        <div class="orbital-board" id="board">
+          <!-- Sun -->
+          <div class="sun">
+            <img src="assets/sun.png" alt="Sun">
+          </div>
+
+          <!-- Orbits (each with slots) -->
+          <div class="orbit orbit-inner">
+            <div class="slot" data-accept="moon"></div>
+            <div class="slot" data-accept="moon"></div>
+          </div>
+          <div class="orbit orbit-middle">
+            <div class="slot" data-accept="star"></div>
+            <div class="slot" data-accept="star"></div>
+          </div>
+          <div class="orbit orbit-outer">
+            <div class="slot" data-accept="planet"></div>
+            <div class="slot" data-accept="planet"></div>
+          </div>
+        </div>
+
+        <!-- Tray -->
+        <div class="tray" id="tray"></div>
+
+        <div class="actions">
+          <button class="btn" id="btn-shuffle">Shuffle Tray</button>
+          <button class="btn" id="btn-restart">Restart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screen-result" class="screen">
+      <canvas id="confetti"></canvas>
+      <div class="card result-card">
+        <h2>Results 🎉</h2>
+        <p id="final-score">Score: 0</p>
+        <form id="save-form" class="save-form">
+          <input type="text" id="player-name" placeholder="Your name" maxlength="20" required />
+          <button class="btn primary" type="submit">Save to Leaderboard</button>
+        </form>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Menu</button>
+          <button class="btn" id="btn-play-again">Play Again</button>
+          <button class="btn" data-target="leaderboard">View Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="screen-leaderboard" class="screen">
+      <div class="card">
+        <h2>🏆 Leaderboard</h2>
+        <ol id="board-list" class="board"></ol>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Menu</button>
+          <button class="btn danger" id="clear-board">Clear Leaderboard</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SFX -->
+  <audio id="sfx-drop"   src="https://assets.mixkit.co/sfx/preview/mixkit-quick-win-video-game-notification-269.mp3" preload="auto"></audio>
+  <audio id="sfx-wrong"  src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" preload="auto"></audio>
+  <audio id="sfx-click"  src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+  <audio id="sfx-win"    src="https://assets.mixkit.co/sfx/preview/mixkit-winning-chimes-2015.mp3" preload="auto"></audio>
+
+  <script src="game7.js"></script>
+</body>
+</html>

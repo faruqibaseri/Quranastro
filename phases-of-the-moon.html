@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phases of the Moon — AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="content-ayat.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <main class="wrap main-grid">
+    <!-- Ayat + Audio + Terjemahan -->
+    <article class="verse-card reveal">
+      <div class="verse-top">
+        <h1 class="page-title">🌕 Phases of the Moon</h1><br>
+        <h3>Surah Yaasin, Verse 39</h3>
+
+      </div>
+
+      <div class="arabic-box" lang="ar" dir="rtl" id="arabicBox">
+        وَٱلْقَمَرَ قَدَّرْنَـٰهُ مَنَازِلَ حَتَّىٰ عَادَ كَٱلْعُرْجُونِ ٱلْقَدِيمِ ٣٩
+      </div>
+
+          <div class="audio-controls">
+  <audio id="audioTest" src="Audio/yaasin-39.mp3" preload="auto"></audio>
+
+  <div class="controls-row">
+    <button id="playBtn" class="btn" aria-pressed="false" onclick="playAudio()"><i class="fa fa-play" aria-hidden="true"></i></button>
+    <button id="pauseBtn" class="btn" style="display:none;" onclick="pauseAudio()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+
+    <div class="progress-container">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+
+    <div id="timeDisplay" class="time-display">00:00 / 00:00</div>
+  </div>
+
+  <h5 class="reciter">Reciter: Sheikh Mishari Rashid Al-Afasy</h5>
+</div>
+
+
+
+
+
+      <div id="tooltip" role="status" aria-live="polite"></div>
+
+      <div class="translation reveal">
+        <h4>Malay Translation (Tafsir Pimpinan Al-Rahman)</h4>
+        <p>Dan bulan pula Kami takdirkan dia beredar melalui beberapa peringkat, sehingga di akhir peredarannya kelihatan kembalinya pula ke peringkat awalnya 
+          (berbentuk melengkung) seperti tandan yang kering.</p>
+       
+      </div>
+    </article>
+
+    <!-- Tafsir (dipindahkan ke bawah) -->
+    <section class="tafsir-card reveal" aria-label="Tafsir & Info">
+      <div class="tabs" role="tablist" aria-label="Tafsir tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-target="munir">Tafsir al-Munir (Malay)</button>
+        <button class="tab" role="tab" aria-selected="false" data-target="kauniyah">Tafsir Ayat al-Kauniyyah (Malay)</button>
+      </div>
+
+      <div class="tabpanels">
+        <section id="munir" class="tabpanel active" role="tabpanel">
+          <h3>Penerangan berdasarkan Tafsir Al-Munir</h3>
+          <p>Allah SWT telah menetapkan tempat-tempat tertentu yang menjadi laluan bulan dalam peredarannya. Tempat-tempat ini berjumlah dua puluh lapan, 
+            seperti yang telah disebutkan sebelumnya. Setiap malam, bulan melalui satu tempat dengan purata jarak kira-kira 13 darjah sehari. 
+            <p>Kemudian, bulan akan terlindung dan tidak kelihatan selama dua malam jika bilangan hari dalam sebulan ialah tiga puluh hari. 
+            Namun, jika sebulan hanya dua puluh sembilan hari, bulan hanya tidak kelihatan selama satu malam sahaja. Apabila berada di tempat terakhir, bulan kelihatan kecil, 
+            kekuningan, dan melengkung, lalu kembali ke tempat pertama sehingga menyerupai tandan kurma yang tua berwarna kuning, kecil, pipih, dan melengkung.</p> 
+            Laluan-laluan orbit bulan ini dapat digunakan untuk mengetahui tempoh perjalanan bulan, sebagaimana matahari digunakan untuk menentukan waktu siang dan malam.</p>
+          <p class="small muted">Sumber: Tafsir Al-Munir (ringkasan)</p>
+        </section>
+
+        <section id="kauniyah" class="tabpanel" role="tabpanel" hidden>
+          <h3>Penerangan berdasarkan Tafsir Ayat al-Kauniyyah</h3>
+<ol>
+  <li>
+    <strong>Pengenalan Umum</strong>
+    <p>Surah Yasin mengandungi pelbagai gambaran tentang fenomena alam yang menjadi tanda keagungan Allah SWT. Antaranya ialah peredaran bulan, yang bukan sekadar fenomena biasa, tetapi membuktikan kewujudan dan kekuasaan Tuhan yang mengatur setiap pergerakan di langit dengan ketepatan yang menakjubkan.</p>
+    <p>Ayat 39 Surah Yasin menyebut:</p>
+    <p style="text-align: center;"><i>“Dan bulan, Kami tetapkan baginya manzilah-manzilah, sehingga kembalilah ia seperti tangkai kurma yang tua.”</i></p>
+    <p>Ayat ini merujuk kepada perubahan fasa-fasa bulan yang berlaku secara teratur, menandakan sistem kosmik yang sempurna dan seimbang.</p>
+  </li>
+
+  <li>
+    <strong>Peredaran Bulan dan Fasa-fasanya Menurut Astronomi</strong>
+    <p>Bulan bergerak mengelilingi bumi dalam orbit hampir bulat sepanjang kira-kira 2.4 juta kilometer, dengan jarak purata 384,400 kilometer dari bumi.</p>
+    <p>Pergerakan ini menghasilkan pelbagai fasa bulan:</p>
+    <ul>
+      <li><strong>Fasa Ijtimak (محاق)</strong> – ketika bulan berada di antara matahari dan bumi, bahagian gelapnya menghadap bumi.</li>
+      <li><strong>Fasa Hilal hingga Bulan Penuh (بدر)</strong> – bahagian terang semakin membesar seiring peredaran bulan, mencapai bentuk bulat sempurna pada malam ke-14.</li>
+      <li><strong>Fasa Mengurang &amp; Kembali ke Muḥāq</strong> – bahagian terang mengecil sehingga menjadi seperti al-‘urjūn al-qadīm (tangkai tua kurma), sebelum hilang sepenuhnya dan kitaran baru bermula.</li>
+    </ul>
+    <p>Fasa-fasa ini membentuk asas kepada kiraan bulan Islam (takwim hijri) dan menjadi panduan bagi penentuan masa dan ibadah umat Islam.</p>
+  </li>
+
+  <li>
+    <strong>Hubungan Fasa Bulan dengan Fenomena Sains Moden</strong>
+    <p>Perubahan fasa bulan dapat dijelaskan secara saintifik melalui kedudukan relatif antara bumi, bulan, dan matahari.</p>
+    <ul>
+      <li><strong>Pantulan Cahaya Matahari</strong> – Bulan tidak mempunyai cahaya sendiri; ia memantulkan cahaya matahari. Bahagian yang kelihatan di bumi bergantung kepada sudut pantulan cahaya itu.</li>
+      <li><strong>Orbit dan Kecondongan Bulan</strong> – Orbit bulan condong sebanyak 5°8’ berbanding orbit bumi. Oleh itu, bulan dan matahari sering kelihatan berada di laluan yang hampir sama di langit.</li>
+      <li><strong>Kecepatan dan Jarak</strong> – Kelajuan orbit bulan purata 3,675 km/jam, dan jaraknya dari bumi sentiasa berubah. Apabila dekat, kelajuannya meningkat; apabila jauh, ia menurun seimbang mengikut hukum Kepler.</li>
+    </ul>
+    <p>Fenomena ini membuktikan sistem graviti dan keseimbangan yang sangat halus dalam ciptaan Allah SWT.</p>
+  </li>
+
+  <li>
+    <strong>Kegunaan Saintifik dan Fungsi Kosmik Bulan</strong>
+    <p>Bulan bukan hanya menghiasi malam, tetapi memainkan peranan penting dalam kehidupan di bumi:</p>
+    <ul>
+      <li><strong>Pengiraan Masa dan Kalendar Hijri</strong> – Fasa bulan menjadi asas takwim Islam bagi menentukan tarikh, bulan, dan tahun.</li>
+      <li><strong>Pengaruh Pasang Surut Air Laut</strong> – Tarikan graviti bulan mempengaruhi pasang surut laut yang penting bagi ekosistem bumi.</li>
+      <li><strong>Kestabilan Putaran Bumi</strong> – Bulan membantu menstabilkan kecondongan paksi bumi, menjadikan iklim dan musim lebih seimbang untuk kehidupan.</li>
+    </ul>
+    <p>Jika orbit bulan terganggu, bumi akan menghadapi perubahan ekstrem pada cuaca, air laut, dan panjang hari. Ini membuktikan bahawa setiap ciptaan Allah berada pada kadar yang tepat (<em>biqadar</em>).</p>
+  </li>
+
+  <li>
+    <strong>Rumusan dan Renungan</strong>
+    <p>Al-Quran telah menggambarkan konsep fasa bulan dan sistem orbit dengan sangat tepat lebih 1,400 tahun yang lalu jauh sebelum manusia memahami hukum astronomi dan fizik angkasa. Ungkapan “al-‘urjūn al-qadīm” menggambarkan bulan sabit terakhir dengan begitu indah dan tepat, seolah-olah tangkai kurma yang melengkung dan kekuningan — satu perumpamaan yang menakjubkan dari sudut sains dan seni bahasa.</p>  
+    </li>
+</ol>
+
+
+
+
+          <p class="small muted">Sumber: Tafsir Ayat al-Kauniyyah (diterjemah ke Bahasa Melayu)</p>
+        </section>
+      </div>
+    </section>
+
+    <!-- Rujukan -->
+    <section class="fullwidth reveal">
+      <h4>Rujukan & Nota</h4>
+      <ul class="refs">
+        <li>Al-Quran Karim</li>
+        <li>al-Zuhaili, W. (1991). Tafsir al-Munir fi al-‘Aqidah wa al-Shari‘ah wa al-Manhaj (Jil. 1–17). Damsyik: Dar al-Fikr al-Mu‘asir.</li>
+        <li>al-Najjar, Z. (2007). Tafsir al-Ayat al-Kawniyyah fi al-Qur’an al-Karim (Jil. 1–4). Kaherah: Maktabah Wahbah.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+
+  <script src="content-ayat.js" defer></script>
+</body>
+</html>

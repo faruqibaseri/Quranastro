@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AstronoVerse – Star Catcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="game5.css">
+</head>
+<body>
+  <!-- Background -->
+  <div class="bg"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div>
+      <h1>🌌AstronoVerse</h1>
+      <small>Star Catcher</small>
+    </div>
+    <nav class="top-nav">
+      <button class="nav-btn" id="btn-home">Home Page</button>
+      <button class="nav-btn" data-target="menu">Menu</button>
+      <button class="nav-btn" data-target="howto">How to Play</button>
+      <button class="nav-btn" data-target="leaderboard">Leaderboard</button>
+      <button class="nav-btn" id="toggle-music">🎵 Music</button>
+      <button class="nav-btn" id="toggle-sound">🔊 Sound</button>
+
+      <audio id="bg-music" src="3. GAMES/audio/music_bg4.mp3" loop></audio>
+    </nav>
+  </header>
+
+  <!-- Screens -->
+  <main>
+    <!-- MENU -->
+    <section id="screen-menu" class="screen active">
+      <div class="card">
+        <h2>Welcome to Star Catcher! 🚀</h2>
+        <p>Catch stars, moons & suns to score points. Avoid missing them!</p>
+        <div class="menu-actions">
+          <button class="btn primary" id="btn-start">Start Game</button>
+          <button class="btn ghost" data-target="howto">How to Play</button>
+          <button class="btn ghost" data-target="leaderboard">Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO PLAY -->
+    <section id="screen-howto" class="screen">
+      <div class="card">
+        <h2>How to Play 🧭</h2>
+        <ul class="howto-list">
+          <li>Move your basket left/right (keyboard or touch).</li>
+          <li>Catch falling stars, moons, and suns.</li>
+          <li>Each catch gives points. Missing items deduct points.</li>
+          <li>Game lasts 60 seconds per round. Try to get high score!</li>
+        </ul>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Back to Menu</button>
+          <button class="btn primary" id="btn-start-2">Start Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="screen-game" class="screen">
+      <div class="hud">
+        <div class="hud-group">
+          <span class="label">Score</span>
+          <span id="hud-score" class="value">0</span>
+        </div>
+        <div class="hud-group timer">
+          <span class="label">Time</span>
+          <span id="hud-timer" class="value">60s</span>
+        </div>
+      </div>
+
+      <div id="game-area">
+        <div id="basket"></div>
+      </div>
+
+      <div class="menu-actions">
+        <button class="btn" id="abortBtn">Quit Game</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screen-result" class="screen">
+      <canvas id="confetti"></canvas>
+      <div class="card result-card">
+        <h2>Results 🎉</h2>
+        <p id="final-score">Score: 0</p>
+        <form id="save-form" class="save-form">
+          <input type="text" id="player-name" placeholder="Your name" maxlength="20" required />
+          <button class="btn primary" type="submit">Save to Leaderboard</button>
+        </form>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Menu</button>
+          <button class="btn" id="btn-retry">Play Again</button>
+          <button class="btn" data-target="leaderboard">View Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="screen-leaderboard" class="screen">
+      <div class="card">
+        <h2>🏆 Leaderboard</h2>
+        <ol id="board" class="board"></ol>
+        <div class="menu-actions">
+          <button class="btn" data-target="menu">Menu</button>
+          <button class="btn danger" id="clear-board">Clear Leaderboard</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Audio -->
+  <audio id="sfx-correct" src="https://assets.mixkit.co/sfx/preview/mixkit-game-success-2019.mp3" preload="auto"></audio>
+  <audio id="sfx-wrong"   src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" preload="auto"></audio>
+  <audio id="sfx-click"   src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+
+  <script src="game5.js"></script>
+
+</body>
+</html>

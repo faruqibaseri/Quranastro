@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sun - AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="sun.css" />
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/20/14/20250820142348-AANFIUSV.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </a>
+
+<nav class="nav" aria-label="Main">
+  <a href="index.html" class="nav__link">Home</a>
+
+  <!-- Dropdown Explore -->
+  <div class="nav__item dropdown">
+    <a href="explore.html" class="nav__link">Explore ▾</a>
+    <div class="dropdown__menu">
+      <a href="moon.html" class="dropdown__link">Moon</a>
+      <a href="sun.html" class="dropdown__link">Sun</a>
+      <a href="star.html" class="dropdown__link">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="nav__link">Games</a>
+  <a href="ebook.html" class="nav__link">E-Book</a>
+  <a href="about.html" class="nav__link">About Us</a>
+</nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+  <a href="index.html" class="mobile__link">Home</a>
+
+  <!-- Dropdown Explore for mobile -->
+  <div class="mobile__item">
+    <button class="mobile__link mobile__toggle">Explore ▾</button>
+    <div class="mobile__submenu">
+      <a href="moon.html" class="mobile__sublink">Moon</a>
+      <a href="sun.html" class="mobile__sublink">Sun</a>
+      <a href="star.html" class="mobile__sublink">Star</a>
+    </div>
+  </div>
+
+  <a href="game_menu.html" class="mobile__link">Games</a>
+  <a href="ebook.html" class="mobile__link">E-Book</a>
+  <a href="about.html" class="mobile__link">About Us</a>
+</nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1 class="reveal">Explore. Wonder. Believe.</h1>
+        <p class="sub reveal">The Moon lights your path, the Sun fuels your life, and the Stars remind you of Allah’s infinite power — every light in the sky is a sign of His perfect creation.</p>
+      </div>
+      <div class="ph hero-visual reveal">
+            <video autoplay muted loop playsinline>
+            <source src="2. EXPLORE/video/sun moon star.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+      </div>
+    </div>
+
+  <section class="tabs-wrap">
+    <div class="container">
+      <div class="tabs reveal" role="tablist" aria-label="Content categories">
+        <button class="tab" role="tab" aria-selected="false" data-category="Moon">Moon</button>
+        <button class="tab is-active" role="tab" aria-selected="true" data-category="Sun">Sun</button>
+        <button class="tab" role="tab" aria-selected="false" data-category="Stars">Stars</button>
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+
+
+
+  <!-- ===== Cards Grid ===== -->
+  <section class="section">
+    <div class="container">
+      <div id="cards" class="cards-grid reveal">
+        <!-- Cards injected by JS -->
+      </div>
+
+      <div class="center mt-20">
+        <button id="viewAll" class="btn btn-secondary" data-target="insights">View all</button>
+      </div>
+    </div>
+  </section>
+
+   <!-- ===== Video Section ===== -->
+  <section class="video section">
+    <div class="container video-grid">
+      <div class="player reveal">
+        <div class="ratio">
+          <iframe
+            id="mainVideo"
+            src=""
+            title=""
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <aside class="playlist reveal">
+        <h4>Playlist</h4>
+        <ul id="playlist">
+          <li data-video="6AviDjR9mmo" role="li" data-category="Moon" aria-selected="false">
+            <img src="https://placehold.co/140x80" alt="">
+            <div>
+              <strong>Moon 101 | National Geographic</strong>
+              <br>3:06</br>
+            </div>
+          </li>
+          <li data-video="EFO_bsg1sw8" role="li" data-category="Stars" aria-selected="false">
+            <img src="https://placehold.co/140x80" alt="">
+            <div>
+              <strong>Stars 101 | National Geographic</strong>
+              <br>2:48</br>
+            </div>
+          </li>
+          <li data-video="2HoTK_Gqi2Q" role="li" data-category="Sun" aria-selected="true">
+            <img src="https://placehold.co/140x80" alt="">
+            <div>
+              <strong>Sun 101 | National Geographic</strong>
+              <br>5:00</br>
+            </div>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+    <!-- ===== Reflection ===== -->
+  <section class="quran section">
+    <div class="container">
+      <h3 class="reveal" style="place-self: center; font-size: xx-large;">Reflections</h3>
+
+      <article class="q-card reveal" id="reflectionCard">
+        <div>
+        <div class="q-arabic" id="arabicText"></div>
+        <div class="q-meta"  id="surahName" ></div>
+        <p class="q-translation"  id="translationText"></p>
+        </div>
+        <div  class="reflection reveal" >
+        <div class="q-meta" style="font-style: italic;">Tadabbur of the Verse:</div>
+        <div id="reflectionText"><p></p></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- ===== Image Gallery ===== -->
+  <section class="gallery section" id="insights">
+    <div class="container">
+      <h3 class="reveal" style="color: white; place-self: center; font-size: xx-large;">Related Insights</h3>
+      <div class="gallery-grid reveal">
+ 
+        <article class="card show" style="transition-delay: 0s;">
+        <a class="thumb hover-zoom" href="calculation-of-years.html">
+          <img src="2. EXPLORE/photo/calculation of years.jpg" alt="Study Skills Bootcamp">
+        <div class="card-body">
+          <h4>Calculation of Years</h4>
+          <div class="card-meta"><span>Surah Al-An'am</span>·<span>Verse 96</span></div></a>
+        </div>
+      </article>
+
+        <article class="card show" style="transition-delay: 0s;">
+        <a class="thumb hover-zoom" href="the-phenomenon-of-day-and-night.html">
+          <img src="2. EXPLORE/photo/the phenomenon of day and night.jpg" alt="Study Skills Bootcamp">
+        <div class="card-body">
+          <h4>The Phenomenon of Day and Night</h4>
+          <div class="card-meta"><span>Surah Al-A’raf </span>·<span>Verse 54</span></div></a>
+        </div>
+      </article>
+
+        <article class="card show" style="transition-delay: 0s;">
+        <a class="thumb hover-zoom" href="earth's-movement-and-the-miracle-of-orbit.html">
+          <img src="2. EXPLORE/photo/earth's movement and the miracle of orbit.png" alt="Study Skills Bootcamp">
+        <div class="card-body">
+          <h4>Earth's Movement and the Miracle of Orbit</h4>
+          <div class="card-meta"><span>Surah Al-Anbiya</span>·<span>Verse 33</span></div></a>
+        </div>
+      </article>
+
+              <article class="card show" style="transition-delay: 0s;">
+        <a class="thumb hover-zoom" href="the-difference-between-ضياء-and-نور.html">
+          <img src="2. EXPLORE/photo/The Difference Between ضياء and نور.png" alt="Study Skills Bootcamp">
+        <div class="card-body">
+          <h4>The Difference Between ضياء and نور</h4>
+          <div class="card-meta"><span>Surah Yunus</span>·<span>Verse 5</span></div></a>
+        </div>
+      </article>
+
+        <article class="card show" style="transition-delay: 0s;">
+        <a class="thumb hover-zoom" href="shape-and-rotation-of-the-earth.html">
+          <img src="2. EXPLORE/photo/shape and rotation of the earth.png" alt="Study Skills Bootcamp">
+        <div class="card-body">
+          <h4>Shape and Rotation of the Earth</h4>
+          <div class="card-meta"><span>Surah Al-Zumar</span>·<span>Verse 5</span></div></a>
+        </div>
+      </article>
+
+        <article class="card show" style="transition-delay: 0s;">
+        <a class="thumb hover-zoom" href="the-cycle-of-night-and-day.html">
+          <img src="2. EXPLORE/photo/the cycle of night and day.png" alt="Study Skills Bootcamp">
+        <div class="card-body">
+          <h4>The Cycle of Night and Day</h4>
+          <div class="card-meta"><span>Surah Al-Fussilat</span>·<span>Verse 37</span></div></a>
+        </div>
+      </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Newsletter CTA ===== -->
+  <!-- <section class="cta section">
+    <div class="container cta-box reveal">
+      <div>
+        <h3>Stay in the loop</h3>
+        <p>Get weekly highlights on events, webinars, and new learning media.</p>
+      </div>
+      <form id="subForm" class="cta-form" aria-label="Newsletter subscription">
+        <input type="email" placeholder="Your email" aria-label="Email" required />
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+        <span class="note" id="subNote" role="status" aria-live="polite"></span>
+      </form>
+    </div>
+  </section> -->
+
+
+  <!-- ===== Quotes ===== -->
+  <section class="featured section">
+    <div class="container">
+      <article class="featured-card reveal">
+        <div class="media">
+          <a class="thumb hover-zoomout" aria-label="Play featured video"  id="fullscreenBtn" aria-hidden="true">
+            <img src="qrcode/qr1.jpg" id="qrImage" alt="QR Code" />
+          </a>
+          <p class="meta" style="margin-top: 10px">Scan to see the beauty of this quote!</p>
+        </div>
+        <div class="content">
+          <!-- <span class="badge">💭 Quote</span> -->
+          <h2>Quote of the Day!</h2>
+
+          <p id="quoteText"></p>
+          <div class="cta-row">
+            <button id="quotebutton" onclick="newQuote()">More Quotes</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="faqs" class="footer">
+    <div class="wrap foot__top">
+      <div class="foot__brand">
+        <img class="foot__logo" src="1. HOMEPAGE/logo.png" alt="Brand Logo">
+      </div>
+      <div class="foot__social" aria-label="Social links">
+        <a href="#" class="ico"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" class="ico"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+        </div>
+
+       <nav class="foot__links" aria-label="Footer">
+        <a href="index.html">Home</a></i> 
+        <a href="explore.html">Explore</a>
+        <a href="game_menu.html">Games</a>
+        <a href="ebook.html">E-Book</a>
+        <a href="about.html">About Us</a>
+      </nav>
+      </div>
+    </div>
+
+    <div class="wrap foot__bottom">
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
+  </footer>
+
+  <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
+
+  <script src="sun.js"></script>
+</body>
+</html>
