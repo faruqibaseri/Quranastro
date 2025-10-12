@@ -121,7 +121,8 @@ if (burger && mobile) {
           author: "sun-earth2"
         }
       ],
-      rotationSpeed: 0.001
+      // Reduced rotation speed for a slightly less CPU-intensive desktop experience
+      rotationSpeed: 0.0005 
     };
 
     // Initialize gallery
@@ -149,8 +150,11 @@ if (burger && mobile) {
         gallery.appendChild(galleryItem);
       });
       
-      // Start rotation
-      startRotation();
+      // *** Optimization Check: Only start rotation on non-mobile devices ***
+      const isMobileScreen = window.matchMedia("(max-width: 902px)").matches;
+      if (!isMobileScreen) {
+          startRotation();
+      }
     }
 
     // Rotation animation
@@ -159,6 +163,9 @@ function startRotation() {
   let lastTime = 0;
   
   function animateGallery(timestamp) {
+    // Check again inside the loop just in case the screen size changes
+    if (window.matchMedia("(max-width: 902px)").matches) return;
+
     if (!lastTime) lastTime = timestamp;
     const delta = timestamp - lastTime;
     lastTime = timestamp;
