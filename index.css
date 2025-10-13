@@ -367,6 +367,7 @@ align-content: center;
   padding: 20px;
   height: 490px;
   place-items: center;
+  min-height: max-content;
 }
 .gallery-item {
   --w: clamp(150px, min(50vh, 25vw), 250px);
