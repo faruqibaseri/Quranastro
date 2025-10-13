@@ -40,6 +40,8 @@ body::before {
 img{display:block; max-width:100%; height:auto}
 .container{width:min(1200px,92vw); margin-inline:auto}
 
+.wrap{max-width:1140px; margin:auto; padding:0 3%}
+
 /* Topbar */
 .topbar{position:relative; top:40px; z-index:40; background: rgba(255, 255, 255, 0.1);border-radius: 20px;box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);backdrop-filter: blur(25px);width: 80%;justify-self: center; justify-items: center;}
 .topbar__inner{display:flex; align-items:center; justify-content:space-between; height: 100px; max-width: 1140px; width: 90%;}
@@ -198,8 +200,8 @@ img{display:block; max-width:100%; height:auto}
 .main-grid{display:flex;flex-direction:column;gap:22px;margin-top:20px}
 
 /* cards */
-.verse-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(50px); padding: 18px; margin-top: 80px;}
-.tafsir-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(50px);padding: 25px 30px}
+.verse-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(100px); padding: 18px; margin-top: 80px;}
+.tafsir-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(100px);padding: 25px 30px}
 .verse-top h3{margin-top:0px;}
 .page-title{margin:20px 0px 0px 0px;color: white; font-family: 'Roboto'; font-weight: bold; justify-self: center;}
 .audio-controls{display:flex;gap:8px;align-items:center; justify-self: center;}
