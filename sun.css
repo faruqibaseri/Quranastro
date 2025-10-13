@@ -430,6 +430,9 @@ img#qrImage {display:block; max-width:100%;}
     display: grid;
     place-items: center;
     position: relative;
+    /* Adding background image for mobile fallback */
+    background: url("2. EXPLORE/photo/sun moon stars.png") no-repeat center center / cover; /* Placeholder image path */
+    min-height: 200px; /* Ensure space for fallback image */
 }
 
 .ph video {
@@ -513,6 +516,35 @@ img#qrImage {display:block; max-width:100%;}
   .main-nav{display:none}
   .topbar__inner{width: max-content;}
   .foot__top{grid-template-columns:1fr}
+
+  /* 1) Optimization: Replace hero video with image for mobile view */
+  .ph.hero-visual {
+      /* Show the fallback background image set in .ph rule */
+      background-size: cover;
+      background-position: center;
+      min-height: 200px;
+  }
+  .ph.hero-visual video {
+      /* Hide the video element */
+      display: none;
+  }
+
+  /* 2) Optimization: Remove unnecessary animation/hover for mobile view */
+  /* Remove scroll reveal transition on smaller screens */
+  .reveal, .reveal.show, .reveal.is-visible {
+      opacity: 1 !important; /* Force visibility immediately */
+      transform: none !important; /* Remove initial transform state */
+      transition: none !important; /* Disable CSS transitions */
+  }
+
+  /* Remove card hover/tilt effect on mobile */
+  .card:hover {
+      transform: none;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Keep original shadow */
+  }
+  .hover-zoom:hover img, .hover-zoomout:hover img {
+      transform: none;
+  }
 }
 @media (max-width: 560px){
   .cards-grid{grid-template-columns:1fr}

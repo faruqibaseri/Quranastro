@@ -33,7 +33,9 @@ const searchBtn = document.getElementById('searchBtn');
 
     filtered.forEach((c, i) => {
       const el = document.createElement('article');
-      el.className = 'card reveal tilt';
+      // Optimization: Only add 'tilt' class if not on mobile (>= 901px)
+      const tiltClass = window.matchMedia('(min-width: 901px)').matches ? 'tilt' : '';
+      el.className = `card reveal ${tiltClass}`;
       el.style.transitionDelay = `${(i % 3) * 0.05}s`;
       el.innerHTML = `
         <a class="thumb hover-zoom" href="${c.link}">
@@ -46,7 +48,13 @@ const searchBtn = document.getElementById('searchBtn');
       cardsWrap.appendChild(el);
     });
 
-    observeReveals(); // re-attach animations
+    // Optimization: Conditionally observe reveals
+    if (window.matchMedia('(min-width: 901px)').matches) {
+        observeReveals();
+    } else {
+        // For mobile, ensure all are 'shown' immediately since CSS removes transitions
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+    }
   }
 
   const fullscreenBtn = document.getElementById("fullscreenBtn");
@@ -125,13 +133,15 @@ tabs.forEach(btn => {
 });
 
 
-/* ========= Scroll reveal ========= */
+/* ========= Scroll reveal (Optimization: only run on non-mobile) ========= */
 let revealObserver;
 function observeReveals(){
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
-    return;
+  // Optimization: Only create and observe for non-mobile views (e.g., above 900px)
+  if (!window.matchMedia('(min-width: 901px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+      return;
   }
+  
   if (revealObserver) revealObserver.disconnect();
   revealObserver = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -144,7 +154,7 @@ function observeReveals(){
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 }
 
-/* Scroll reveal */
+/* Scroll reveal (Using ro for initial reveal, replacing with conditional logic) */
   const ro = new IntersectionObserver((ents)=>{
     ents.forEach(ent=>{
       if(ent.isIntersecting){
@@ -153,28 +163,37 @@ function observeReveals(){
       }
     });
   }, {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  
+  // Optimization: Only observe if not on mobile (CSS handles the instant "reveal" on mobile)
+  if (window.matchMedia('(min-width: 901px)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  }
 
-  /* Tilt effect (subtle) */
-  document.querySelectorAll('.tilt').forEach(el => {
-    let rAF;
-    function onMove(e){
-      const rect = el.getBoundingClientRect();
-      const cx = rect.left + rect.width/2;
-      const cy = rect.top + rect.height/2;
-      const dx = (e.clientX - cx) / rect.width;
-      const dy = (e.clientY - cy) / rect.height;
-      const rx = (dy * -6).toFixed(2);
-      const ry = (dx * 6).toFixed(2);
-      if(rAF) cancelAnimationFrame(rAF);
-      rAF = requestAnimationFrame(()=>{
-        el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+
+  /* Tilt effect (subtle) (Optimization: only run on non-mobile) */
+  if (window.matchMedia('(min-width: 901px)').matches) {
+      document.querySelectorAll('.tilt').forEach(el => {
+          let rAF;
+          function onMove(e){
+              const rect = el.getBoundingClientRect();
+              const cx = rect.left + rect.width/2;
+              const cy = rect.top + rect.height/2;
+              const dx = (e.clientX - cx) / rect.width;
+              const dy = (e.clientY - cy) / rect.height;
+              const rx = (dy * -6).toFixed(2);
+              const ry = (dx * 6).toFixed(2);
+              if(rAF) cancelAnimationFrame(rAF);
+              rAF = requestAnimationFrame(()=>{
+                  el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+              });
+          }
+          function reset(){ el.style.transform = 'none'; }
+          el.addEventListener('mousemove', onMove);
+          el.addEventListener('mouseleave', reset);
       });
-    }
-    function reset(){ el.style.transform = 'none'; }
-    el.addEventListener('mousemove', onMove);
-    el.addEventListener('mouseleave', reset);
-  });
+  }
 
 
 /* ========= Playlist (switch video) ========= */
@@ -250,7 +269,14 @@ window.addEventListener('load', ()=>{
   const active = document.querySelector('.tab.is-active');
   moveInkToTab(active);
   renderCards('Stars');
-  observeReveals();
+  
+  // Optimization: Only call observeReveals on load for non-mobile
+  if (window.matchMedia('(min-width: 901px)').matches) {
+      observeReveals();
+  } else {
+      // For mobile, ensure all are 'shown' immediately
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+  }
 });
 window.addEventListener('resize', ()=>{
   const active = document.querySelector('.tab.is-active');
@@ -389,5 +415,3 @@ window.addEventListener('load', () => {
 
   setTimeout(() => card.classList.add('show'), 100);
 });
-
-
