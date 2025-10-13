@@ -33,7 +33,9 @@ const searchBtn = document.getElementById('searchBtn');
 
     filtered.forEach((c, i) => {
       const el = document.createElement('article');
-      el.className = 'card reveal tilt';
+      // Only add 'tilt' class if not on mobile, check is done at initial load in init
+      const tiltClass = window.matchMedia('(min-width: 901px)').matches ? 'tilt' : '';
+      el.className = `card reveal ${tiltClass}`;
       el.style.transitionDelay = `${(i % 3) * 0.05}s`;
       el.innerHTML = `
         <a class="thumb hover-zoom" href="${c.link}">
@@ -46,7 +48,13 @@ const searchBtn = document.getElementById('searchBtn');
       cardsWrap.appendChild(el);
     });
 
-    observeReveals(); // re-attach animations
+    // Only observe reveals if not on mobile (animations are removed via CSS on mobile)
+    if (window.matchMedia('(min-width: 901px)').matches) {
+        observeReveals();
+    } else {
+        // For mobile, ensure all are 'shown' immediately since CSS removes transitions
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+    }
   }
 
   const fullscreenBtn = document.getElementById("fullscreenBtn");
@@ -125,56 +133,72 @@ tabs.forEach(btn => {
 });
 
 
-/* ========= Scroll reveal ========= */
+/* ========= Scroll reveal (Optimization: only run on non-mobile) ========= */
 let revealObserver;
 function observeReveals(){
+  // Check for reduced motion preference (CSS handles this, but good practice)
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
     return;
   }
-  if (revealObserver) revealObserver.disconnect();
-  revealObserver = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('show');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  // Optimization: Only create and observe for non-mobile views (e.g., above 900px)
+  if (window.matchMedia('(min-width: 901px)').matches) {
+    if (revealObserver) revealObserver.disconnect();
+    revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  }
 }
 
-/* Scroll reveal */
+/* Scroll reveal (Using ro for initial reveal, replacing with conditional logic) */
   const ro = new IntersectionObserver((ents)=>{
     ents.forEach(ent=>{
       if(ent.isIntersecting){
         ent.target.classList.add('is-visible');
         ro.unobserve(ent.target);
+      } else if (!window.matchMedia('(min-width: 901px)').matches) {
+        // Mobile fallback: ensure visibility immediately since CSS removes transitions
+        ent.target.classList.add('is-visible');
       }
     });
   }, {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-  /* Tilt effect (subtle) */
-  document.querySelectorAll('.tilt').forEach(el => {
-    let rAF;
-    function onMove(e){
-      const rect = el.getBoundingClientRect();
-      const cx = rect.left + rect.width/2;
-      const cy = rect.top + rect.height/2;
-      const dx = (e.clientX - cx) / rect.width;
-      const dy = (e.clientY - cy) / rect.height;
-      const rx = (dy * -6).toFixed(2);
-      const ry = (dx * 6).toFixed(2);
-      if(rAF) cancelAnimationFrame(rAF);
-      rAF = requestAnimationFrame(()=>{
-        el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+  // Only observe if not on mobile (CSS handles the instant "reveal" on mobile)
+  if (window.matchMedia('(min-width: 901px)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+  }
+
+
+  /* Tilt effect (subtle) (Optimization: only run on non-mobile) */
+  if (window.matchMedia('(min-width: 901px)').matches) {
+      document.querySelectorAll('.tilt').forEach(el => {
+          let rAF;
+          function onMove(e){
+              const rect = el.getBoundingClientRect();
+              const cx = rect.left + rect.width/2;
+              const cy = rect.top + rect.height/2;
+              const dx = (e.clientX - cx) / rect.width;
+              const dy = (e.clientY - cy) / rect.height;
+              const rx = (dy * -6).toFixed(2);
+              const ry = (dx * 6).toFixed(2);
+              if(rAF) cancelAnimationFrame(rAF);
+              rAF = requestAnimationFrame(()=>{
+                  el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+              });
+          }
+          function reset(){ el.style.transform = 'none'; }
+          el.addEventListener('mousemove', onMove);
+          el.addEventListener('mouseleave', reset);
       });
-    }
-    function reset(){ el.style.transform = 'none'; }
-    el.addEventListener('mousemove', onMove);
-    el.addEventListener('mouseleave', reset);
-  });
+  }
 
 
 /* ========= Playlist (switch video) ========= */
@@ -232,7 +256,7 @@ viewAllBtn.addEventListener('click', () => {
 });
 
 
-/* ========= Mobile menu (basic) ========= */
+/* ========= Mobile menu (basic) - keep original logic */
 const burger = document.querySelector('.hamburger');
 const nav = document.querySelector('.main-nav');
 burger.addEventListener('click', ()=>{
@@ -247,8 +271,16 @@ window.addEventListener('load', ()=>{
   const active = document.querySelector('.tab.is-active');
   moveInkToTab(active);
   renderCards('Moon');
-  observeReveals();
+
+  // Only call observeReveals on load for non-mobile
+  if (window.matchMedia('(min-width: 901px)').matches) {
+      observeReveals();
+  } else {
+      // For mobile, ensure all are 'shown' immediately
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+  }
 });
+
 window.addEventListener('resize', ()=>{
   const active = document.querySelector('.tab.is-active');
   if (active) moveInkToTab(active);
@@ -386,5 +418,3 @@ window.addEventListener('load', () => {
 
   setTimeout(() => card.classList.add('show'), 100);
 });
-
-

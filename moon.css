@@ -239,6 +239,35 @@ img#qrImage {display:block; max-width:100%;}
 }
 .hero-visual img{border-radius:16px; box-shadow:var(--shadow)}
 
+/* Hero visual/video container */
+.ph {
+    border-radius: 20px;
+    width: 100%;
+    overflow: hidden;
+    /* penting supaya video tak keluar luar border */
+    display: grid;
+    place-items: center;
+    position: relative;
+    /* Adding background image for mobile fallback */
+    background: url("2. EXPLORE/video/sun moon star.mp4") no-repeat center center / cover; /* Note: This should be an image path, but using the video path as a placeholder if no image is available. Ideally, replace with an actual image. */
+    background: url("2. EXPLORE/photo/sun moon stars.png") no-repeat center center / cover; /* Using one of the insight images as a fallback image */
+    min-height: 200px; /* Ensure space for fallback image */
+}
+
+/* Hide video source by default and show only on desktop */
+.ph video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover effect sama macam sebelum */
+.ph:hover video {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
 /* ========= Tabs */
 .tabs-wrap{height: 100px; align-content:center;}
 .tabs{
@@ -422,30 +451,6 @@ img#qrImage {display:block; max-width:100%;}
   background: rgba(255, 255, 255, 0.05)
 }
 
-.ph {
-    border-radius: 20px;
-    width: 100%;
-    overflow: hidden;
-    /* penting supaya video tak keluar luar border */
-    display: grid;
-    place-items: center;
-    position: relative;
-}
-
-.ph video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* video scale macam background image */
-    transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-/* Hover effect sama macam sebelum */
-.ph:hover video {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-
 
 
 /* ========= Gallery */
@@ -513,6 +518,39 @@ img#qrImage {display:block; max-width:100%;}
   .main-nav{display:none}
   .topbar__inner{width: max-content;}
   .foot__top{grid-template-columns:1fr}
+
+  /* 1) Optimization: Replace hero video with image for mobile view */
+  .ph.hero-visual {
+      /* Show the fallback background image set in .ph rule */
+      background-size: cover;
+      background-position: center;
+      min-height: 200px;
+  }
+  .ph.hero-visual video {
+      /* Hide the video element */
+      display: none;
+  }
+
+  /* 2) Optimization: Remove unnecessary animation/hover for mobile view */
+  /* Remove scroll reveal transition on smaller screens */
+  .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none !important;
+  }
+  .reveal.show, .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+  }
+
+  /* Remove card hover/tilt effect on mobile */
+  .card:hover {
+      transform: none;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); /* Keep original shadow */
+  }
+  .hover-zoom:hover img, .hover-zoomout:hover img {
+      transform: none;
+  }
 }
 @media (max-width: 560px){
   .cards-grid{grid-template-columns:1fr}
