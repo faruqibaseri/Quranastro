@@ -20,7 +20,8 @@
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0; font:16px/1.6 "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  margin:0; 
+  font:16px/1.6 "Poppins", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color:white; background:var(--bg);
   box-sizing: border-box;
   display: relative;
@@ -403,13 +404,15 @@ img#qrImage {display:block; max-width:100%;}
   background: rgba(255, 255, 255, 0.05); border-radius: 20px;box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(20px);
   padding:20px; margin:12px 0;
 }
-.q-arabic {
+
+#arabicText {
     font-size: 2rem;
     line-height: 2;
     text-align: center;
     direction: rtl;
     font-family: "KFGQPC Uthmanic Script HAFS","Scheherazade New","serif";
 }
+
 .q-meta{color:#8f8f8f; text-align:center; margin:6px 0}
 .q-translation{text-align:center; max-width:850px; margin:0 auto}
 
