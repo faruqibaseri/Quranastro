@@ -74,49 +74,49 @@ if (burger && mobile) {
       items: [
         {
           title: "Neutron-star",
-          image: "1. HOMEPAGE/photo/Neutron-star.jpg",
+          image: "1. HOMEPAGE/photo/Neutron-star.webp",
           position: "47% 35%",
           author: "Neutron-star"
         },
         {
           title: "moon1",
-          image: "1. HOMEPAGE/photo/moon1.jpg",
+          image: "1. HOMEPAGE/photo/moon1.webp",
           position: "75% 65%",
           author: "moon1"
         },
         {
           title: "sun",
-          image: "1. HOMEPAGE/photo/sun.jpg",
+          image: "1. HOMEPAGE/photo/sun.webp",
           position: "53% 43%",
           author: "sun"
         },
         {
           title: "Quasar-star",
-          image: "1. HOMEPAGE/photo/Quasar-star.jpg",
+          image: "1. HOMEPAGE/photo/Quasar-star.webp",
           position: "50% 30%",
           author: "Quasar-star"
         },
         {
           title: "sun-earth1",
-          image: "1. HOMEPAGE/photo/sun-earth1.jpg",
+          image: "1. HOMEPAGE/photo/sun-earth1.webp",
           position: "60% 50%",
           author: "sun-earth1"
         },
         {
           title: "Quasar-star2",
-          image: "1. HOMEPAGE/photo/Quasar-star2.jpg",
+          image: "1. HOMEPAGE/photo/Quasar-star2.webp",
           position: "45% 30%",
           author: "Quasar-star2"
         },
         {
           title: "moon2",
-          image: "1. HOMEPAGE/photo/moon2.png",
+          image: "1. HOMEPAGE/photo/moon2.webp",
           position: "50% 20%",
           author: "moon2"
         },
         {
           title: "sun-earth2",
-          image: "1. HOMEPAGE/photo/sun-earth2.jpg",
+          image: "1. HOMEPAGE/photo/sun-earth2.webp",
           position: "50% 35%",
           author: "sun-earth2"
         }

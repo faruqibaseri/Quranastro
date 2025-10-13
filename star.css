@@ -24,7 +24,7 @@ body::before {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: url("1. HOMEPAGE/photo/background.jpg") no-repeat center center / cover;
+  background: url("1. HOMEPAGE/photo/background.webp") no-repeat center center / cover;
   opacity: 90%; /* adjust transparency here */
   z-index: -1; /* keeps it behind content */
 }
@@ -249,7 +249,7 @@ img#qrImage {display:block; max-width:100%;}
     place-items: center;
     position: relative;
     /* Adding background image for mobile fallback */
-    background: url("2. EXPLORE/photo/sun moon stars.png") no-repeat center center / cover; /* Placeholder image path */
+    background: url("2. EXPLORE/photo/sun moon stars.webp") no-repeat center center / cover; /* Placeholder image path */
     min-height: 200px; /* Ensure space for fallback image */
 }
 
