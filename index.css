@@ -398,6 +398,28 @@ align-content: center;
   object-position: var(--pos);
   filter: saturate(1.1) contrast(1.05);
 }
+
+
+  .chat-greeting {
+    position: fixed;
+    bottom: 100px; /* adjust to be above the chat bubble */
+    right: 30px;
+    background: #fff;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-size: 14px;
+    z-index: 9999;
+    opacity: 0;
+    animation: fadeInOut 6s ease forwards;
+  }
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(10px); }
+    10%, 80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(10px); }
+  }
     
 /* Responsive */
 @media (max-width: 902px){

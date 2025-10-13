@@ -204,3 +204,16 @@ document.querySelectorAll(".mobile__toggle").forEach(btn => {
       window.location.href = url;
     }, 500);
   }
+
+    window.addEventListener('load', () => {
+    // Wait 5 seconds before showing greeting
+    setTimeout(() => {
+      const greeting = document.createElement('div');
+      greeting.className = 'chat-greeting';
+      greeting.textContent = "👋 Hi! I'm here to help😊";
+      document.body.appendChild(greeting);
+
+      // Remove after animation
+      setTimeout(() => greeting.remove(), 6000);
+    }, 3000);
+  });
