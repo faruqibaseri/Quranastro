@@ -200,8 +200,8 @@ img{display:block; max-width:100%; height:auto}
 .main-grid{display:flex;flex-direction:column;gap:22px;margin-top:20px}
 
 /* cards */
-.verse-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(100px); padding: 18px; margin-top: 80px;}
-.tafsir-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(100px);padding: 25px 30px}
+.verse-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(50px); padding: 18px; margin-top: 80px;}
+.tafsir-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(50px);padding: 25px 30px}
 .verse-top h3{margin-top:0px;}
 .page-title{margin:20px 0px 0px 0px;color: white; font-family: 'Roboto'; font-weight: bold; justify-self: center;}
 .audio-controls{display:flex;gap:8px;align-items:center; justify-self: center;}
