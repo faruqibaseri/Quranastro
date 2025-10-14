@@ -50,14 +50,14 @@ body::before {
 .btn:hover{ box-shadow:var(--shadow);transform: translateY(-5px);transform: scale(1.05);}
 .btn--primary{background:linear-gradient(180deg, #5b84ff, #3866ff); color:#fff; border-color:#3866ff; transition:transform 0.3s, box-shadow 0.3s;}
 .btn--primary :hover{transform: translateY(-5px) scale(1.05);}  
-.button-learn{max-width: 100%; padding-top: 60px; place-self: center;}
-.btn.btn--ghost{ background:#fff; border:1px solid var(--line); place-self: center;}
+.button-learn{max-width: 100%; padding-top: 60px; justify-self: center;}
+.btn.btn--ghost{ background:#fff; border:1px solid var(--line); justify-self: center;}
 .center{display:flex; justify-content:center}
-.button-explore {place-self: center; padding-bottom:80px;}
+.button-explore {justify-self: center; padding-bottom:80px;}
 .games-button{width: 100%;padding-bottom: 45px; text-align: center;}
 
 /* Topbar */
-.topbar{position:sticky; top:40px; z-index:40; background: rgba(255, 255, 255, 0.1);border-radius: 20px;box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);backdrop-filter: blur(25px);width: 80%;place-self: center; justify-items: center;}
+.topbar{position:sticky; top:40px; z-index:40; background: rgba(255, 255, 255, 0.1);border-radius: 20px;box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);backdrop-filter: blur(25px);width: 80%;justify-self: center; justify-items: center;}
 .topbar__inner{display:flex; align-items:center; justify-content:space-between; height: 100px; max-width: 1140px; width: 90%;}
 .brand{display:flex; align-items:center; gap:10px; font-weight:700; color:var(--ink)}
 .brand__logo {
@@ -331,7 +331,7 @@ body::before {
 .foot__social .ico{border-radius:6px; background-color: transparent; color:#5b84ff;}
 .foot__links{display:flex; gap:18px; align-items:center; flex-wrap:wrap; justify-content: center; padding-bottom: 20px;}
 .foot__links a{color:#ededed; text-decoration:none}
-.foot__bottom{display:flex; justify-content:space-between; align-items:center; gap:16px; padding:12px 12px; border-top:1px solid var(--line); place-self: center;}
+.foot__bottom{display:flex; justify-content:space-between; align-items:center; gap:16px; padding:12px 12px; border-top:1px solid var(--line); justify-self: center;}
 .fa {font-size: 30px;}
 
 .toTop{
