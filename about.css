@@ -308,7 +308,7 @@ body::before {
 .faq h2{
   width: 90%;
   place-self: center;
-
+  margin: 20px auto;
 }
 
 .accordion{
