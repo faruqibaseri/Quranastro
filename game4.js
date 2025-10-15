@@ -1,328 +1,451 @@
-/* ---------- init DOM ---------- */
+/* ====== Fill-in-the-Blanks Game (AstronoVerse theme) ====== */
 
-document.getElementById('btn-home').addEventListener('click', () => {
-  window.location.href = 'index.html';
-});
+/* ---------- DOM references ---------- */
+document.getElementById('btn-home').addEventListener('click', ()=> window.location.href='index.html');
 
 const SCREENS = {
   menu: document.getElementById('screen-menu'),
-  levels: document.getElementById('screen-levels'),
   howto: document.getElementById('screen-howto'),
   game: document.getElementById('screen-game'),
   result: document.getElementById('screen-result'),
   leaderboard: document.getElementById('screen-leaderboard'),
 };
 
-const hudLevel = document.getElementById('hud-level');
-const hudScore = document.getElementById('hud-score');
-const hudTimer = document.getElementById('hud-timer');
-const hudProgress = document.getElementById('hud-progress');
-const targetsEl = document.getElementById('targets');
-const draggablesEl = document.getElementById('draggables');
+const levelLabel = document.getElementById('levelLabel');
+const progressEl = document.getElementById('progress');
+const scoreEl = document.getElementById('score');
+const timerEl = document.getElementById('timer');
 
-const startBtn = document.getElementById('startBtn');
-const startBtn2 = document.getElementById('startBtn2');
-const abortBtn = document.getElementById('abortBtn');
-const shuffleBtn = document.getElementById('shuffleBtn');
-const hintBtn = document.getElementById('hintBtn');
-const modal = document.getElementById('modal');
-const modalText = document.getElementById('modalText');
-const modalClose = document.getElementById('modalClose');
+const sentenceContainer = document.getElementById('sentenceContainer');
+const choicesEl = document.getElementById('choices');
+const feedbackEl = document.getElementById('feedback');
 
-const sfxDrop = document.getElementById('sfx-drop');
-const sfxWrong = document.getElementById('sfx-wrong');
-const sfxClick = document.getElementById('sfx-click');
-const muteBtn = document.getElementById('muteBtn');
+const btnStart = document.getElementById('btn-start');
+const btnStart2 = document.getElementById('btn-start-2');
+const btnPrev = document.getElementById('btn-prev-level');
+const btnNext = document.getElementById('btn-next-level');
+const btnCheck = document.getElementById('btn-check');
+const btnPlayAgain = document.getElementById('btn-play-again');
 
+const saveForm = document.getElementById('save-form');
+const boardList = document.getElementById('board');
+const clearBoardBtn = document.getElementById('clear-board');
+
+const sfx = {
+  correct: document.getElementById('sfx-correct'),
+  wrong:   document.getElementById('sfx-wrong'),
+  click:   document.getElementById('sfx-click'),
+};
 let soundOn = true;
-let level = 1;
-let score = 0;
-let timer = null;
-let timeLeft = 30;
-let totalTargets = 3;
-let matched = 0;
 
-/* ---------- sample assets & templates ---------- */
-const ITEMS = [
-  { id: 'sun', label: 'Sun', img: '1. HOMEPAGE/photo/sun.jpg' },
-  { id: 'moon', label: 'Moon', img: '1. HOMEPAGE/photo/moon2.png' },
-  { id: 'star', label: 'Star', img: '1. HOMEPAGE/photo/Neutron-star.jpg' },
-];
-  
-/* ---------- navigation ---------- */
-document.querySelectorAll('.nav-btn[data-target], [data-target]').forEach(btn=>{
-  btn.addEventListener('click', (e)=>{
-    const t = e.currentTarget.getAttribute('data-target');
-    showScreen(t);
-    playClick();
-    if(t === 'leaderboard') renderLeaderboard();
-  });
-});
-startBtn.addEventListener('click', ()=> startLevel(1));
-startBtn2.addEventListener('click', ()=> startLevel(1));
-abortBtn.addEventListener('click', ()=> { if(confirm('End the game?')) { stopTimer(); showScreen('menu'); }});
-shuffleBtn && shuffleBtn.addEventListener('click', ()=> spawnDraggables(true));
-hintBtn && hintBtn.addEventListener('click', ()=> { timeLeft = Math.max(5, timeLeft - 5); playClick(); showModal('Hint used! Time -5s'); });
-
-modalClose && modalClose.addEventListener('click', ()=> modal.style.display='none');
-window.addEventListener('click', e=> { if(e.target === modal) modal.style.display='none'; });
-
-
-// Sound toggle
-let musicOn = true;      // for background music
-
+/* ---------- Music / sound toggles ---------- */
 const bgMusic = document.getElementById('bg-music');
 const toggleMusicBtn = document.getElementById('toggle-music');
 const toggleSoundBtn = document.getElementById('toggle-sound');
 
-// --- Play music automatically when page loads ---
-window.addEventListener('load', ()=>{
-  bgMusic.play().catch(()=>{}); // catch error if autoplay is blocked
+window.addEventListener('load', ()=> {
+  bgMusic.play().catch(()=>{}); // may be blocked by browser until user gesture
 });
-
-// --- Music toggle button ---
 toggleMusicBtn.addEventListener('click', ()=>{
-  if(bgMusic.paused){
-    bgMusic.play();
-    musicOn = true;
-    toggleMusicBtn.textContent = '🎵 Music';
-  } else {
-    bgMusic.pause();
-    musicOn = false;
-    toggleMusicBtn.textContent = '🔇 Music';
-  }
+  if(bgMusic.paused){ bgMusic.play().catch(()=>{}); toggleMusicBtn.textContent='🎵 Music'; }
+  else { bgMusic.pause(); toggleMusicBtn.textContent='🔇 Music'; }
 });
-
-// --- Sound effects toggle button ---
 toggleSoundBtn.addEventListener('click', ()=>{
   soundOn = !soundOn;
   toggleSoundBtn.textContent = soundOn ? '🔊 Sound' : '🔈 Sound';
 });
 
-// --- Play sound effect function ---
-function playSound(audio){
-  if(!soundOn || !audio) return;
-  audio.currentTime = 0;
-  audio.play().catch(()=>{});
-}
+/* ---------- Levels data (sentence + blanks + choices) ---------- */
+/* blanks array = correct answers in order; sentenceTemplate includes placeholders {0}, {1}, ... */
+const LEVELS = [
+  {
+    title: "Basics — Sun & Moon",
+    sentenceTemplate: "The {0} is the center of our solar system. The {1} shines at night and reflects light.",
+    blanks: ["Sun","Moon"],
+    choices: ["Sun","Moon","Earth","Jupiter","Comet","Star"]
+  },
+  {
+    title: "Stars & Moon",
+    sentenceTemplate: "At night we see many {0}. Sometimes the {1} orbits the {2}.",
+    blanks: ["Stars","Moon","Earth"],
+    choices: ["Stars","Moon","Earth","Mars","Sun","Galaxy","Meteor"]
+  },
+  {
+    title: "Orbital facts",
+    sentenceTemplate: "One full orbit of Earth around the {0} takes about {1} days.",
+    blanks: ["Sun","365"],
+    choices: ["365","30","Sun","Moon","24","Leap"]
+  },
+  {
+    title: "Mixed space",
+    sentenceTemplate: "A {0} often has a long tail. A {1} is a giant ball of gas that emits light.",
+    blanks: ["Comet","Star"],
+    choices: ["Planet","Comet","Star","Rocket","Moon","Asteroid"]
+  }
+];
 
-function showScreen(name){
-  Object.values(SCREENS).forEach(s=> s.classList.remove('active'));
-  if(SCREENS[name]) SCREENS[name].classList.add('active');
-}
+/* ---------- State ---------- */
+let currentLevel = 0;
+let score = 0;
+let secondsLeft = 45;
+let timerId = null;
 
-/* ---------- game flow ---------- */
-function startLevel(l=1){
-  level = l;
-  score = 0;
-  matched = 0;
-  hudLevel.textContent = level;
-  hudScore.textContent = score;
-  totalTargets = 3 + (level - 1);
-  timeLeft = 30 - (level-1)*5; if(timeLeft < 10) timeLeft = 10;
-  spawnTargets();
-  spawnDraggables();
+/* ---------- Helpers: navigation, sfx ---------- */
+function show(screen){
+  Object.values(SCREENS).forEach(s => s.classList.remove('active'));
+  SCREENS[screen].classList.add('active');
+}
+function playSfx(a){ if(!soundOn || !a) return; a.currentTime = 0; a.play().catch(()=>{}); }
+
+/* ---------- Render level ---------- */
+function renderLevel(idx){
+  const lvl = LEVELS[idx];
+  // HUD
+  levelLabel.textContent = `${idx+1}/${LEVELS.length}`;
+  document.getElementById('levelTitle').textContent = lvl.title;
+  scoreEl.textContent = score;
   updateProgress();
-  showScreen('game');
-  startTimer();
-}
 
-function spawnTargets(){
-  targetsEl.innerHTML = '';
-  const pool = [];
-  for(let i=0;i<totalTargets;i++){
-    const it = ITEMS[i % ITEMS.length];
-    pool.push({...it, uid: it.id + '-' + i});
+  // Build sentence by replacing placeholders with blanks
+  // Example template: "The {0} is ... The {1} ..."
+  let html = lvl.sentenceTemplate;
+  for(let i=0;i<lvl.blanks.length;i++){
+    const placeholder = `{${i}}`;
+    // replace with a span blank having data-idx
+    html = html.replace(placeholder, `<span class="blank empty" data-idx="${i}" data-answer="${lvl.blanks[i]}">Drop here</span>`);
   }
-  pool.sort(()=> Math.random()-0.5);
-  pool.forEach(item=>{
-    const t = document.createElement('div');
-    t.className = 'target';
-    t.dataset.accept = item.id;
-    t.id = 'target-'+item.uid;
-    t.innerHTML = `<div><strong>${item.label}</strong></div>`;
-    targetsEl.appendChild(t);
+  sentenceContainer.innerHTML = html;
 
-    t.addEventListener('dragover', (ev)=> ev.preventDefault());
-    t.addEventListener('drop', (ev)=> onDrop(ev, t));
-  });
-}
-
-function spawnDraggables(shuffle=false){
-  draggablesEl.innerHTML = '';
-  const list = [];
-  for(let i=0;i<totalTargets;i++){
-    const template = ITEMS[i % ITEMS.length];
-    list.push({...template, uid: template.id + '-d' + i});
-  }
-  const extras = Math.min(level, 3);
-  for(let e=0;e<extras;e++){
-    const idx = Math.floor(Math.random()*ITEMS.length);
-    const t = ITEMS[idx];
-    list.push({...t, uid: t.id + '-x' + e});
-  }
-  if(shuffle) list.sort(()=>Math.random()-0.5);
-  list.forEach(item=>{
+  // Render choices (shuffle order)
+  const pool = shuffleArray([...lvl.choices]);
+  choicesEl.innerHTML = '';
+  pool.forEach(choiceText=>{
     const d = document.createElement('div');
-    d.className = 'drag-item';
+    d.className = 'choice';
     d.draggable = true;
-    d.id = 'drag-'+item.uid;
-    d.innerHTML = `<img src="${item.img}" alt="${item.label}" /><div style="display:none">${item.id}</div>`;
-    draggablesEl.appendChild(d);
-    d.addEventListener('dragstart', (ev)=> {
-      ev.dataTransfer.setData('text/plain', item.id);
-      d.classList.add('dragging');
+    d.textContent = choiceText;
+    d.dataset.value = choiceText;
+    choicesEl.appendChild(d);
+
+    // drag handlers
+    d.addEventListener('dragstart', (e)=>{
+      e.dataTransfer.setData('text/plain', choiceText);
+      setTimeout(()=> d.classList.add('dragging'), 0);
+      playSfx(sfx.click);
     });
     d.addEventListener('dragend', ()=> d.classList.remove('dragging'));
+
+    // touch fallback
+    d.addEventListener('touchstart', (ev)=> startTouchDrag(ev, d), {passive:false});
   });
+
+  // blanks: allow drop
+  document.querySelectorAll('.blank').forEach(b=>{
+    b.addEventListener('dragover', e=> e.preventDefault());
+    b.addEventListener('drop', e=>{
+      e.preventDefault();
+      const val = e.dataTransfer.getData('text/plain');
+      handleDropToBlank(b, val);
+    });
+
+    // also allow click to clear filled
+    b.addEventListener('click', ()=>{
+      if(b.classList.contains('filled')){
+        // return item to choice tray
+        const val = b.dataset.user || '';
+        if(val){
+          // create a new choice item and append back
+          const newChoice = document.createElement('div');
+          newChoice.className = 'choice';
+          newChoice.draggable = true;
+          newChoice.textContent = val;
+          newChoice.dataset.value = val;
+          choicesEl.appendChild(newChoice);
+          newChoice.addEventListener('dragstart', ev=> {
+            ev.dataTransfer.setData('text/plain', val);
+            setTimeout(()=> newChoice.classList.add('dragging'),0);
+            playSfx(sfx.click);
+          });
+          newChoice.addEventListener('dragend', ()=> newChoice.classList.remove('dragging'));
+          newChoice.addEventListener('touchstart', (ev)=> startTouchDrag(ev, newChoice), {passive:false});
+        }
+        // clear blank
+        b.textContent = 'Drop here';
+        b.classList.remove('filled');
+        b.classList.add('empty');
+        delete b.dataset.user;
+      }
+    });
+  });
+
+  feedbackEl.textContent = '';
 }
 
-/* ---------- drop handling ---------- */
-function onDrop(ev, targetEl){
-  ev.preventDefault();
-  const draggedId = ev.dataTransfer.getData('text/plain');
-  const accept = targetEl.dataset.accept;
-  if(draggedId === accept){
-    targetEl.classList.add('correct');
-    targetEl.innerHTML = `<div style="text-align:center"><img src="assets/${accept}.png" style="width:64px"/><div>${accept}</div></div>`;
-    playSound(sfxDrop);
-    score += 10 + (timeLeft);
-    hudScore.textContent = score;
-    matched++;
-    const el = Array.from(document.querySelectorAll('.drag-item')).find(x=> x.textContent.includes(accept));
-    if(el) el.remove();
-    updateProgress();
-    checkLevelComplete();
+/* ---------- Drop handling ---------- */
+function handleDropToBlank(blankEl, value){
+  if(!blankEl || !value) return;
+  // set user value
+  blankEl.textContent = value;
+  blankEl.classList.remove('empty');
+  blankEl.classList.add('filled');
+  blankEl.dataset.user = value;
+
+  // remove one matching choice from tray (first match)
+  const match = Array.from(choicesEl.children).find(c=> c.dataset.value === value);
+  if(match) match.remove();
+  playSfx(sfx.click);
+}
+
+/* ---------- Check answers ---------- */
+function checkAnswers(){
+  const blanks = Array.from(document.querySelectorAll('.blank'));
+  const lvl = LEVELS[currentLevel];
+  let correctCount = 0;
+
+  // Must ensure all blanks are filled first
+  const allFilled = blanks.every(b => b.classList.contains('filled'));
+  if(!allFilled){
+    feedbackEl.textContent = 'Please fill all blanks before checking.';
+    return;
+  }
+
+  blanks.forEach(b=>{
+    const user = (b.dataset.user || '').trim();
+    const answer = (b.dataset.answer || '').trim();
+    if(user === answer){
+      b.style.background = '#e8fff7'; // green
+      b.style.color = '#043927';
+      b.classList.remove('empty'); b.classList.add('filled');
+      correctCount++;
+    } else {
+      b.style.background = '#fff1f1'; // red
+      b.style.color = '#7a041a';
+    }
+  });
+
+  if(correctCount === blanks.length){
+    // full correct: reward points and next level
+    const timeBonus = Math.max(0, secondsLeft);
+    const points = 50 + (10 * blanks.length) + Math.floor(timeBonus/2);
+    score += points;
+    scoreEl.textContent = score;
+    playSfx(sfx.correct);
+    feedbackEl.textContent = `✅ All correct! +${points} points. Advancing...`;
+    // small delay then next level
+    setTimeout(()=> nextLevel(), 900);
   } else {
-    targetEl.classList.add('wrong');
-    playSound(sfxWrong);
-    timeLeft = Math.max(3, timeLeft - 5);
-    setTimeout(()=> targetEl.classList.remove('wrong'), 500);
+    // partial or wrong
+    playSfx(sfx.wrong);
+    feedbackEl.textContent = `❌ ${correctCount}/${blanks.length} correct. Try again or clear wrong answers. (-5s penalty)`;
+    secondsLeft = Math.max(0, secondsLeft - 5);
+    updateTimerDisplay();
   }
 }
 
-/* ---------- timer & progress ---------- */
-function startTimer(){
-  stopTimer();
-  updateTimerDisplay();
-  timer = setInterval(()=>{
-    timeLeft--;
+/* ---------- Level navigation ---------- */
+function nextLevel(){
+  if(currentLevel < LEVELS.length - 1){
+    currentLevel++;
+    startLevel();
+  } else {
+    // finished all levels -> show result
+    endGame(true);
+  }
+}
+function prevLevel(){
+  if(currentLevel > 0){
+    currentLevel--;
+    startLevel();
+  }
+}
+
+/* ---------- Start / restart / timer ---------- */
+function startLevel(){
+  // reset timer state per level
+  secondsLeft = 45;
+  if(timerId) { clearInterval(timerId); timerId = null; }
+  timerId = setInterval(()=>{
+    secondsLeft--;
     updateTimerDisplay();
-    if(timeLeft <= 0){
-      stopTimer();
-      endLevel(false);
+    if(secondsLeft <= 0){
+      clearInterval(timerId);
+      endGame(false);
     }
   }, 1000);
+
+  renderLevel(currentLevel);
+  show('game');
 }
-function stopTimer(){ if(timer){ clearInterval(timer); timer = null; } }
-function updateTimerDisplay(){ hudTimer.textContent = `${timeLeft}s`; }
+
+function startGame(){
+  currentLevel = 0;
+  score = 0;
+  startLevel();
+}
+
+function updateTimerDisplay(){
+  timerEl.textContent = `${secondsLeft}s`;
+}
 
 function updateProgress(){
-  const pct = Math.round((matched / totalTargets) * 100);
-  hudProgress.style.width = pct + '%';
+  const pct = Math.round((currentLevel / (LEVELS.length-1 || 1)) * 100);
+  progressEl.style.width = `${pct}%`;
 }
 
-/* ---------- completion ---------- */
-function checkLevelComplete(){
-  if(matched >= totalTargets){
-    stopTimer();
-    endLevel(true);
-  }
+/* ---------- End game ---------- */
+function endGame(success){
+  if(timerId){ clearInterval(timerId); timerId=null; }
+  playSfx(success ? sfx.correct : sfx.wrong);
+  document.getElementById('final-score').textContent = `You scored ${score}`;
+  window.__finalScore = score;
+  startConfetti();
+  show('result');
 }
 
-function endLevel(success){
-  const text = success ? 'Congratulations! Level complete.' : 'Time\'s up / Level failed';
-  document.getElementById('result-text').textContent = text;
-  document.getElementById('result-score').textContent = `Score: ${score}`;
-  showScreen('result');
-  window.currentFinalScore = score;
-  startConfettiShort();
-}
-
-/* ---------- sounds ---------- */
-function playSound(audio){
-  if(!soundOn || !audio) return;
-  audio.currentTime = 0;
-  audio.play().catch(()=>{});
-}
-function playClick(){ playSound(sfxClick); }
-
-/* ---------- modal util ---------- */
-function showModal(txt){
-  modalText.textContent = txt;
-  modal.style.display = 'flex';
-}
-
-/* ---------- leaderboard (localStorage) ---------- */
-const LB_KEY = 'astron_dragdrop_leaderboard_v1';
-function getLeaderboard(){ try{ return JSON.parse(localStorage.getItem(LB_KEY)) || []; }catch{ return []; } }
-function saveLeaderboard(arr){ localStorage.setItem(LB_KEY, JSON.stringify(arr.slice(0,10))); }
-function renderLeaderboard(){
-  const list = document.getElementById('leaderboardList');
-  const board = getLeaderboard();
-  list.innerHTML = '';
-  if(board.length === 0) list.innerHTML = `<li>No scores yet — be the first!</li>`;
+/* ---------- Leaderboard ---------- */
+const BOARD_KEY = 'astro_fill_board_v1';
+function getBoard(){ try{ return JSON.parse(localStorage.getItem(BOARD_KEY) || '[]'); }catch{ return []; } }
+function setBoard(arr){ localStorage.setItem(BOARD_KEY, JSON.stringify(arr.slice(0,10))); }
+function renderBoard(){
+  const board = getBoard().slice().sort((a,b)=> b.score - a.score).slice(0,10);
+  const el = document.getElementById('board');
+  el.innerHTML = '';
+  if(board.length===0){ el.innerHTML = '<li>No scores yet. Be the first! 🚀</li>'; return; }
   board.forEach((r,i)=>{
     const li = document.createElement('li');
-    li.textContent = `${i+1}. ${r.name} — ${r.score}`;
-    list.appendChild(li);
+    li.innerHTML = `<span>${i+1}. ${escapeHtml(r.name)}</span><span>${r.score}</span>`;
+    el.appendChild(li);
   });
 }
-document.getElementById('clearLb').addEventListener('click', ()=>{
-  if(confirm('Clear all leaderboard scores?')) { localStorage.removeItem(LB_KEY); renderLeaderboard(); }
-});
-document.getElementById('saveScoreForm').addEventListener('submit', (e)=>{
+
+/* Save form */
+saveForm.addEventListener('submit', (e)=>{
   e.preventDefault();
-  const name = document.getElementById('playerName').value.trim() || 'Player';
-  const board = getLeaderboard();
-  board.push({name, score: window.currentFinalScore || 0});
-  board.sort((a,b)=> b.score - a.score);
-  saveLeaderboard(board);
-  renderLeaderboard();
-  showScreen('leaderboard');
+  const name = (document.getElementById('player-name').value || 'Player').trim();
+  const b = getBoard();
+  b.push({name, score: window.__finalScore || 0});
+  b.sort((a,b2)=> b2.score - a.score);
+  setBoard(b);
+  renderBoard();
+  show('leaderboard');
+  stopConfetti();
 });
 
-/* ---------- small confetti (short burst) ---------- */
-function startConfettiShort(){
-  const layer = document.createElement('canvas');
-  layer.style.position = 'absolute';
-  layer.style.inset = 0;
-  const rect = document.querySelector('.result-card') || document.body;
-  rect.appendChild(layer);
-  const ctx = layer.getContext('2d');
-  layer.width = rect.clientWidth; layer.height = rect.clientHeight;
-  let pieces = Array.from({length:80}).map(()=>({
-    x: Math.random()*layer.width, y: Math.random()*-layer.height,
-    r: Math.random()*6+4, s: Math.random()*3+1, a: Math.random()*360
+/* Clear board */
+clearBoardBtn.addEventListener('click', ()=>{
+  if(confirm('Delete all leaderboard records?')){
+    localStorage.removeItem(BOARD_KEY);
+    renderBoard();
+  }
+});
+
+/* ---------- Drag touch fallback (simple) ---------- */
+let touchGhost = null;
+let draggingEl = null;
+function startTouchDrag(ev, el){
+  ev.preventDefault();
+  draggingEl = el;
+  touchGhost = el.cloneNode(true);
+  touchGhost.style.position = 'fixed';
+  touchGhost.style.opacity = '0.9';
+  touchGhost.style.zIndex = 9999;
+  touchGhost.style.pointerEvents = 'none';
+  document.body.appendChild(touchGhost);
+  moveTouchGhost(ev.touches[0].clientX, ev.touches[0].clientY);
+  window.addEventListener('touchmove', onTouchMove, {passive:false});
+  window.addEventListener('touchend', onTouchEnd);
+}
+function onTouchMove(e){
+  e.preventDefault();
+  moveTouchGhost(e.touches[0].clientX, e.touches[0].clientY);
+}
+function onTouchEnd(e){
+  const t = e.changedTouches[0];
+  const target = document.elementFromPoint(t.clientX, t.clientY);
+  if(target){
+    const blank = target.closest('.blank');
+    if(blank){
+      handleDropToBlank(blank, draggingEl.dataset.value || draggingEl.textContent);
+      draggingEl.remove(); // remove original
+    }
+  }
+  cleanupTouch();
+}
+function moveTouchGhost(x,y){
+  if(!touchGhost) return;
+  const rect = touchGhost.getBoundingClientRect();
+  touchGhost.style.left = (x - rect.width/2) + 'px';
+  touchGhost.style.top = (y - rect.height/2) + 'px';
+}
+function cleanupTouch(){
+  window.removeEventListener('touchmove', onTouchMove);
+  window.removeEventListener('touchend', onTouchEnd);
+  if(touchGhost){ touchGhost.remove(); touchGhost=null; }
+  draggingEl = null;
+}
+
+/* ---------- Utilities ---------- */
+function shuffleArray(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
+
+/* ---------- Confetti ---------- */
+let confettiRun = false;
+function startConfetti(){
+  const cvs = document.getElementById('confetti');
+  if(!cvs) return;
+  const ctx = cvs.getContext('2d');
+  const parent = cvs.parentElement;
+  const {width, height} = parent.getBoundingClientRect();
+  cvs.width = width; cvs.height = height;
+  const pieces = Array.from({length: 120}).map(()=>({
+    x: Math.random()*width, y: Math.random()*-height, r: Math.random()*6+4, s: Math.random()*2+1, a: Math.random()*360
   }));
-  let run = true;
+  confettiRun = true;
   (function loop(){
-    if(!run) return;
-    ctx.clearRect(0,0,layer.width,layer.height);
+    if(!confettiRun) return;
+    ctx.clearRect(0,0,width,height);
     pieces.forEach(p=>{
-      ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.a*Math.PI/180);
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a*Math.PI/180);
       ctx.fillStyle = `hsl(${(p.a*3)%360} 80% 60%)`;
-      ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r);
+      ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r);
       ctx.restore();
-      p.y += p.s;
-      p.a += 6;
-      if(p.y > layer.height){ p.y = -10; p.x = Math.random()*layer.width; }
+      p.y += p.s; p.a += 6; if(p.y>height){ p.y=-10; p.x=Math.random()*width; }
     });
     requestAnimationFrame(loop);
   })();
-  setTimeout(()=> { run = false; layer.remove(); }, 1800);
 }
+function stopConfetti(){ confettiRun=false; }
 
-/* ---------- simple confetti stop on navigation ---------- */
-document.querySelectorAll('.nav-btn').forEach(b=> b.addEventListener('click', ()=> stopTimer()));
-
-/* ---------- init ---------- */
-showScreen('menu');
-renderLeaderboard();
-
-/* hint: prefetch assets (optional) */
-const preload = ITEMS.map(i=>{
-  const im = new Image(); im.src = i.img; return im;
+/* ---------- Event wiring ---------- */
+// nav buttons
+document.querySelectorAll('[data-target]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    playSfx(sfx.click);
+    const t = btn.getAttribute('data-target');
+    if(t==='leaderboard') renderBoard();
+    show(t);
+    stopConfetti();
+  });
 });
+
+// header quick nav click sound
+document.querySelectorAll('.nav-btn[data-target]').forEach(btn=> btn.addEventListener('click', ()=> playSfx(sfx.click)));
+
+// start
+btnStart.addEventListener('click', ()=> { playSfx(sfx.click); startGame(); });
+btnStart2 && btnStart2.addEventListener('click', ()=> { playSfx(sfx.click); startGame(); });
+
+// prev/next/check
+btnPrev.addEventListener('click', ()=> { playSfx(sfx.click); prevLevel(); });
+btnNext.addEventListener('click', ()=> { playSfx(sfx.click); nextLevel(); });
+btnCheck.addEventListener('click', ()=> { playSfx(sfx.click); checkAnswers(); });
+
+// play again
+btnPlayAgain.addEventListener('click', ()=> { playSfx(sfx.click); startGame(); });
+
+// initial render
+renderBoard();
+show('menu');
+
+/* safety: clear timer on unload */
+window.addEventListener('beforeunload', ()=> { if(timerId) clearInterval(timerId); });
