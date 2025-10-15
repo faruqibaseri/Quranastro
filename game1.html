@@ -4,7 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Quiz Challenge - AstronoVerse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/ethnocentric" rel="stylesheet">
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script> 
   <link rel="stylesheet" href="game1.css" />
 </head>
 <body>
@@ -12,24 +18,40 @@
   <div class="bg"></div>
 
   <!-- Header -->
-  <header class="app-header">
-     <div>
-      <h1>🌌AstronoVerse</h1>
-      <small>Quiz Challenge</small>
-    </div>
-    <nav class="top-nav">
-      <button class="nav-btn" id="btn-home">Other Games</button>
-      <button class="nav-btn" data-target="menu">Menu</button>
-      <button class="nav-btn" data-target="howto">How to Play</button>
-      <button class="nav-btn" data-target="leaderboard">Leaderboard</button>
-
-      <!-- Buttons -->
-      <button class="nav-btn" id="toggle-music">🎵 Music</button>
-      <button class="nav-btn" id="toggle-sound">🔊 Sound</button>
+  <header class="topbar app-header">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.webp" alt="Brand Logo">
+      </a>
+    
+    <nav class="nav top-nav">
+      <a class="nav__link nav-btn" id="btn-home">Other Games</a>
+      <a class="nav__link nav-btn" data-target="menu">Menu</a>
+      <a class="nav__link nav-btn" data-target="howto">How to Play</a>
+      <a class="nav__link nav-btn" data-target="leaderboard">Leaderboard</a>
+      <a class="nav__link nav-btn" id="toggle-music">🎵 Music</a>
+      <a class="nav__link nav-btn" id="toggle-sound">🔊 Sound</a>
 
       <!-- Add background music -->
       <audio id="bg-music" src="3. GAMES/audio/music_bg4.mp3" loop></audio>
     </nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+      <a href="game_menu.html" class="nav__link nav-btn" id="btn-home">Other Games</a>
+      <a class="nav__link nav-btn" data-target="menu">Menu</a>
+      <a class="nav__link nav-btn" data-target="howto">How to Play</a>
+      <a class="nav__link nav-btn" data-target="leaderboard">Leaderboard</a>
+      <a class="nav__link nav-btn" id="toggle-music">🎵 Music</a>
+      <a class="nav__link nav-btn" id="toggle-sound">🔊 Sound</a>
+</nav>
+
   </header>
 
   <!-- Screens -->

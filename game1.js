@@ -1,7 +1,29 @@
+/* AstronoVerse interactions: slider, mobile menu, scroll reveal, tilt, back-to-top */
+(function(){
+  const yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+})
+document.addEventListener("DOMContentLoaded", () => {
+  const burger = document.getElementById('hamburger');
+  const mobile = document.getElementById('mobileMenu');
+
+  burger.addEventListener('click', () => {
+    mobile.classList.toggle('open');
+    burger.classList.toggle('active');
+    burger.setAttribute('aria-expanded', mobile.classList.contains('open'));
+    console.log("Burger clicked!"); // Debug
+  });
+});
+
+
+
+
+
+
 /* ====== State ====== */
 
 document.getElementById('btn-home').addEventListener('click', () => {
-  window.location.href = 'index.html';
+  window.location.href = 'game_menu.html';
 });
 
 const SCREENS = {
