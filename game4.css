@@ -131,6 +131,7 @@ main {
     border-radius: 16px;
     padding: 22px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+    justify-items:center;
 }
 
 .menu-actions {

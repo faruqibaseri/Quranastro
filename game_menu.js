@@ -125,10 +125,10 @@ window.addEventListener("resize", () => {
     sound.currentTime = 0;
     sound.play();
 
-    setTimeout(() => {
-      // window.location.href = url;
-      window.open(url, "_blank");
-    }, 500);
+setTimeout(() => {
+  window.location.href = url;
+}, 500);
+
   }
 
       // Mobile dropdown toggle
