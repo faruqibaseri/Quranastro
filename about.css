@@ -303,9 +303,6 @@ body::before {
 .faq {
   padding-bottom:100px;
   margin-top: 80px;
-  justify-items: center;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .faq h2{
@@ -316,7 +313,7 @@ body::before {
 
 .accordion{
   width: 90%;
-  place-self: center;
+  margin: 0 auto;
 }
 
 .accordion .accordion-item {
