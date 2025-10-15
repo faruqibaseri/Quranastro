@@ -203,7 +203,7 @@ img{display:block; max-width:100%; height:auto}
 .verse-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(100px); padding: 18px; margin-top: 80px;}
 .tafsir-card {background: rgba(255, 255, 255, 0.01); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(100px);padding: 25px 30px}
 .verse-top h3{margin-top:0px;}
-.page-title{margin:20px 0px 0px 0px;color: white; font-family: 'Roboto'; font-weight: bold; justify-self: center;}
+.page-title{margin:20px auto 0px auto;color: white; font-family: 'Roboto'; font-weight: bold; text-align: center;}
 .audio-controls{display:flex;gap:8px;align-items:center; justify-self: center;}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:600}
 .btn.primary{background:var(--accent-2);color:#fff}
