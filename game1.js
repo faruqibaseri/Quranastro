@@ -5,15 +5,99 @@
 })
 document.addEventListener("DOMContentLoaded", () => {
   const burger = document.getElementById('hamburger');
-  const mobile = document.getElementById('mobileMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
 
+  // Toggle mobile menu
   burger.addEventListener('click', () => {
-    mobile.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
     burger.classList.toggle('active');
-    burger.setAttribute('aria-expanded', mobile.classList.contains('open'));
-    console.log("Burger clicked!"); // Debug
+    burger.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+  });
+
+  // Close menu when clicking any nav link (except sound/music toggles)
+  mobileMenu.addEventListener('click', (e) => {
+    if (
+      e.target.classList.contains('nav__link') &&
+      !e.target.id.includes('toggle-')
+    ) {
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('active');
+      burger.setAttribute('aria-expanded', false);
+    }
   });
 });
+
+
+// === Sound & Music Controls ===
+
+window.addEventListener('load', () => {
+  bgMusic.play().catch(() => {
+    console.log("Autoplay blocked. Waiting for user interaction...");
+    document.body.addEventListener('click', startMusicOnce, { once: true });
+  });
+});
+
+function startMusicOnce() {
+  bgMusic.play().catch(() => {});
+}
+
+
+let musicOn = true;
+
+const bgMusic = document.getElementById('bg-music');
+
+// Get all toggle buttons (desktop + mobile)
+const toggleMusicBtns = document.querySelectorAll('#toggle-music-desktop, #toggle-music-mobile');
+const toggleSoundBtns = document.querySelectorAll('#toggle-sound-desktop, #toggle-sound-mobile');
+
+// --- Auto play music on page load ---
+window.addEventListener('load', () => {
+  bgMusic.play().catch(() => {}); // Catch autoplay block
+});
+
+// --- Music toggle (both desktop & mobile) ---
+toggleMusicBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      musicOn = true;
+      updateMusicButtons('🎵 Music');
+    } else {
+      bgMusic.pause();
+      musicOn = false;
+      updateMusicButtons('🔇 Music');
+    }
+  });
+});
+
+// --- Sound toggle (both desktop & mobile) ---
+toggleSoundBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    updateSoundButtons(soundOn ? '🔊 Sound' : '🔈 Sound');
+  });
+});
+
+// --- Helper functions to sync button text ---
+function updateMusicButtons(text) {
+  toggleMusicBtns.forEach(btn => btn.textContent = text);
+}
+
+function updateSoundButtons(text) {
+  toggleSoundBtns.forEach(btn => btn.textContent = text);
+}
+
+// --- Play sound effect function ---
+function playSound(audio) {
+  if (!soundOn || !audio) return;
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+}
+
+
+
+
+
 
 
 
@@ -24,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.getElementById('btn-home').addEventListener('click', () => {
   window.location.href = 'game_menu.html';
+  stopGameFinishedSound();
 });
 
 const SCREENS = {
@@ -147,7 +232,7 @@ function loadQuestion(){
   q.options.forEach((opt, idx) => {
     const btn = document.createElement('button');
     btn.className = 'option';
-    btn.innerHTML = `<span>${opt}</span><span class="tag">A${idx+1}</span>`;
+    btn.innerHTML = `<span>${opt}</span>`;
     btn.addEventListener('click', ()=> selectAnswer(idx));
     optionsEl.appendChild(btn);
   });
@@ -212,11 +297,30 @@ function tick(){
 function updateTimer(){ timerEl.textContent = `${timeLeft}s`; }
 function clearTimer(){ if(timerId){ clearInterval(timerId); timerId = null; } }
 
-function endQuiz(){
+function endQuiz() {
   show('result');
   finalScoreEl.textContent = `You scored ${score}/${questions.length}`;
-  startConfetti();
+
+  // Play "game finished" sound
+  const gameFinishedSound = document.getElementById('game-finished');
+  if (gameFinishedSound) {
+    gameFinishedSound.currentTime = 0;
+    gameFinishedSound.play().catch(() => {});
+  }
+
+  // Start confetti slightly after
+  setTimeout(startConfetti, 500);
 }
+
+function stopGameFinishedSound() {
+  const gameFinishedSound = document.getElementById('game-finished');
+  if (gameFinishedSound) {
+    gameFinishedSound.pause();
+    gameFinishedSound.currentTime = 0;
+  }
+}
+
+
 
 /* ====== Leaderboard ====== */
 const BOARD_KEY = 'astro_quiz_board_v1';
@@ -245,7 +349,7 @@ function renderBoard(){
   });
 }
 
-/* ====== Confetti (simple) ====== */
+/* ====== confettis (simple) ====== */
 let confettiRunning = false;
 function startConfetti(){
   const cvs = document.getElementById('confetti');
@@ -281,7 +385,16 @@ function startConfetti(){
     requestAnimationFrame(loop);
   })();
 }
-function stopConfetti(){ confettiRunning = false; }
+function stopConfetti() {
+  confettiRunning = false;
+
+  const cvs = document.getElementById('confetti');
+  if (cvs) {
+    const ctx = cvs.getContext('2d');
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+  }
+}
+
 
 /* ====== Events & wiring ====== */
 // Nav buttons
@@ -292,6 +405,7 @@ document.querySelectorAll('[data-target]').forEach(btn=>{
     if(target === 'leaderboard'){ renderBoard(); }
     show(target);
     if(target !== 'result') stopConfetti();
+    stopGameFinishedSound();
   });
 });
 
@@ -309,7 +423,8 @@ document.getElementById('btn-next').addEventListener('click', ()=>{ playSfx(sfx.
 document.getElementById('btn-prev').addEventListener('click', ()=>{ playSfx(sfx.click); prevQuestion(); });
 
 // Retry
-document.getElementById('btn-retry').addEventListener('click', ()=>{ playSfx(sfx.click); startQuiz(); });
+document.getElementById('btn-retry').addEventListener('click', ()=>{ playSfx(sfx.click); startQuiz(); stopGameFinishedSound(); stopConfetti()});
+
 
 // Save score
 document.getElementById('save-form').addEventListener('submit', (e)=>{
@@ -322,6 +437,7 @@ document.getElementById('save-form').addEventListener('submit', (e)=>{
   renderBoard();
   show('leaderboard');
   stopConfetti();
+  stopGameFinishedSound();
 });
 
 // Clear board
@@ -332,43 +448,7 @@ document.getElementById('clear-board').addEventListener('click', ()=>{
   }
 });
 
-// Sound toggle
-let musicOn = true;      // for background music
 
-const bgMusic = document.getElementById('bg-music');
-const toggleMusicBtn = document.getElementById('toggle-music');
-const toggleSoundBtn = document.getElementById('toggle-sound');
-
-// --- Play music automatically when page loads ---
-window.addEventListener('load', ()=>{
-  bgMusic.play().catch(()=>{}); // catch error if autoplay is blocked
-});
-
-// --- Music toggle button ---
-toggleMusicBtn.addEventListener('click', ()=>{
-  if(bgMusic.paused){
-    bgMusic.play();
-    musicOn = true;
-    toggleMusicBtn.textContent = '🎵 Music';
-  } else {
-    bgMusic.pause();
-    musicOn = false;
-    toggleMusicBtn.textContent = '🔇 Music';
-  }
-});
-
-// --- Sound effects toggle button ---
-toggleSoundBtn.addEventListener('click', ()=>{
-  soundOn = !soundOn;
-  toggleSoundBtn.textContent = soundOn ? '🔊 Sound' : '🔈 Sound';
-});
-
-// --- Play sound effect function ---
-function playSound(audio){
-  if(!soundOn || !audio) return;
-  audio.currentTime = 0;
-  audio.play().catch(()=>{});
-}
 
 
 // Prevent leaving quiz with running timer memory leak

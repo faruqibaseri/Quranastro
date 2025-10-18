@@ -17,6 +17,8 @@
   <!-- Background -->
   <div class="bg"></div>
 
+  <canvas id="confetti"></canvas>
+
   <!-- Header -->
   <header class="topbar app-header">
     <div class="topbar__inner">
@@ -29,11 +31,11 @@
       <a class="nav__link nav-btn" data-target="menu">Menu</a>
       <a class="nav__link nav-btn" data-target="howto">How to Play</a>
       <a class="nav__link nav-btn" data-target="leaderboard">Leaderboard</a>
-      <a class="nav__link nav-btn" id="toggle-music">🎵 Music</a>
-      <a class="nav__link nav-btn" id="toggle-sound">🔊 Sound</a>
+      <a class="nav__link nav-btn" id="toggle-music-desktop">🎵 Music</a>
+      <a class="nav__link nav-btn" id="toggle-sound-desktop">🔊 Sound</a>
 
       <!-- Add background music -->
-      <audio id="bg-music" src="3. GAMES/audio/music_bg4.mp3" loop></audio>
+      <audio id="bg-music" src="3. GAMES/audio/music_bg1.mp3" loop></audio>
     </nav>
 
 <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -48,9 +50,11 @@
       <a class="nav__link nav-btn" data-target="menu">Menu</a>
       <a class="nav__link nav-btn" data-target="howto">How to Play</a>
       <a class="nav__link nav-btn" data-target="leaderboard">Leaderboard</a>
-      <a class="nav__link nav-btn" id="toggle-music">🎵 Music</a>
-      <a class="nav__link nav-btn" id="toggle-sound">🔊 Sound</a>
-</nav>
+      <a class="nav__link nav-btn" id="toggle-music-mobile">🎵 Music</a>
+      <a class="nav__link nav-btn" id="toggle-sound-mobile" style="border-bottom: 0;">🔊 Sound</a>
+
+      <audio id="bg-music" src="3. GAMES/audio/music_bg1.mp3" loop></audio>
+    </nav>
 
   </header>
 
@@ -118,7 +122,6 @@
 
     <!-- RESULT -->
     <section id="screen-result" class="screen">
-      <canvas id="confetti"></canvas>
       <div class="card result-card">
         <h2>Results 🎉</h2>
         <p id="final-score">You scored 0/0</p>
@@ -148,9 +151,10 @@
   </main>
 
   <!-- Audio -->
-  <audio id="sfx-correct" src="https://assets.mixkit.co/sfx/preview/mixkit-game-success-2019.mp3" preload="auto"></audio>
-  <audio id="sfx-wrong"   src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" preload="auto"></audio>
-  <audio id="sfx-click"   src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+  <audio id="sfx-correct" src="3. GAMES/audio/correct.mp3" preload="auto"></audio>
+  <audio id="sfx-wrong"   src="3. GAMES/audio/wrong.mp3" preload="auto"></audio>
+  <audio id="sfx-click"   src="3. GAMES/audio/click_game.mp3" preload="auto"></audio>
+  <audio id="game-finished"   src="3. GAMES/audio/game_finished.mp3" preload="auto"></audio>
 
   <script src="game1.js"></script>
 </body>
