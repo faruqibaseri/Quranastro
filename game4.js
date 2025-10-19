@@ -1,7 +1,101 @@
-/* ====== Fill-in-the-Blanks Game (AstronoVerse theme) ====== */
+/* AstronoVerse interactions: slider, mobile menu, scroll reveal, tilt, back-to-top */
+(function(){
+  const yearEl = document.getElementById('year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+})
+document.addEventListener("DOMContentLoaded", () => {
+  const burger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  // Toggle mobile menu
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    burger.classList.toggle('active');
+    burger.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+  });
+
+  // Close menu when clicking any nav link (except sound/music toggles)
+  mobileMenu.addEventListener('click', (e) => {
+    if (
+      e.target.classList.contains('nav__link') &&
+      !e.target.id.includes('toggle-')
+    ) {
+      mobileMenu.classList.remove('open');
+      burger.classList.remove('active');
+      burger.setAttribute('aria-expanded', false);
+    }
+  });
+});
+
+
+// === Sound & Music Controls ===
+
+window.addEventListener('load', () => {
+  bgMusic.play().catch(() => {
+    console.log("Autoplay blocked. Waiting for user interaction...");
+    document.body.addEventListener('click', startMusicOnce, { once: true });
+  });
+});
+
+function startMusicOnce() {
+  bgMusic.play().catch(() => {});
+}
+
+
+let musicOn = true;
+
+const bgMusic = document.getElementById('bg-music');
+
+// Get all toggle buttons (desktop + mobile)
+const toggleMusicBtns = document.querySelectorAll('#toggle-music-desktop, #toggle-music-mobile');
+const toggleSoundBtns = document.querySelectorAll('#toggle-sound-desktop, #toggle-sound-mobile');
+
+// --- Auto play music on page load ---
+window.addEventListener('load', () => {
+  bgMusic.play().catch(() => {}); // Catch autoplay block
+});
+
+// --- Music toggle (both desktop & mobile) ---
+toggleMusicBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      musicOn = true;
+      updateMusicButtons('🎵 Music');
+    } else {
+      bgMusic.pause();
+      musicOn = false;
+      updateMusicButtons('🔇 Music');
+    }
+  });
+});
+
+// --- Sound toggle (both desktop & mobile) ---
+toggleSoundBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    updateSoundButtons(soundOn ? '🔊 Sound' : '🔈 Sound');
+  });
+});
+
+// --- Helper functions to sync button text ---
+function updateMusicButtons(text) {
+  toggleMusicBtns.forEach(btn => btn.textContent = text);
+}
+
+function updateSoundButtons(text) {
+  toggleSoundBtns.forEach(btn => btn.textContent = text);
+}
+
+// --- Play sound effect function ---
+function playSound(audio) {
+  if (!soundOn || !audio) return;
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+}
 
 /* ---------- DOM references ---------- */
-document.getElementById('btn-home').addEventListener('click', ()=> window.location.href='index.html');
+document.getElementById('btn-home').addEventListener('click', ()=> window.location.href='game_menu.html');
 
 const SCREENS = {
   menu: document.getElementById('screen-menu'),
@@ -35,25 +129,10 @@ const sfx = {
   correct: document.getElementById('sfx-correct'),
   wrong:   document.getElementById('sfx-wrong'),
   click:   document.getElementById('sfx-click'),
+  applause: document.getElementById('sfx-applause'),
+  finished: document.getElementById('sfx-finished'),
 };
 let soundOn = true;
-
-/* ---------- Music / sound toggles ---------- */
-const bgMusic = document.getElementById('bg-music');
-const toggleMusicBtn = document.getElementById('toggle-music');
-const toggleSoundBtn = document.getElementById('toggle-sound');
-
-window.addEventListener('load', ()=> {
-  bgMusic.play().catch(()=>{}); // may be blocked by browser until user gesture
-});
-toggleMusicBtn.addEventListener('click', ()=>{
-  if(bgMusic.paused){ bgMusic.play().catch(()=>{}); toggleMusicBtn.textContent='🎵 Music'; }
-  else { bgMusic.pause(); toggleMusicBtn.textContent='🔇 Music'; }
-});
-toggleSoundBtn.addEventListener('click', ()=>{
-  soundOn = !soundOn;
-  toggleSoundBtn.textContent = soundOn ? '🔊 Sound' : '🔈 Sound';
-});
 
 /* ---------- Levels data (sentence + blanks + choices) ---------- */
 /* blanks array = correct answers in order; sentenceTemplate includes placeholders {0}, {1}, ... */
@@ -263,6 +342,7 @@ function prevLevel(){
 function startLevel(){
   // reset timer state per level
   secondsLeft = 45;
+  stopConfetti();
   if(timerId) { clearInterval(timerId); timerId = null; }
   timerId = setInterval(()=>{
     secondsLeft--;
@@ -276,6 +356,7 @@ function startLevel(){
   renderLevel(currentLevel);
   show('game');
 }
+
 
 function startGame(){
   currentLevel = 0;
@@ -295,7 +376,8 @@ function updateProgress(){
 /* ---------- End game ---------- */
 function endGame(success){
   if(timerId){ clearInterval(timerId); timerId=null; }
-  playSfx(success ? sfx.correct : sfx.wrong);
+  playSfx(success ? sfx.applause : sfx.applause);
+  playSfx(sfx.finished);
   document.getElementById('final-score').textContent = `You scored ${score}`;
   window.__finalScore = score;
   startConfetti();
@@ -388,33 +470,51 @@ function cleanupTouch(){
 function shuffleArray(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
 
-/* ---------- Confetti ---------- */
-let confettiRun = false;
+/* ====== confettis (simple) ====== */
+let confettiRunning = false;
 function startConfetti(){
   const cvs = document.getElementById('confetti');
-  if(!cvs) return;
   const ctx = cvs.getContext('2d');
   const parent = cvs.parentElement;
   const {width, height} = parent.getBoundingClientRect();
   cvs.width = width; cvs.height = height;
-  const pieces = Array.from({length: 120}).map(()=>({
-    x: Math.random()*width, y: Math.random()*-height, r: Math.random()*6+4, s: Math.random()*2+1, a: Math.random()*360
+
+  const pieces = Array.from({length: 120}).map(() => ({
+    x: Math.random()*width,
+    y: Math.random()*-height,
+    r: Math.random()*6+4,
+    s: Math.random()*2+1,
+    a: Math.random()*360,
   }));
-  confettiRun = true;
+
+  confettiRunning = true;
   (function loop(){
-    if(!confettiRun) return;
+    if(!confettiRunning) return;
     ctx.clearRect(0,0,width,height);
     pieces.forEach(p=>{
-      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.a*Math.PI/180);
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.a*Math.PI/180);
       ctx.fillStyle = `hsl(${(p.a*3)%360} 80% 60%)`;
-      ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r);
+      ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r);
       ctx.restore();
-      p.y += p.s; p.a += 6; if(p.y>height){ p.y=-10; p.x=Math.random()*width; }
+
+      p.y += p.s;
+      p.a += 6;
+      if(p.y > height){ p.y = -10; p.x = Math.random()*width; }
     });
     requestAnimationFrame(loop);
   })();
 }
-function stopConfetti(){ confettiRun=false; }
+function stopConfetti() {
+  confettiRunning = false;
+
+  const cvs = document.getElementById('confetti');
+  if (cvs) {
+    const ctx = cvs.getContext('2d');
+    ctx.clearRect(0, 0, cvs.width, cvs.height);
+  }
+}
 
 /* ---------- Event wiring ---------- */
 // nav buttons

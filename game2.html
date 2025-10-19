@@ -4,47 +4,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Memory Puzzle - AstronoVerse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/ethnocentric" rel="stylesheet">
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script> 
   <link rel="stylesheet" href="game2.css" />
 </head>
 <body>
   <!-- Subtle BG -->
   <div class="bg"></div>
+  <canvas id="confetti"></canvas>
 
   <!-- Header -->
-  <header class="app-header">
-    <div>
-      <h1>🧩AstronoVerse</h1>
-      <small> Memory Puzzle Challenge</small>
-    </div>
-    <nav class="top-nav">
-      <button class="nav-btn" id="btn-home">Home Page</button>
-      <button class="nav-btn" data-target="menu">Menu</button>
-      <button class="nav-btn" data-target="howto">How to Play</button>
-      <button class="nav-btn" data-target="leaderboard">Leaderboard</button>
-        <!-- Buttons -->
-      <button class="nav-btn" id="toggle-music">🎵 Music</button>
-      <button class="nav-btn" id="toggle-sound">🔊 Sound</button>
+  <header class="topbar app-header">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.webp" alt="Brand Logo">
+      </a>
+    
+    <nav class="nav top-nav">
+      <a class="nav__link nav-btn" id="btn-home">Other Games</a>
+      <a class="nav__link nav-btn" data-target="menu">Menu</a>
+      <a class="nav__link nav-btn" data-target="howto">How to Play</a>
+      <a class="nav__link nav-btn" data-target="leaderboard">Leaderboard</a>
+      <a class="nav__link nav-btn" id="toggle-music-desktop">🎵 Music</a>
+      <a class="nav__link nav-btn" id="toggle-sound-desktop">🔊 Sound</a>
 
       <!-- Add background music -->
-      <audio id="bg-music" src="audio/music_bg4.mp3" loop></audio>
+      <audio id="bg-music" src="3. GAMES/audio/music_bg1.mp3" loop></audio>
     </nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+      <a href="game_menu.html" class="nav__link nav-btn" id="btn-home">Other Games</a>
+      <a class="nav__link nav-btn" data-target="menu">Menu</a>
+      <a class="nav__link nav-btn" data-target="howto">How to Play</a>
+      <a class="nav__link nav-btn" data-target="leaderboard">Leaderboard</a>
+      <a class="nav__link nav-btn" id="toggle-music-mobile">🎵 Music</a>
+      <a class="nav__link nav-btn" id="toggle-sound-mobile" style="border-bottom: 0;">🔊 Sound</a>
+
+      <audio id="bg-music" src="3. GAMES/audio/music_bg1.mp3" loop></audio>
+    </nav>
+
   </header>
 
   <main>
     <!-- MENU -->
     <section id="screen-menu" class="screen active">
       <div class="card">
+        <div style="width: 500px; max-width: fit-content;">
+        <img src="3. GAMES/photo/game2.webp" alt="Game 2" id="mainimage" ></div>
         <h2>Welcome to the Memory Puzzle! 🚀</h2>
         <p>Select a difficulty to start playing. Match each card pair themed around the Sun, Moon & Stars!</p>
         <div class="difficulty">
           <button class="btn primary" data-diff="easy">Easy (8 cards)</button>
           <button class="btn primary" data-diff="medium">Medium (12 cards)</button>
           <button class="btn primary" data-diff="hard">Hard (16 cards)</button>
-        </div>
-        <div class="menu-actions">
-          <button class="btn ghost" data-target="howto">How to Play</button>
-          <button class="btn ghost" data-target="leaderboard">Leaderboard</button>
         </div>
       </div>
     </section>
@@ -138,11 +163,11 @@
   </main>
 
   <!-- Sounds -->
-  <audio id="sfx-flip"   src="https://assets.mixkit.co/sfx/preview/mixkit-flip-card-game-2665.mp3" preload="auto"></audio>
-  <audio id="sfx-match"  src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3" preload="auto"></audio>
-  <audio id="sfx-wrong"  src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" preload="auto"></audio>
-  <audio id="sfx-win"    src="https://assets.mixkit.co/sfx/preview/mixkit-video-game-win-2016.mp3" preload="auto"></audio>
-  <audio id="sfx-click"  src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+  <audio id="sfx-flip" src="3. GAMES/audio/correct.mp3" preload="auto"></audio>
+  <audio id="sfx-wrong"   src="3. GAMES/audio/wrong1.mp3" preload="auto"></audio>
+  <audio id="sfx-click"   src="3. GAMES/audio/click_game.mp3" preload="auto"></audio>
+  <audio id="sfx-match" src="3. GAMES/audio/game_finished.mp3" preload="auto"></audio>
+  <audio id="sfx-win" src="3. GAMES/audio/applause.mp3" preload="auto"></audio>
 
   <script src="game2.js"></script>
 </body>

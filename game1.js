@@ -94,16 +94,6 @@ function playSound(audio) {
   audio.play().catch(() => {});
 }
 
-
-
-
-
-
-
-
-
-
-
 /* ====== State ====== */
 
 document.getElementById('btn-home').addEventListener('click', () => {
@@ -132,6 +122,8 @@ const sfx = {
   correct: document.getElementById('sfx-correct'),
   wrong:   document.getElementById('sfx-wrong'),
   click:   document.getElementById('sfx-click'),
+  applause: document.getElementById('applause-sound'),
+  finished: document.getElementById('game-finished'),
 };
 let soundOn = true;
 
@@ -300,13 +292,8 @@ function clearTimer(){ if(timerId){ clearInterval(timerId); timerId = null; } }
 function endQuiz() {
   show('result');
   finalScoreEl.textContent = `You scored ${score}/${questions.length}`;
-
-  // Play "game finished" sound
-  const gameFinishedSound = document.getElementById('game-finished');
-  if (gameFinishedSound) {
-    gameFinishedSound.currentTime = 0;
-    gameFinishedSound.play().catch(() => {});
-  }
+playSfx(sfx.applause);
+playSfx(sfx.finished);
 
   // Start confetti slightly after
   setTimeout(startConfetti, 500);
@@ -319,6 +306,18 @@ function stopGameFinishedSound() {
     gameFinishedSound.currentTime = 0;
   }
 }
+
+function stopApplauseSound() {
+  const applause = document.getElementById('applause-sound');
+  if (applause) {
+    applause.pause();
+    applause.removeAttribute('src');
+    applause.load();
+  }
+}
+
+
+
 
 
 
@@ -423,7 +422,7 @@ document.getElementById('btn-next').addEventListener('click', ()=>{ playSfx(sfx.
 document.getElementById('btn-prev').addEventListener('click', ()=>{ playSfx(sfx.click); prevQuestion(); });
 
 // Retry
-document.getElementById('btn-retry').addEventListener('click', ()=>{ playSfx(sfx.click); startQuiz(); stopGameFinishedSound(); stopConfetti()});
+document.getElementById('btn-retry').addEventListener('click', ()=>{ playSfx(sfx.click); startQuiz(); stopGameFinishedSound(); stopConfetti(); stopApplauseSound});
 
 
 // Save score

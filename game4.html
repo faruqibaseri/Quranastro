@@ -4,45 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Fill in the Blanks - AstronoVerse</title>
+  <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/ethnocentric" rel="stylesheet">
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script> 
   <link rel="stylesheet" href="game4.css">
 </head>
-<body>
 
-  <main>
-    <!-- Question -->
-    <section class="question-card">
-      <p id="sentence"><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Astronoverse – Fill the Blanks</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="fill.css" />
-</head>
+
 <body>
   <!-- Background -->
   <div class="bg"></div>
+  <canvas id="confetti"></canvas>
+
 
   <!-- Header -->
-  <header class="app-header">
-     <div>
-      <h1>🌌 AstronoVerse</h1>
-      <small>Fill the Blanks</small>
-    </div>
-    <nav class="top-nav">
-      <button class="nav-btn" id="btn-home">Other Games</button>
-      <button class="nav-btn" data-target="menu">Menu</button>
-      <button class="nav-btn" data-target="howto">How to Play</button>
-      <button class="nav-btn" data-target="leaderboard">Leaderboard</button>
+  <header class="topbar app-header">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand" aria-label="AstronoVerse home">
+        <img class="brand__logo" src="1. HOMEPAGE/logo.webp" alt="Brand Logo">
+      </a>
+    
+    <nav class="nav top-nav">
+      <a class="nav__link nav-btn" id="btn-home">Other Games</a>
+      <a class="nav__link nav-btn" data-target="menu">Menu</a>
+      <a class="nav__link nav-btn" data-target="howto">How to Play</a>
+      <a class="nav__link nav-btn" data-target="leaderboard">Leaderboard</a>
+      <a class="nav__link nav-btn" id="toggle-music-desktop">🎵 Music</a>
+      <a class="nav__link nav-btn" id="toggle-sound-desktop">🔊 Sound</a>
 
-      <!-- Buttons -->
-      <button class="nav-btn" id="toggle-music">🎵 Music</button>
-      <button class="nav-btn" id="toggle-sound">🔊 Sound</button>
-
-      <!-- Background music (replace src with your file) -->
-      <audio id="bg-music" src="3. GAMES/audio/music_bg4.mp3" loop></audio>
+      <!-- Add background music -->
+      <audio id="bg-music" src="3. GAMES/audio/music_bg1.mp3" loop></audio>
     </nav>
+
+<button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+  <span class="hamburger-line"></span>
+</button>
+    </div>
+
+    <nav id="mobileMenu" class="mobile" aria-label="Mobile">
+      <a href="game_menu.html" class="nav__link nav-btn" id="btn-home">Other Games</a>
+      <a class="nav__link nav-btn" data-target="menu">Menu</a>
+      <a class="nav__link nav-btn" data-target="howto">How to Play</a>
+      <a class="nav__link nav-btn" data-target="leaderboard">Leaderboard</a>
+      <a class="nav__link nav-btn" id="toggle-music-mobile">🎵 Music</a>
+      <a class="nav__link nav-btn" id="toggle-sound-mobile" style="border-bottom: 0;">🔊 Sound</a>
+
+      <audio id="bg-music" src="3. GAMES/audio/music_bg1.mp3" loop></audio>
+    </nav>
+
   </header>
 
   <!-- Screens -->
@@ -50,6 +66,8 @@
     <!-- MENU -->
     <section id="screen-menu" class="screen active">
       <div class="card">
+        <div style="width: 500px; max-width: fit-content;">
+        <img src="3. GAMES/photo/game3.webp" alt="Game 1" id="mainimage" ></div>
         <h2>Welcome to Fill the Blanks! 🚀</h2>
         <p>Drag the correct words into the blanks. Complete levels about the Sun, Moon & Stars — beat the timer and climb the Leaderboard!</p>
         <div class="menu-actions">
@@ -70,7 +88,6 @@
           <li>Wrong drop gives a small time penalty. Beat levels to get a high score.</li>
         </ul>
         <div class="menu-actions">
-          <button class="btn" data-target="menu">Back to Menu</button>
           <button class="btn primary" id="btn-start-2">Start Now</button>
         </div>
       </div>
@@ -107,13 +124,13 @@
           <!-- draggable choices injected here -->
         </div>
 
-        <div class="actions" style="margin-top:16px;">
+        <div class="actions" style="margin-top:30px;">
           <button class="btn" id="btn-prev-level">⟵ Prev</button>
-          <button class="btn primary" id="btn-check">Check Answers</button>
+          <button class="btn primary" id="btn-check" style="font-size: smaller;">Check Answers</button>
           <button class="btn" id="btn-next-level">Next ⟶</button>
         </div>
 
-        <p id="feedback" class="info" style="margin-top:10px;"></p>
+        <p id="feedback" class="info" style="margin-top:30px;margin-bottom: 0px;"></p>
       </div>
     </section>
 
@@ -149,9 +166,11 @@
   </main>
 
   <!-- Audio -->
-  <audio id="sfx-correct" src="https://assets.mixkit.co/sfx/preview/mixkit-game-success-2019.mp3" preload="auto"></audio>
-  <audio id="sfx-wrong"   src="https://assets.mixkit.co/sfx/preview/mixkit-wrong-answer-fail-notification-946.mp3" preload="auto"></audio>
-  <audio id="sfx-click"   src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+  <audio id="sfx-correct" src="3. GAMES/audio/correct.mp3" preload="auto"></audio>
+  <audio id="sfx-wrong"   src="3. GAMES/audio/wrong1.mp3" preload="auto"></audio>
+  <audio id="sfx-click"   src="3. GAMES/audio/click_game.mp3" preload="auto"></audio>
+  <audio id="sfx-finished" src="3. GAMES/audio/game_finished.mp3" preload="auto"></audio>
+  <audio id="sfx-applause" src="3. GAMES/audio/applause.mp3" preload="auto"></audio>
 
   <script src="game4.js"></script>
 </body>
