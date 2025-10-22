@@ -477,7 +477,7 @@ body::before {
   .foot__top{grid-template-columns:1fr}
     .supervisor {
     flex-direction: column;
-    max-width: 300px;
+    width: 300px;
   }
 
   .supervisor .member-photo img {
@@ -501,6 +501,7 @@ body::before {
   .footer-links{grid-template-columns:1fr 1fr}
     .supervisor {
     flex-direction: column;
+    width: 300px;
   }
 
   .supervisor .member-photo img {
@@ -515,6 +516,7 @@ body::before {
     .topbar__inner{width: max-content;}
       .supervisor {
     flex-direction: column;
+    width: 300px;
   }
 
   .supervisor .member-photo img {
@@ -529,6 +531,7 @@ body::before {
   .topbar {width: max-content;}
     .supervisor {
     flex-direction: column;
+    width: 300px;
   }
 
   .supervisor .member-photo img {
