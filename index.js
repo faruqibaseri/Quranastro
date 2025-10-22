@@ -184,7 +184,30 @@ function startRotation() {
   requestAnimationFrame(animateGallery);
 }
 
-    // Initialize when DOM is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    const gallery = document.getElementById("galleryAssembly");
+    if (!gallery) return;
+
+    gallery.innerHTML += gallery.innerHTML;
+
+    let scrollSpeed = 0.3;
+    let scrollPos = 0;
+
+    function autoScroll() {
+      scrollPos += scrollSpeed;
+      gallery.scrollLeft = scrollPos;
+
+      if (scrollPos >= gallery.scrollWidth / 2) {
+        scrollPos = 0;
+        gallery.scrollLeft = 0;
+      }
+
+      requestAnimationFrame(autoScroll);
+    }
+
+    autoScroll();});
+
+
     document.addEventListener('DOMContentLoaded', initGallery);
 
     // Mobile dropdown toggle

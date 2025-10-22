@@ -11,6 +11,16 @@
   --radius:16px;
 }
 
+@import url(https://db.onlinewebfonts.com/c/67565fbce7544c4781ec3480376eb253?family=Android+Assassin);
+@font-face {
+    font-family: "Android Assassin";
+    src: url("https://db.onlinewebfonts.com/t/67565fbce7544c4781ec3480376eb253.eot");
+    src: url("https://db.onlinewebfonts.com/t/67565fbce7544c4781ec3480376eb253.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/67565fbce7544c4781ec3480376eb253.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/67565fbce7544c4781ec3480376eb253.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/67565fbce7544c4781ec3480376eb253.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/67565fbce7544c4781ec3480376eb253.svg#Android Assassin")format("svg");
+}
 
 .img{
   background-size: 100%;
@@ -52,7 +62,7 @@ body::before {
 .btn--primary :hover{transform: translateY(-5px) scale(1.05);}  
 .button-learn{margin-left: auto; margin-right: auto; max-width: 100%; padding-top: 60px;}
 .btn.btn--ghost{margin-left: auto; margin-right: auto; background:#fff; border:1px solid var(--line);}
-.center{display:flex; justify-content:center}
+.center{display:flex;}
 .button-explore {display: grid; margin-left: auto; margin-right: auto;padding-bottom:80px;}
 .games-button{width: 100%;padding-bottom: 45px; text-align: center;}
 
@@ -213,10 +223,11 @@ body::before {
 }
 
 /* Hero */
-.hero{align-content: center; padding: 20px; height: 100%;}
+.hero{align-content: center; padding: 20px; height: 100vh;}
+.hero__text {position: relative; bottom: 40px;}
 .hero__grid{display:grid; grid-template-columns:1.1fr .9fr; gap:30px; padding:0px 0 28px; margin-left: 100px;}
-.hero__title{font-size:50px; margin:6px 0 10px; line-height: 95px; color: white;}
-.hero__title span{font-family: "Alfa Slab One"; color:#0031c5 ;font-weight: 400;font-size: 100px; -webkit-text-stroke-width: thin; -webkit-text-stroke-color: white;}
+.hero__title{font-size:50px; margin:0px 0 10px; line-height: 95px; color: white;}
+.hero__title span{font-family: "Android Assassin"; color:#0031c5 ;font-weight: 400;font-size: 80px; -webkit-text-stroke-width: thin; -webkit-text-stroke-color: white;}
 .hero__lead{color:white; margin:0 0 18px; font-size: 15px;}
 .hero__cta {padding-top: 20px;}
 
@@ -254,7 +265,7 @@ body::before {
 /* Sections */
 .section{padding:60px 20px}
 .section__title{font-size:clamp(22px,4.2vw,34px); margin:0 0 6px; color: white;}
-.section__lead{color:var(--muted); margin:0 0 12px; color: rgb(242, 242, 242);}
+.section__lead{color:var(--muted); margin:0 0 25px; color: rgb(242, 242, 242);}
 
 /* Cards */
 .card{
@@ -423,23 +434,17 @@ align-content: center;
     
 /* Responsive */
 @media (max-width: 902px){
-  /* 1. Video Replacement and Animation Removal */
-  
-  /* Main Hero Background: Hide video */
   .hero__bg-media #bg-video {
     display: none; 
   }
   .hero__bg-media {
-    /* Let the body's global background image show */
     background: none; 
   }
   
-  /* Feature Card Videos: Hide video */
   .media-container .feature-video {
     display: none; 
   }
   
-  /* Feature Card Images: Show static image */
   .feature-image-mobile {
       display: block; /* Show the static image */
       width: 100%;
@@ -450,7 +455,6 @@ align-content: center;
       left: 0;
   }
   
-  /* Feature card container background fallback */
   .media-container {
     background: none;
   }
@@ -470,7 +474,6 @@ align-content: center;
     transform: none !important;
   }
     
-  /* Existing mobile styles */
   .nav{display:none}
   .hamburger{display:block; border: none; right:10px;}
   .vm__grid{grid-template-columns:1fr}
@@ -479,7 +482,7 @@ align-content: center;
   .stats__grid{grid-template-columns:1fr 1fr}
   .foot__top{grid-template-columns:1fr}
   .hero__title{font-size:50px; line-height: 70px;}
-  .hero__title span{font-size: 90px;}
+  .hero__title span{font-size: 67px;}
   .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
 }
 
@@ -487,7 +490,7 @@ align-content: center;
   .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
   .hero__title{font-size:30px; line-height: 45px;}
   .hero__lead{font-size:12px;}
-  .hero__title span{font-size: 45px;}
+  .hero__title span{font-size: 36px;}
   .features__grid{grid-template-columns:1fr}
   .stats__grid{grid-template-columns:1fr}
 }
@@ -505,6 +508,7 @@ align-content: center;
       grid-template-rows: auto auto;
       padding: 20px 0;
     } 
+    .center {place-content: center;}
     
     .gallery-assembly {
       /* New Horizontal Scrolling Implementation */
@@ -521,7 +525,6 @@ align-content: center;
       top: auto;
       
       height: auto; /* Important: reset fixed height for content flow */
-      margin-top: 40px;
       padding: 0 20px 15px 20px; /* Padding for scroll visibility */
       gap: 15px; /* Spacing between cards */
     }
@@ -561,7 +564,6 @@ align-content: center;
   @media (max-width: 480px) {
     .gallery-assembly {
       height: auto; 
-      margin-top: 30px;
       padding: 0 15px 15px 15px;
     }
     .gallery-item {
@@ -577,6 +579,7 @@ align-content: center;
     }
     .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
     .topbar__inner{width: max-content;}
+    .center {place-content: center;}
   }
 
     @media (max-width: 344px) {
@@ -587,20 +590,18 @@ align-content: center;
     .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
       .hero__title{font-size:20px; line-height: 45px;}
   .hero__lead{font-size:15px;}
-  .hero__title span{font-size: 40px;}
+  .hero__title span{font-size: 35px;}
   .topbar {width: max-content;}
+  .center {place-content: center;}
   }
 
   @media (max-width: 902px){
-  /* FIX: Hide video and show mobile background image */
   #bg-video {
     display: none;
   }
   
   .hero__bg-media {
-    /* Apply image from data-mobile-src path */
     background: url("1. HOMEPAGE/photo/background.webp") no-repeat center center / cover;
-    /* Ensure proper positioning for the image */
     position: absolute;
     top: 0;
     left: 0;

@@ -131,6 +131,12 @@ const sfx = {
   click:   document.getElementById('sfx-click'),
   applause: document.getElementById('sfx-applause'),
   finished: document.getElementById('sfx-finished'),
+  start: document.getElementById('sfx-start'),
+  next: document.getElementById('sfx-next'),
+  prev: document.getElementById('sfx-prev'),
+  check: document.getElementById('sfx-check'),
+  flip: document.getElementById('sfx-flip'),
+  drop: document.getElementById('sfx-drop'),
 };
 let soundOn = true;
 
@@ -138,28 +144,28 @@ let soundOn = true;
 /* blanks array = correct answers in order; sentenceTemplate includes placeholders {0}, {1}, ... */
 const LEVELS = [
   {
-    title: "Basics — Sun & Moon",
-    sentenceTemplate: "The {0} is the center of our solar system. The {1} shines at night and reflects light.",
-    blanks: ["Sun","Moon"],
-    choices: ["Sun","Moon","Earth","Jupiter","Comet","Star"]
+    title: "Sun - The Sun and Modern Science",
+    sentenceTemplate: "The Sun is a medium-sized {0} that acts as the main source of {1} and {2} for the Earth.",
+    blanks: ["star","energy","light"],
+    choices: ["star","energy","light","moon","comet","asteroid"]
   },
   {
-    title: "Stars & Moon",
-    sentenceTemplate: "At night we see many {0}. Sometimes the {1} orbits the {2}.",
-    blanks: ["Stars","Moon","Earth"],
-    choices: ["Stars","Moon","Earth","Mars","Sun","Galaxy","Meteor"]
+    title: "Moon - Phases of the Moon",
+    sentenceTemplate: "Allah SWT has set {0} specific stations (manāzil) for the {1} orbit, as mentioned in Tafsir Munir.",
+    blanks: ["28","Moon's"],
+    choices: ["28","Moon's","24","Sun's","leap","360"]
   },
   {
-    title: "Orbital facts",
-    sentenceTemplate: "One full orbit of Earth around the {0} takes about {1} days.",
-    blanks: ["Sun","365"],
-    choices: ["365","30","Sun","Moon","24","Leap"]
+    title: "Sun - The Sun and Modern Science",
+    sentenceTemplate: "The process that converts {0} to {1} in the Sun's core generates its {2}.",
+    blanks: ["Hydrogen","Helium","energy"],
+    choices: ["Hydrogen","Helium","energy","planet","Earth","galaxy"]
   },
   {
-    title: "Mixed space",
-    sentenceTemplate: "A {0} often has a long tail. A {1} is a giant ball of gas that emits light.",
-    blanks: ["Comet","Star"],
-    choices: ["Planet","Comet","Star","Rocket","Moon","Asteroid"]
+    title: "Sun - The Sun as the Determiner of Shadows",
+    sentenceTemplate: "The Earth's orbit is shaped like an {0}, which helps determine the distance from the Sun, the amount of {1} energy, and the change of {2}.",
+    blanks: ["Ellipse","solar","seasons"],
+    choices: ["Ellipse","solar","seasons","meteor","Jupiter","rocket"]
   }
 ];
 
@@ -210,7 +216,7 @@ function renderLevel(idx){
     d.addEventListener('dragstart', (e)=>{
       e.dataTransfer.setData('text/plain', choiceText);
       setTimeout(()=> d.classList.add('dragging'), 0);
-      playSfx(sfx.click);
+      playSfx(sfx.flip);
     });
     d.addEventListener('dragend', ()=> d.classList.remove('dragging'));
 
@@ -272,7 +278,7 @@ function handleDropToBlank(blankEl, value){
   // remove one matching choice from tray (first match)
   const match = Array.from(choicesEl.children).find(c=> c.dataset.value === value);
   if(match) match.remove();
-  playSfx(sfx.click);
+  playSfx(sfx.drop);
 }
 
 /* ---------- Check answers ---------- */
@@ -532,13 +538,13 @@ document.querySelectorAll('[data-target]').forEach(btn=>{
 document.querySelectorAll('.nav-btn[data-target]').forEach(btn=> btn.addEventListener('click', ()=> playSfx(sfx.click)));
 
 // start
-btnStart.addEventListener('click', ()=> { playSfx(sfx.click); startGame(); });
+btnStart.addEventListener('click', ()=> { playSfx(sfx.start); startGame(); });
 btnStart2 && btnStart2.addEventListener('click', ()=> { playSfx(sfx.click); startGame(); });
 
 // prev/next/check
-btnPrev.addEventListener('click', ()=> { playSfx(sfx.click); prevLevel(); });
-btnNext.addEventListener('click', ()=> { playSfx(sfx.click); nextLevel(); });
-btnCheck.addEventListener('click', ()=> { playSfx(sfx.click); checkAnswers(); });
+btnPrev.addEventListener('click', ()=> { playSfx(sfx.prev); prevLevel(); });
+btnNext.addEventListener('click', ()=> { playSfx(sfx.next); nextLevel(); });
+btnCheck.addEventListener('click', ()=> { playSfx(sfx.check); checkAnswers(); });
 
 // play again
 btnPlayAgain.addEventListener('click', ()=> { playSfx(sfx.click); startGame(); });

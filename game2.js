@@ -100,6 +100,14 @@ document.getElementById('btn-home').addEventListener('click', () => {
   window.location.href = 'game_menu.html';
 });
 
+document.getElementById('start-game').addEventListener('click', () => {
+  const selectedRadio = document.querySelector('input[name="difficulty"]:checked');
+  if (selectedRadio) {
+    const selectedDiff = selectedRadio.value;
+    setupGame(selectedDiff);
+    playSfx(sfx.play);
+  }},)
+
 const SCREENS = {
   menu: document.getElementById('screen-menu'),
   howto: document.getElementById('screen-howto'),
@@ -122,6 +130,8 @@ const sfx = {
   wrong: document.getElementById('sfx-wrong'),
   win:   document.getElementById('sfx-win'),
   click: document.getElementById('sfx-click'),
+  applause: document.getElementById('sfx-applause'),
+  play: document.getElementById('sfx-play'),
 };
 let soundOn = true;
 
@@ -144,7 +154,7 @@ const DIFF_MAP = {
   hard:   16,  // 8 pairs
 };
 
-let diff = 'medium';
+let diff = 'easy';
 let deck = [];
 let first = null;
 let lock = false;
@@ -179,6 +189,8 @@ function setupGame(selectedDiff){
   diff = selectedDiff || diff;
   const count = DIFF_MAP[diff];
   totalPairs = count/2;
+
+   console.log(`Game started with difficulty: ${diff} (${count} cards, ${totalPairs} pairs)`);
 
   const chosen = shuffle(ITEMS.slice()).slice(0, totalPairs);
   deck = shuffle(chosen.flatMap(item => ([
@@ -261,6 +273,7 @@ function onFlip(tile){
 function endGame(){
   clearTimer();
   playSfx(sfx.win);
+  playSfx(sfx.applause);
   const stats = document.getElementById('final-stats');
   stats.textContent = `You finished in ${formatTime(time)} with ${moves} moves (${diff.toUpperCase()}).`;
   startConfetti();

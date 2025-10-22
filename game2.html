@@ -60,19 +60,37 @@
 
   <main>
     <!-- MENU -->
-    <section id="screen-menu" class="screen active">
-      <div class="card">
-        <div style="width: 500px; max-width: fit-content;">
-        <img src="3. GAMES/photo/game2.webp" alt="Game 2" id="mainimage" ></div>
-        <h2>Welcome to the Memory Puzzle! 🚀</h2>
-        <p>Select a difficulty to start playing. Match each card pair themed around the Sun, Moon & Stars!</p>
-        <div class="difficulty">
-          <button class="btn primary" data-diff="easy">Easy (8 cards)</button>
-          <button class="btn primary" data-diff="medium">Medium (12 cards)</button>
-          <button class="btn primary" data-diff="hard">Hard (16 cards)</button>
-        </div>
+<section id="screen-menu" class="screen active">
+  <div class="card">
+    <div style="width: 500px; max-width: fit-content;">
+      <img src="3. GAMES/photo/game2.webp" alt="Game 2" id="mainimage">
+    </div>
+    <h2>Welcome to the Memory Puzzle! 🚀</h2>
+    <p>Challenge your brain in this fun memory game! Click the cards to find every matching space picture.</p>
+
+    <div class="difficulty">
+      <label class="choice">
+        <input type="radio" name="difficulty" value="easy" checked>
+        Easy (8 cards)
+      </label><br>
+
+      <label class="choice">
+        <input type="radio" name="difficulty" value="medium">
+        Medium (12 cards)
+      </label><br>
+
+      <label class="choice">
+        <input type="radio" name="difficulty" value="hard">
+        Hard (16 cards)
+      </label><br><br>
+    </div>
+      
+    <div class="actions">
+      <button id="start-game" class="btn primary">Start Game</button>
       </div>
-    </section>
+  </div>
+</section>
+
 
     <!-- HOW TO PLAY -->
     <section id="screen-howto" class="screen">
@@ -131,7 +149,7 @@
         <p id="final-stats">You completed in 00:00 with 0 moves.</p>
         <form id="save-form" class="save-form">
           <input type="text" id="player-name" placeholder="Your name" maxlength="20" required />
-          <button class="btn primary" type="submit">Save to Leaderboard</button>
+          <button class="btn primary" type="submit" style="padding: 0 20px; font-size: small;">Save to Leaderboard</button>
         </form>
         <div class="menu-actions">
           <button class="btn" id="btn-play-again">Play Again</button>
@@ -163,11 +181,13 @@
   </main>
 
   <!-- Sounds -->
-  <audio id="sfx-flip" src="3. GAMES/audio/correct.mp3" preload="auto"></audio>
+  <audio id="sfx-flip" src="3. GAMES/audio/flip.mp3" preload="auto"></audio>
   <audio id="sfx-wrong"   src="3. GAMES/audio/wrong1.mp3" preload="auto"></audio>
   <audio id="sfx-click"   src="3. GAMES/audio/click_game.mp3" preload="auto"></audio>
-  <audio id="sfx-match" src="3. GAMES/audio/game_finished.mp3" preload="auto"></audio>
-  <audio id="sfx-win" src="3. GAMES/audio/applause.mp3" preload="auto"></audio>
+  <audio id="sfx-play"   src="3. GAMES/audio/click.mp3" preload="auto"></audio>
+  <audio id="sfx-match" src="3. GAMES/audio/correct.mp3" preload="auto"></audio>
+  <audio id="sfx-applause" src="3. GAMES/audio/applause.mp3" preload="auto"></audio>
+  <audio id="sfx-win" src="3. GAMES/audio/game_finished.mp3" preload="auto"></audio>
 
   <script src="game2.js"></script>
 </body>

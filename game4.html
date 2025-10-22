@@ -67,9 +67,9 @@
     <section id="screen-menu" class="screen active">
       <div class="card">
         <div style="width: 500px; max-width: fit-content;">
-        <img src="3. GAMES/photo/game3.webp" alt="Game 1" id="mainimage" ></div>
+        <img src="3. GAMES/photo/game4.webp" alt="Game 1" id="mainimage" ></div>
         <h2>Welcome to Fill the Blanks! 🚀</h2>
-        <p>Drag the correct words into the blanks. Complete levels about the Sun, Moon & Stars — beat the timer and climb the Leaderboard!</p>
+        <p>Drag the correct words into the blanks. Beat the timer and climb the Leaderboard!</p>
         <div class="menu-actions">
           <button class="btn primary" id="btn-start">Start Game</button>
          
@@ -142,7 +142,7 @@
         <p id="final-score">You scored 0</p>
         <form id="save-form" class="save-form">
           <input type="text" id="player-name" placeholder="Your name" maxlength="20" required />
-          <button class="btn primary" type="submit">Save to Leaderboard</button>
+          <button class="btn primary" type="submit" style="font-size: small; padding:0 20px">Save to Leaderboard</button>
         </form>
         <div class="menu-actions">
           <button class="btn" data-target="menu">Menu</button>
@@ -171,6 +171,12 @@
   <audio id="sfx-click"   src="3. GAMES/audio/click_game.mp3" preload="auto"></audio>
   <audio id="sfx-finished" src="3. GAMES/audio/game_finished.mp3" preload="auto"></audio>
   <audio id="sfx-applause" src="3. GAMES/audio/applause.mp3" preload="auto"></audio>
+  <audio id="sfx-start" src="3. GAMES/audio/click.mp3" preload="auto"></audio>
+  <audio id="sfx-next" src="3. GAMES/audio/next.mp3" preload="auto"></audio>
+  <audio id="sfx-prev" src="3. GAMES/audio/previous.mp3" preload="auto"></audio>
+  <audio id="sfx-check" src="3. GAMES/audio/check.mp3" preload="auto"></audio>
+  <audio id="sfx-flip" src="3. GAMES/audio/flip.mp3" preload="auto"></audio>
+  <audio id="sfx-drop" src="3. GAMES/audio/drop.mp3" preload="auto"></audio>
 
   <script src="game4.js"></script>
 </body>

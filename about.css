@@ -238,24 +238,61 @@ body::before {
 .contrib-info span{display:block; color:var(--muted); font-size:12px}
 .contrib-actions{display:flex; gap:6px}
 
-/* Gallery Slider */
-.gallery-wrap{position:relative; margin-top:18px}
-.carousel{
-  display:grid; grid-auto-flow:column; grid-auto-columns:1fr;
-  overflow:hidden; scroll-behavior:smooth; gap:16px;
+/* journey */
+.journey-section {
+  padding: 40px 0px 80px 0;
+  text-align: center;
 }
-.carousel .slide{
-  background:#eef1f5; border:1px solid var(--line); border-radius:var(--radius); height:220px;
-  display:flex; align-items:center; justify-content:center; overflow:hidden;
+
+.gallery {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
 }
-.carousel .slide img{width:100%; height:100%; object-fit:cover}
-.carousel-btn{
-  position:absolute; top:50%; transform:translateY(-50%);
-  width:36px; height:36px; border-radius:50%; border:1px solid var(--line);
-  background:#fff; display:grid; place-items:center; cursor:pointer; box-shadow:var(--shadow);
+
+.gallery-track {
+  display: flex;
+  width: max-content;
+  animation: scrollGallery 45s linear infinite;
 }
-.gallery-prev{left:-12px}
-.gallery-next{right:-12px}
+
+.gallery-content {
+  display: flex;
+  gap: 16px;
+}
+
+.gallery img {
+  width: 400px;
+  height: max-content;
+  object-fit: cover;
+  border-radius: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.journey-section h2 {
+  margin-bottom: 60px;
+  font-size: 2rem;
+  color: white;
+}
+
+/* Smooth endless scroll */
+@keyframes scrollGallery {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* 🟢 Extra slow for very small screens */
+@media (max-width: 480px) {
+  .gallery-track {
+    animation-duration: 45s; /* extra smooth on small phones */
+  }
+}
+
 
 /* About copy */
 .about-copy p{margin:0 0 10px}
@@ -438,11 +475,6 @@ body::before {
   .nav{display:none}
   .hamburger{display:block;border: none; right:10px;}
   .foot__top{grid-template-columns:1fr}
-  .gallery-track {
-  display: flex;
-  gap: 20px;
-  animation: scroll 5s linear infinite;
-}
 }
 @media (max-width:900px){
   .intro-grid{grid-template-columns:1fr}
@@ -952,43 +984,6 @@ body {
 }
 
 
-/* journey */
-.journey-section {
-  padding: 40px 0px 80px 0;
-  text-align: center;
-}
-
-.journey-section h2 {
-  margin-bottom: 60px;
-  font-size: 2rem;
-  color: white;
-}
-
-.gallery {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.gallery-track {
-  display: flex;
-  gap: 20px;
-  animation: scroll 20s linear infinite;
-}
-
-.gallery img {
-  height: 250px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  object-fit: cover;
-}
-
-/* auto scroll animation */
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 /* Cards */
 .card{
   background: rgba(255, 255, 255, 0.05); border-radius:20px; padding:18px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(20px);border:none; transform: 0.3s;
@@ -1017,28 +1012,32 @@ body {
   text-align: center;
 }
 
-/* Blue background bar */
-.team-section::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  transform: translateY(-50%);
-  z-index: 0;
+.team-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px; /* spacing between rows */
 }
 
-/* Team Container */
-.team-container {
+/* top row (first 2 members) */
+.team-row-top,
+.team-row-bottom {
   display: flex;
   justify-content: center;
   gap: 80px;
   flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
-  align-items: flex-start; /* important for staggered alignment */
 }
+
+.team-row-top .team-member {
+  flex: 1 1 250px;
+  max-width: 300px;
+}
+
+.team-row-bottom .team-member {
+  flex: 1 1 250px;
+  max-width: 300px;
+}
+
 
 /* Staircase Effect */
 .team-member:nth-child(1) {
@@ -1112,11 +1111,6 @@ transform: translateY(-5px) scale(1.03);
   .vm__grid {
     grid-template-columns: 1fr;
   }
-  .gallery-track {
-  display: flex;
-  gap: 20px;
-  animation: scroll 10s linear infinite;
-}
 }
 
 @media (max-width: 768px) {
@@ -1132,9 +1126,4 @@ transform: translateY(-5px) scale(1.03);
   .team-section::before {
     height: 80px;
   }
-  .gallery-track {
-  display: flex;
-  gap: 20px;
-  animation: scroll 5s linear infinite;
-}
 }

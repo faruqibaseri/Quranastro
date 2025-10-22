@@ -124,6 +124,9 @@ const sfx = {
   click:   document.getElementById('sfx-click'),
   applause: document.getElementById('applause-sound'),
   finished: document.getElementById('game-finished'),
+  next: document.getElementById('sfx-next'),
+  prev: document.getElementById('sfx-prev'),
+  start: document.getElementById('sfx-start'),
 };
 let soundOn = true;
 
@@ -134,64 +137,64 @@ let timerId = null;
 
 const questions = [
   {
-    q: "Which star is closest to Earth?",
-    options: ["Sirius", "Sun", "Alpha Centauri", "Betelgeuse"],
+    q: "Which chapter (Surah) of the Qur'an mentions the phases of the Moon, stating that it returns to look like an old dried date-stalk?",
+    options: ["Surah Al-Fussilat", "Surah Yasin", "Surah Al-A'raf", "Surah Az-Zumar"],
     answer: 1,
-    info: "The Sun is a G2V class star and the main energy source of the solar system."
+    info: "Surah Yasin mentions the phases of the Moon, describing how it changes shape until it looks like an old curved date stalk."
   },
   {
-    q: "Why does the Moon appear bright at night?",
-    options: ["The Moon produces its own light", "The Moon reflects sunlight", "The Moon absorbs light from other stars", "Earth's atmosphere emits light"],
-    answer: 1,
-    info: "The Moon's surface reflects sunlight—average albedo ~0.12."
-  },
-  {
-    q: "What phase is the Moon when the side facing Earth is completely dark?",
-    options: ["Full Moon", "First Quarter", "New Moon", "Waning Moon"],
+    q: "According to the Qur'an, which celestial body produces its own light (Ḍiyā’)?",
+    options: ["The Moon", "The Stars", "The Sun", "The Earth"],
     answer: 2,
-    info: "A New Moon occurs when the Moon is between Earth and the Sun."
+    info: "The Sun produces its own light (ḍiyā’) and is the main source of light and energy for the solar system."
   },
   {
-    q: "Which planet has the shortest day (fastest rotation)?",
-    options: ["Earth", "Jupiter", "Mars", "Uranus"],
+    q: "The phenomenon of Day and Night is a result of the Earth doing what?",
+    options: ["Orbiting the Sun", "Rotating on its axis", "Moving towards the Hercules constellation", "Moving towards the center of the Milky Way"],
     answer: 1,
-    info: "Jupiter rotates ~9 hours 56 minutes per rotation."
+    info: "The Earth rotates on its axis, causing the change between day and night."
   },
   {
-    q: "Which constellation contains Polaris (the North Star)?",
-    options: ["Ursa Minor", "Orion", "Scorpius", "Lyra"],
-    answer: 0,
-    info: "Polaris is the brightest star in Ursa Minor (Little Dipper)."
-  },
-  {
-    q: "What is the outermost layer of the Sun?",
-    options: ["Photosphere", "Chromosphere", "Corona", "Convection Zone"],
+    q: "The Qur'an states that the Sun and the Moon were created to help humans determine what?",
+    options: ["The speed of light", "The colour spectrum", "The number of years and calculations (time)", "The structure of the Earth"],
     answer: 2,
-    info: "The corona is extremely hot (millions of K) and visible during total eclipses."
+    info: "The Sun and the Moon help humans determine the number of years and measure time for calendars and calculations."
   },
   {
-    q: "The Moon orbits Earth approximately every…",
-    options: ["7 days", "14 days", "27.3 days", "40 days"],
+    q: "The Moon is described as having 'Nūr' (sinaran/light). What does Nūr refer to?",
+    options: ["Light produced by nuclear fusion", "Light that pierces space", "Reflected light from an object that does not burn", "Light that causes shadows"],
     answer: 2,
-    info: "The Moon's sidereal period ~27.3 days; synodic period (between full moons) ~29.5 days."
+    info: "Nūr refers to reflected light that comes from an object which does not produce its own light."
   },
   {
-    q: "A 'meteor' occurs when…",
-    options: ["A comet explodes in space", "A meteoroid enters Earth's atmosphere", "Asteroids collide", "A star runs out of fuel"],
+    q: "The Tafsir Munir mentions that the specific paths/stations (manāzil) that the Moon travels through total how many?",
+    options: ["Six", "Twelve", "Twenty-eight", "One hundred"],
+    answer: 2,
+    info: "The Moon passes through twenty-eight (28) stations or phases in its monthly orbit around the Earth."
+  },
+  {
+    q: "The Arabic word 'Yukawwiru' (يُكَوِّرُ) used to describe the Day and Night coiling over each other (Az-Zumar: 5) subtly hints at the Earth having what shape?",
+    options: ["Flat", "Cone-shaped", "Square", "Spherical (or round)"],
+    answer: 3,
+    info: "The word “Yukawwiru” suggests that the Earth is spherical (round), as day and night wrap around it like a ball."
+  },
+  {
+    q: "Which term is used in the Qur'an to describe a star that 'pierces (with its light)'?",
+    options: ["Al-Falak (The Orbit)", "An-Najm ath-Thāqib (The Piercing Star)", "Al-Qamar (The Moon)", "As-Sabḥ (The Swimming)"],
     answer: 1,
-    info: "Meteoroids burn up in the atmosphere—we see them as 'shooting stars'."
+    info: "The term An-Najm ath-Thāqib means “The Piercing Star”, describing a star whose light shines brightly through darkness."
   },
   {
-    q: "Which object is NOT a star?",
-    options: ["Sirius", "Sun", "Jupiter", "Vega"],
+    q: "What is the main function of the Night as described in the Qur'an?",
+    options: ["Time for work", "Time for seeking knowledge", "Time for travel", "Time for rest and tranquility"],
+    answer: 3,
+    info: "The Night is described as a time for rest and tranquility, allowing living beings to recover energy and find peace."
+  },
+  {
+    q: "The phrase ‘كُلٌّ فِي فَلَكٍ يَسْبَحُونَ’ (Al-Anbiya: 33) states that the Sun, Moon, and other celestial bodies are each doing what in their orbits (falak)?",
+    options: ["Standing still", "Rotating", "Floating/moving in their own orbits", "Cooling down"],
     answer: 2,
-    info: "Jupiter is a gas giant planet, not a star."
-  },
-  {
-    q: "What is the name of the galaxy we live in?",
-    options: ["Andromeda", "Milky Way", "Sombrero", "Whirlpool"],
-    answer: 1,
-    info: "Our solar system is located in the Orion Arm of the Milky Way Galaxy."
+    info: "The Sun, Moon, and other celestial bodies are described as moving in their own orbits, each following a precise and balanced path."
   }
 ];
 
@@ -283,6 +286,7 @@ function tick(){
     opts.forEach(o => o.classList.add('disabled'));
     opts[q.answer].classList.add('correct');
     infoEl.textContent = '⏱️ Time\'s up! Answer: ' + q.options[q.answer] + '. ' + q.info;
+    playSfx(sfx.wrong),
     clearTimer();
   }
 }
@@ -414,12 +418,12 @@ document.querySelectorAll('.nav-btn[data-target]').forEach(btn=>{
 });
 
 // Start buttons
-document.getElementById('btn-start').addEventListener('click', ()=>{ playSfx(sfx.click); startQuiz(); });
-document.getElementById('btn-start-2').addEventListener('click', ()=>{ playSfx(sfx.click); startQuiz(); });
+document.getElementById('btn-start').addEventListener('click', ()=>{ playSfx(sfx.start); startQuiz(); });
+document.getElementById('btn-start-2').addEventListener('click', ()=>{ playSfx(sfx.start); startQuiz(); });
 
 // Prev/Next
-document.getElementById('btn-next').addEventListener('click', ()=>{ playSfx(sfx.click); nextQuestion(); });
-document.getElementById('btn-prev').addEventListener('click', ()=>{ playSfx(sfx.click); prevQuestion(); });
+document.getElementById('btn-next').addEventListener('click', ()=>{ playSfx(sfx.next); nextQuestion(); });
+document.getElementById('btn-prev').addEventListener('click', ()=>{ playSfx(sfx.prev); prevQuestion(); });
 
 // Retry
 document.getElementById('btn-retry').addEventListener('click', ()=>{ playSfx(sfx.click); startQuiz(); stopGameFinishedSound(); stopConfetti(); stopApplauseSound});

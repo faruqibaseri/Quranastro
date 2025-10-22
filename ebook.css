@@ -330,7 +330,10 @@ body.dark .date {
 }
 
 .post a {
-color:var(--bpPrimary-200);
+color:var(--bpPrimary-200); text-decoration: none;
+}
+.post h3 {
+  color: white;
 }
 
 .post img {
@@ -338,6 +341,14 @@ color:var(--bpPrimary-200);
   border-radius: 6px;
   margin-bottom: 10px;
 }
+
+.post-button{  
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+  padding:10px 0; border-radius:10px; border:1px solid transparent;
+  font-weight:700; cursor:pointer; transition:all .25s ease; }
+
+.card-meta{display:flex; gap:10px; color:#8f8f8f; margin: 10px 0 10px;}
+
 
 /* Animations */
 @keyframes fadeIn {

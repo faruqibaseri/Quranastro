@@ -122,7 +122,8 @@ const sfx = {
   select: document.getElementById('sfx-select'),
   found:  document.getElementById('sfx-found'),
   win:    document.getElementById('sfx-win'),
-  finish: document.getElementById('sfx-finished')
+  finish: document.getElementById('sfx-finished'),
+  click: document.getElementById('sfx-click'),
 };
 // soundOn is initialized at the top of the script
 
@@ -143,9 +144,9 @@ document.querySelectorAll('[data-screen]').forEach(btn=>{
 
 /* ====== Game Data ====== */
 const WORDS_BASE = [
-  "SUN","MOON","STAR","STARS","ORBIT","COMET",
-  "PLANET","GALAXY","NEBULA","ECLIPSE","ASTRO","LIGHT",
-  "SOLAR","LUNAR","AURORA","COSMOS"
+  "CELESTIAL","CRESCENT","GRAVITY","ECLIPSE","MANAZIL","SPHERICAL",
+  "AXIS","ORBIT","HEAT","HELIUM","ASTRO","LIGHT",
+  "SOLAR","LUNAR","NEUTRON","QUASARS"
 ];
 
 const LEVELS = {
@@ -183,7 +184,7 @@ function start(){
   gridSize = LEVELS[level].size;
   levelLabel.textContent = level.charAt(0).toUpperCase() + level.slice(1);
   found.clear();
-  playSound(sfx.found);
+  playSound(sfx.click);
   words = pickWords(WORDS_BASE, LEVELS[level].pick);
   grid = buildGrid(gridSize, words);
   renderGrid(grid);
