@@ -274,7 +274,7 @@ box-shadow:var(--shadow);transform: translateY(-5px);transform: scale(1.05);
 .item {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
     padding: 16px;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
