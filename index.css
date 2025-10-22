@@ -227,7 +227,7 @@ body::before {
 .hero__text {position: relative; bottom: 40px;}
 .hero__grid{display:grid; grid-template-columns:1.1fr .9fr; gap:30px; padding:0px 0 28px; margin-left: 100px;}
 .hero__title{font-size:50px; margin:0px 0 10px; line-height: 95px; color: white;}
-.hero__title span{font-family: "Android Assassin"; color:#0031c5 ;font-weight: 400;font-size: 80px; -webkit-text-stroke-width: thin; -webkit-text-stroke-color: white;}
+.hero__title span{font-family: "Android Assassin"; color:#0031c5 ;font-weight: 400;font-size: 100px; -webkit-text-stroke-width: thin; -webkit-text-stroke-color: white;}
 .hero__lead{color:white; margin:0 0 18px; font-size: 15px;}
 .hero__cta {padding-top: 20px;}
 
@@ -310,7 +310,7 @@ body::before {
 .features__grid{display:grid; gap:18px; grid-template-columns:repeat(3, 1fr)}
 .feature{background:rgba(255, 255, 255, 0.05); border-radius:20px; padding:20px 14px;box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);backdrop-filter: blur(20px);}
 .feature__img, .ph-card{height:200px; border-radius:20px; display:grid; place-items:center; color:#7b8093}
-.feature__img, .ph-card :hover{transform: translateY(-5px);}
+.feature__img, .ph-card:hover{transform: translateY(-5px);}
 .feature h4 {margin:10px 0 6px; transition: transform 0.3s; color: var(--bpPrimary-300);}
 .feature h4:hover{transform: translateY(-5px);}
 .feature p{color:white; margin:0; transition: transform 0.3s;}
@@ -465,7 +465,7 @@ align-content: center;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
   }
   
-  .feature h4:hover, .feature p:hover, .content :hover {
+  .feature h4:hover, .feature p:hover, .content:hover {
     transform: none !important;
   }
   
@@ -482,7 +482,7 @@ align-content: center;
   .stats__grid{grid-template-columns:1fr 1fr}
   .foot__top{grid-template-columns:1fr}
   .hero__title{font-size:50px; line-height: 70px;}
-  .hero__title span{font-size: 67px;}
+  .hero__title span{font-size: 80px;}
   .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
 }
 
@@ -490,7 +490,7 @@ align-content: center;
   .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
   .hero__title{font-size:30px; line-height: 45px;}
   .hero__lead{font-size:12px;}
-  .hero__title span{font-size: 36px;}
+  .hero__title span{font-size: 45px;}
   .features__grid{grid-template-columns:1fr}
   .stats__grid{grid-template-columns:1fr}
 }
@@ -590,7 +590,7 @@ align-content: center;
     .hero__grid{grid-template-columns:1fr; margin-left: 0px;}
       .hero__title{font-size:20px; line-height: 45px;}
   .hero__lead{font-size:15px;}
-  .hero__title span{font-size: 35px;}
+  .hero__title span{font-size: 40px;}
   .topbar {width: max-content;}
   .center {place-content: center;}
   }

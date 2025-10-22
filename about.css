@@ -475,6 +475,18 @@ body::before {
   .nav{display:none}
   .hamburger{display:block;border: none; right:10px;}
   .foot__top{grid-template-columns:1fr}
+    .supervisor {
+    flex-direction: column;
+    max-width: 300px;
+  }
+
+  .supervisor .member-photo img {
+    height: auto;
+  }
+
+  .member-info {
+    text-align: center;
+  }
 }
 @media (max-width:900px){
   .intro-grid{grid-template-columns:1fr}
@@ -487,14 +499,49 @@ body::before {
   .carousel-btn{display:none} /* swipe on mobile */
   .footer-grid{grid-template-columns:1fr}
   .footer-links{grid-template-columns:1fr 1fr}
+    .supervisor {
+    flex-direction: column;
+  }
+
+  .supervisor .member-photo img {
+    height: auto;
+  }
+
+  .member-info {
+    text-align: center;
+  }
 }
 @media (max-width: 480px) {
     .topbar__inner{width: max-content;}
+      .supervisor {
+    flex-direction: column;
+  }
+
+  .supervisor .member-photo img {
+    height: auto;
+  }
+
+  .member-info {
+    text-align: center;
+  }
   }
       @media (max-width: 344px) {
   .topbar {width: max-content;}
+    .supervisor {
+    flex-direction: column;
   }
 
+  .supervisor .member-photo img {
+    height: auto;
+  }
+
+  .member-info {
+    text-align: center;
+  }
+  }
+
+
+  
 /* About Us */
 .arch_contact_us_duplicate * {
   font-family: Nunito, sans-serif;
@@ -1026,6 +1073,7 @@ body {
   justify-content: center;
   gap: 80px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .team-row-top .team-member {
@@ -1066,6 +1114,58 @@ body {
 transform: translateY(-5px) scale(1.03);
 }
 
+.supervisor {
+  display: flex;
+  align-items: stretch; /* make both sides equal height */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  transition: transform 0.3s;
+  max-width: 800px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+.supervisor:hover {
+  transform: scale(1.03);
+}
+
+/* Image side */
+.supervisor .member-photo {
+  flex: 1; /* image takes equal space height-wise */
+  display: flex;
+  align-items: stretch;
+}
+
+.supervisor .member-photo img {
+  width: 100%; /* image fully fills left side width */
+  height: 100%; /* ensures full height coverage */
+  object-fit: cover;
+  display: block;
+}
+
+/* Info side */
+.member-info {
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.member-info h3 {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.role {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+
 .member-photo img {
   width: 100%;
   height: auto;
@@ -1105,9 +1205,6 @@ transform: translateY(-5px) scale(1.03);
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .team-container {
-    gap: 30px;
-  }
   .vm__grid {
     grid-template-columns: 1fr;
   }
