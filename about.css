@@ -487,6 +487,19 @@ body::before {
   .member-info {
     text-align: center;
   }
+
+  .member-info h3{
+    text-align: center;
+  }
+
+  .role {
+    text-align: center;
+  }
+
+  .social-links{
+    margin: 0 auto;
+  }
+
 }
 @media (max-width:900px){
   .intro-grid{grid-template-columns:1fr}
