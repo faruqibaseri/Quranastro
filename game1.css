@@ -223,7 +223,7 @@ padding: 20px;
 /* Buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  padding:10px 16px; border-radius:10px; background: rgba(255, 255, 255, 0.05);
+  padding:10px 16px; border-radius:10px; background-color: rgba(255, 255, 255, 0.05);
   text-decoration:none; font-weight:600;color: white;border: none;
   transition:transform 0.3s, box-shadow 0.3s; justify-self: center; cursor: pointer;;backdrop-filter: blur(20px);
 }
@@ -242,7 +242,7 @@ padding: 20px;
 /* HUD */
 .hud{
   display:grid; grid-template-columns: 120px 1fr repeat(2,120px);
-  align-items:center; gap:14px; margin-bottom:14px; background: rgba(255, 255, 255, 0.05);
+  align-items:center; gap:14px; margin-bottom:14px; background-color: rgba(255, 255, 255, 0.05);
 border-radius: 20px;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 backdrop-filter: blur(20px);
