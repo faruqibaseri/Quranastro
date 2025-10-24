@@ -256,7 +256,6 @@ main {
     background: rgba(255, 255, 255, 0.05);
     transition: .2s;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(20px);
 }
 
 .btn:hover {
@@ -367,7 +366,6 @@ main {
 .sentence-container {
     background: rgba(255, 255, 255, 0.05);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(20px);
     border-radius: 12px;
     padding: 18px;
     border:1px solid #8d8d8d;

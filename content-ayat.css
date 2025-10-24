@@ -242,7 +242,7 @@ details summary{cursor:pointer;color:var(--accent-2);font-weight:600}
 
 /* tabs */
 .tabs{display:grid;grid-auto-flow: column; gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.tab{flex:1 1 160px;padding:10px;border-radius:20px;border:none;background: rgba(255, 255, 255, 0.05);cursor:pointer;font-weight:600;color:white;text-align:center;box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);backdrop-filter: blur(20px);}
+.tab{flex:1 1 160px;padding:10px;border-radius:20px;border:none;background: rgba(255, 255, 255, 0.05);cursor:pointer;font-weight:600;color:white;text-align:center;box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);}
 .tab.active{background:var(--bpPrimary-500);color:#fff}
 
 /* tabpanel */
