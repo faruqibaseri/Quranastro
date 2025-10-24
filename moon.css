@@ -38,7 +38,7 @@ body::before {
 
 img{display:block; max-width:100%; height:auto}
 img#qrImage {display:block; max-width:100%;}
-.media{max-width: fit-content; max-height: fit-content; width: 400px; padding: 10px; padding-bottom: 0px; margin: 0 auto;}
+.media{max-width: fit-content; max-height: fit-content; width: 400px; padding: 10px; padding-bottom: 0px; margin: 0 auto; }
 .container{width:min(1200px,92vw); margin-inline:auto}
 
 .wrap{max-width:1140px; margin:auto; padding:0 3%}
@@ -295,7 +295,7 @@ img#qrImage {display:block; max-width:100%;}
 /* ========= Featured */
 .section{padding:34px 0}
 .featured-card{
-  display:grid; grid-template-columns: 1fr 1.3fr; gap:40px; background: rgba(255, 255, 255, 0.05); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(20px); padding:16px;justify-self: center;
+  display:grid; grid-template-columns: 1fr 1.3fr; gap:40px; background: rgba(255, 255, 255, 0.05); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); backdrop-filter: blur(20px); padding:16px;justify-self: center; max-width: fit-content;
 }
 
 .content {align-content:center; max-width: 500px;}
