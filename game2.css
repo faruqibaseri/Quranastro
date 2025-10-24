@@ -204,7 +204,6 @@ padding: 20px;}
 
 /* Card */
 .card{
-  justify-items:center;
   padding:20px;
 }
 .menu-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; justify-content: center;}
