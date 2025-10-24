@@ -169,7 +169,7 @@ display: flex;
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 1203px) {
   .nav.top-nav {
     display: none;
   }
@@ -268,7 +268,7 @@ main {
     color: var(--text)
 }
 
-.btn.primary{background: linear-gradient(180deg, #5b84ff, #3866ff);color: #fff;width: 130px;height: 50px;border-color: #3866ff;font-size: medium;
+.btn.primary{background: linear-gradient(180deg, #5b84ff, #3866ff);color: #fff;height: 50px;border-color: #3866ff;font-size: medium;
 }
 
 .btn.danger {
@@ -312,7 +312,6 @@ main {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(20px);
     padding: 20px;
 }
 

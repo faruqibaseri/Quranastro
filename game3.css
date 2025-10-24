@@ -161,7 +161,7 @@ display: flex;
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 1203px) {
   .nav.top-nav {
     display: none;
   }
@@ -253,7 +253,7 @@ main{max-width:1100px; margin:0 auto; padding:22px}
 .panel h3{margin:0 0 8px}
 .word-list{list-style:none; padding:0; margin:0; display:grid; gap:6px; width: 200px;}
 .word-list li{
-  padding:8px 10px; border-radius:10px;background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
+  padding:8px 10px; border-radius:10px;background: rgba(255, 255, 255, 0.05);
   display:flex; justify-content:space-between; align-items:center; font-weight:700;
 }
 .word-list li.done{background:#e7fff4; border-color:#baf5df; color:#065f46}
