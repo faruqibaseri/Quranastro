@@ -235,6 +235,7 @@ main {
 .card {
   justify-items:center;
   padding: 20px;
+  place-items: center;
 }
 
 .menu-actions {
