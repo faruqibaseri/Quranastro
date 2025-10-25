@@ -1,20 +1,20 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Games - QuranAstro</title>
+  <title>Ebook - AstronoVerse</title>
   <link rel="icon" type="image/png" href="1. HOMEPAGE/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
   <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-  <link rel="stylesheet" href="game_menu.css">
+  <link rel="stylesheet" href="ebook.css" />
 </head>
+
 <body>
 
   <!-- Top Navigation -->
@@ -68,49 +68,64 @@
 </nav>
   </header>
 
-  <!-- 🌌 Background Stars -->
-  <canvas id="stars"></canvas>
 
-  <!-- 🌌 Header -->
-  <div class="header1 reveal">
-    <h1>🎮 Game Showcase</h1>
-    <p>Discover top-rated games across genres</p>
-  </div>
+  <!-- Main Article -->
+  <article class="container">
+    <h1 class="title">Title</h1>
 
-<!-- 🌌 Games Section -->
-<section class="games-container reveal">
-  <div class="game-card">
-    <a onclick="playAndRedirect('game1.html')">
-    <img src="3. GAMES/photo/game1.webp" alt="Quiz Challenge">
-    <h2>Quiz Challenge</h2>
-    <p>Answer fun questions about outer space and the Al-Quran!</p> </br>
-    <button class="play-btn" onclick="playAndRedirect('game1.html')">▶ Play</button></a>
-  </div>
+    <div class="content">
+      <div class="text">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <div class="highlight">
+          🌟 "This is an important quote or highlight from the eBook."
+        </div>
+        <ul>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Lorem ipsum dolor sit amet</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      </div>
 
-  <div class="game-card">
-    <a onclick="playAndRedirect('game2.html')">
-    <img src="3. GAMES/photo/game2.webp" alt="Memory Puzzle">
-    <h2>Memory Puzzle</h2>
-    <p>Flip, match, and have fun with space pics!</p> </br>
-    <button class="play-btn" onclick="playAndRedirect('game2.html')">▶ Play</button></a>
-  </div>
+      <div class="image">
+        <img src="4. E-BOOK/photo/ebook.webp" alt="ebook image">
+      </div>
+    </div>
 
-  <div class="game-card">
-    <a onclick="playAndRedirect('game3.html')">
-    <img src="3. GAMES/photo/game3.webp" alt="Word Search">
-    <h2>Word Search</h2>
-    <p>Hunt for space words and feel like an explorer!</p> </br>
-    <button class="play-btn" onclick="playAndRedirect('game3.html')">▶ Play</button></a>
-  </div>
+    <p class="category">Category</p>
+    <p class="date">Date</p>
 
-  <div class="game-card">
-    <a onclick="playAndRedirect('game4.html')">
-    <img src="3. GAMES/photo/game4.webp" alt="Fill in the Blanks">
-    <h2>Fill in the blanks</h2>
-    <p>Guess the missing words and learn cool facts!</p> </br>
-    <button class="play-btn" onclick="playAndRedirect('game4.html')">▶ Play</button></a>
-  </div>
-</section>
+    <div class="actions">
+      <button id="likeBtn">👍 Like</button>
+      <span id="likeCount">0 likes</span>
+    </div>
+
+
+    <!-- Related Posts -->
+    <section class="related-posts">
+      <h2>Related posts</h2>
+      <div class="posts">
+        <div class="post">
+          <a href="the-phenomenon-of-day-and-night.html"><img src="2. EXPLORE/photo/the phenomenon of day and night.webp" alt="">
+          <h3 style="margin: 10px 0 0;">The Phenomenon of Day and Night</h3>
+          <div class="card-meta"><span>Surah Al-A’raf</span>·<span>Verse 54</span></div></a>
+          <a href="the-phenomenon-of-day-and-night.html" class="post-button">Read more →</a>
+        </div>
+        <div class="post">
+          <a href="the-movement-of-the-moon.html"><img src="2.1 MOON/photo/The Movement of the Moon.webp" alt="">
+          <h3 style="margin: 10px 0 0;">The Movement of the Moon</h3>
+          <div class="card-meta"><span>Surah Ash-Shams</span>·<span>Verse 2</span></div></a>
+          <a href="the-movement-of-the-moon.html" class="post-button">Read more →</a>
+        </div>
+        <div class="post">
+          <a href="the-sun-as-the-determiner-of-shadows.html"><img src="2.2 SUN/photo/The Sun as the Determiner of Shadows.webp" alt="">
+          <h3 style="margin: 10px 0 0;">The Sun as the Determiner of Shadows</h3>
+          <div class="card-meta"><span>Surah Al-Furqan</span>·<span>Verse 45</span></div></a>
+          <a href="the-sun-as-the-determiner-of-shadows.html" class="post-button">Read more →</a>
+        </div>
+      </div>
+    </section>
+  </article>
 
 
   <!-- Footer -->
@@ -137,14 +152,12 @@
     </div>
 
     <div class="wrap foot__bottom">
-      <small style="color: #ededed;">© <span id="year"></span> QuranAstro. All rights reserved.</small></div>
+      <small style="color: #ededed;">© <span id="year"></span> AstronoVerse. All rights reserved.</small></div>
   </footer>
 
   <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
 
-  <!-- 🌌 Sound Effect -->
-  <audio id="clickSound" src="3. GAMES/audio/click.mp3"></audio>
-
-  <script src="game_menu.js"></script>
+  <script src="ebook.js"></script>
 </body>
+
 </html>
