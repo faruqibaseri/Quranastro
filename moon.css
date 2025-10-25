@@ -406,7 +406,7 @@ img#qrImage {display:block; max-width:100%;}
 
 #quoteText {
   text-align: justify;
-  min-height: max-content;
+  min-height: fit-content;
   height: 50px;
 }
 
