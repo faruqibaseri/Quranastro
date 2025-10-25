@@ -321,7 +321,6 @@ body.dark .date {
   padding: 15px;
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(20px);
   cursor: pointer;
 }
 
