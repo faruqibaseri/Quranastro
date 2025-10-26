@@ -138,3 +138,5 @@ fullscreenBtn.addEventListener("click", function (e) {
     setTimeout(() => overlay.remove(), 300);
   });
 });
+
+setInterval(() => showSlide(currentSlide + 1), 4000);
