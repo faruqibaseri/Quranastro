@@ -1,13 +1,3 @@
-let likeCount = 0;
-const likeBtn = document.getElementById("likeBtn");
-const likeCountSpan = document.getElementById("likeCount");
-
-// Like Button
-likeBtn.addEventListener("click", () => {
-  likeCount++;
-  likeCountSpan.textContent = `${likeCount} likes`;
-});
-
 (function(){
   const yearEl = document.getElementById('year');
   if(yearEl) yearEl.textContent = new Date().getFullYear();

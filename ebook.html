@@ -130,10 +130,10 @@
     <p class="card-meta">Category : Islamic Science & Education, Qur’anic Studies and Astronomy, Islamic Astronomy Education</p>
     <p class="card-meta">Date : TBD</p>
 
-    <div class="actions">
-      <button id="likeBtn">👍 Like</button>
-      <span id="likeCount">0 likes</span>
-    </div>
+<div class="actions">
+  <button id="likeBtn">👍 Like</button>
+  <span id="likeCount">Loading...</span>
+</div>
 
 
     <!-- Related Posts -->
@@ -194,29 +194,76 @@
 
   <script src="ebook.js"></script>
    <script>
-    const { createClient } = supabase;
-    const SUPABASE_URL = "https://vosdeszexfquhrzrqtxh.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvc2Rlc3pleGZxdWhyenJxdHhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk2NjA4OTcsImV4cCI6MjA3NTIzNjg5N30.MjH2e1vaxnOmW5GgcofDiEhpcmso4PbDE5PxTlk3b5w";
+  const { createClient } = supabase;
+  const SUPABASE_URL = "https://vosdeszexfquhrzrqtxh.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvc2Rlc3pleGZxdWhyenJxdHhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk2NjA4OTcsImV4cCI6MjA3NTIzNjg5N30.MjH2e1vaxnOmW5GgcofDiEhpcmso4PbDE5PxTlk3b5w";
 
-    const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  // ✅ Correct client
+  const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    document.getElementById("subscribe").addEventListener("submit", async (e) => {
-      e.preventDefault();
+  // 📩 Handle email subscription
+  document.getElementById("subscribe").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value;
 
-      const { error } = await db.from("subscribe").insert([
-        { email }
-      ]);
+    const { error } = await db.from("subscribe").insert([{ email }]);
 
-      if (error) {
-        alert("Error: " + error.message);
-        console.error(error);
-      } else {
-        alert("🌙 Thank you! Stay tuned for the latest QuranAstro eBook updates😊");
-        document.getElementById("subscribe").reset();
-      }
-    });
+    if (error) {
+      alert("Error: " + error.message);
+      console.error(error);
+    } else {
+      alert("🌙 Thank you! Stay tuned for the latest QuranAstro eBook updates 😊");
+      document.getElementById("subscribe").reset();
+    }
+  });
+
+  // 👍 Like system
+  const likeBtn = document.getElementById("likeBtn");
+  const likeCount = document.getElementById("likeCount");
+
+  async function getLikes() {
+    const { data, error } = await db
+      .from('likes')
+      .select('count')
+      .eq('id', 1)
+      .single();
+
+    if (error) {
+      console.error('Error getting likes:', error);
+      likeCount.textContent = 'Error loading';
+    } else {
+      likeCount.textContent = `${data.count} likes`;
+    }
+  }
+
+  async function addLike() {
+    const { data, error } = await db
+      .from('likes')
+      .select('count')
+      .eq('id', 1)
+      .single();
+
+    if (error) return console.error('Error fetching count:', error);
+
+    const newCount = data.count + 1;
+
+    const { error: updateError } = await db
+      .from('likes')
+      .update({ count: newCount })
+      .eq('id', 1);
+
+    if (updateError) {
+      console.error('Error updating:', updateError);
+    } else {
+      likeCount.textContent = `${newCount} likes`;
+    }
+  }
+
+  likeBtn.addEventListener('click', addLike);
+
+  getLikes();
+
   </script>
 </body>
 
