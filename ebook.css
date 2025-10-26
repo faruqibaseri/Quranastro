@@ -312,7 +312,7 @@ body::before {
 #fullscreenOverlay.show img {
   transform: scale(1);
   width: fit-content;
-  height: fit-content;
+  height: auto;
 }
 
 
