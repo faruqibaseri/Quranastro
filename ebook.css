@@ -353,7 +353,7 @@ body::before {
         max-width: fit-content;
     }
     .cta-form input
-    {max-width: fit-content;}
+    {width: fit-content;}
   }
 
 
