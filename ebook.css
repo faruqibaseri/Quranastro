@@ -350,7 +350,11 @@ body::before {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
-    }}
+        max-width: fit-content;
+    }
+    .cta-form input
+    {max-width: fit-content;}
+  }
 
 
 /* Highlight Box */
