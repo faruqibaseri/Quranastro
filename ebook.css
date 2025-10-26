@@ -329,8 +329,8 @@ body::before {
 
 /* ========= CTA */
 .cta-box{
-  display:flex; justify-content:space-between; align-items:center; gap:18px; background: rgba(255, 255, 255, 0.05); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  padding:16px 18px; margin-bottom: 40px;
+  display:grid; justify-content:space-between; align-items:center; gap:18px; background: rgba(255, 255, 255, 0.05); border-radius: 20px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  padding:16px 18px; margin-bottom: 40px; grid-template-columns: repeat(2,1fr);
 }
 .cta-form{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
 .cta-form input{
@@ -350,6 +350,7 @@ body::before {
         flex-direction: column;
         align-items: flex-start;
         width: 100%;
+        grid-template-columns: auto;
     }}
 
 
