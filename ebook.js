@@ -1,7 +1,6 @@
 let likeCount = 0;
 const likeBtn = document.getElementById("likeBtn");
 const likeCountSpan = document.getElementById("likeCount");
-const darkModeToggle = document.getElementById("darkModeToggle");
 
 // Like Button
 likeBtn.addEventListener("click", () => {
@@ -57,5 +56,57 @@ document.querySelectorAll(".mobile__toggle").forEach(btn => {
   btn.addEventListener("click", () => {
     const parent = btn.parentElement;
     parent.classList.toggle("open");
+  });
+});
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.image img');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(index) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = index;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+
+const images = document.querySelectorAll(".image img");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+// Function to show a specific image
+function showSlide(index) {
+  images.forEach((img, i) => {
+    img.classList.toggle("active", i === index);
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
+  currentSlide = index;
+}
+
+// Fullscreen functionality
+fullscreenBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const activeImage = document.querySelector(".image img.active");
+  if (!activeImage) return;
+
+  const overlay = document.createElement("div");
+  overlay.id = "fullscreenOverlay";
+
+  const img = activeImage.cloneNode();
+  overlay.appendChild(img);
+
+  document.body.appendChild(overlay);
+
+  requestAnimationFrame(() => {
+    overlay.classList.add("show");
+  });
+
+  overlay.addEventListener("click", function () {
+    overlay.classList.remove("show");
+    setTimeout(() => overlay.remove(), 300);
   });
 });

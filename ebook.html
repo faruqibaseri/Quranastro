@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
   <link rel="stylesheet" href="ebook.css" />
 </head>
@@ -71,29 +72,62 @@
 
   <!-- Main Article -->
   <article class="container">
-    <h1 class="title">Title</h1>
+    <h1 class="title">QuranAstro E-Book</h1>
+    <p class="card-meta">By: Prof. Madya Dr. Mohamed Akhiruddin bin Ibrahim </p>
 
     <div class="content">
       <div class="text">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <p>Get our exclusive QuranAstro e-Book now! This e-book examines the relationship between Qur’anic verses and contemporary astronomical knowledge with deeper explanations to promote a deeper understanding of the creation of Allah SWT.</p>
         <div class="highlight">
-          🌟 "This is an important quote or highlight from the eBook."
+          🌟 "Indeed, in the creation of the heavens and the earth and the alternation of the day and night there are signs for people of reason. — Al-Qur’an 3:190"
         </div>
+        <p>About this book</p>
         <ul>
-          <li>Lorem ipsum dolor sit amet</li>
-          <li>Consectetur adipiscing elit</li>
-          <li>Lorem ipsum dolor sit amet</li>
+          <li>Publisher : TBD</li>
+          <li>Total Pages : TBD </li>
+          <li>Language : Malay</li>
+          <li>Formats : E-book</li>
         </ul>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        
       </div>
 
-      <div class="image">
-        <img src="4. E-BOOK/photo/ebook.webp" alt="ebook image">
-      </div>
+
+      
+
+<div class="image-slider"> 
+  <div class="image" id="fullscreenBtn" aria-hidden="true">
+    <img src="4. E-BOOK/photo/ebook.webp" alt="ebook image" class="active">
+    <img src="4. E-BOOK/photo/toc1.webp" alt="ebook image">
+    <img src="4. E-BOOK/photo/toc2.webp" alt="ebook image">
+    <img src="4. E-BOOK/photo/toc3.webp" alt="ebook image">
+  </div>
+
+  <div class="dots">
+    <span class="dot active" onclick="showSlide(0)"></span>
+    <span class="dot" onclick="showSlide(1)"></span>
+    <span class="dot" onclick="showSlide(2)"></span>
+    <span class="dot" onclick="showSlide(3)"></span>
+  </div>
+</div>
     </div>
 
-    <p class="category">Category</p>
-    <p class="date">Date</p>
+
+      <!-- ===== Newsletter CTA ===== -->
+  <section class="cta section">
+    <div class="cta-box reveal">
+      <div>
+        <h3>Don't Miss an Update!</h3>
+        <p>Stay updated with the latest QuranAstro eBook news and releases.</p>
+      </div>
+      <form id="subscribe" class="cta-form" aria-label="Newsletter subscription" name="subscribe">
+        <input type="email" placeholder="Your email" aria-label="Email" name="email" id="email" required />
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+        <span class="note" id="subNote" role="status" aria-live="polite"></span>
+      </form>
+    </div>
+  </section>
+    <p class="category">Category : Islamic Science & Education, Qur’anic Studies and Astronomy, Islamic Astronomy Education</p>
+    <p class="date">Date : TBD</p>
 
     <div class="actions">
       <button id="likeBtn">👍 Like</button>
@@ -158,6 +192,31 @@
   <button id="toTop" class="toTop" aria-label="Back to top">↑</button>
 
   <script src="ebook.js"></script>
+   <script>
+    const { createClient } = supabase;
+    const SUPABASE_URL = "https://vosdeszexfquhrzrqtxh.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvc2Rlc3pleGZxdWhyenJxdHhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk2NjA4OTcsImV4cCI6MjA3NTIzNjg5N30.MjH2e1vaxnOmW5GgcofDiEhpcmso4PbDE5PxTlk3b5w";
+
+    const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    document.getElementById("subscribe").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+
+      const { error } = await db.from("subscribe").insert([
+        { email }
+      ]);
+
+      if (error) {
+        alert("Error: " + error.message);
+        console.error(error);
+      } else {
+        alert("🌙 Thank you! Stay tuned for the latest QuranAstro eBook updates😊");
+        document.getElementById("subscribe").reset();
+      }
+    });
+  </script>
 </body>
 
 </html>
