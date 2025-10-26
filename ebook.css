@@ -334,14 +334,14 @@ body::before {
 }
 .cta-form{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
 .cta-form input{
-  padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:#fff; font:inherit;  min-width: 0;
+  padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:#fff; font:inherit;  min-width: 0; max-width: fit-content;
 }
 .cta-form .note{color:var(--muted); margin-left:6px}
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
   padding:.7rem 1rem; border-radius:10px; border:1px solid transparent;
   font-weight:700; cursor:pointer; transition:all .25s ease;
-}
+} 
 .btn-primary{background: rgba(255, 255, 255, 0.05); color:white;}
 .btn-primary:hover{filter:brightness(.95)}
 
