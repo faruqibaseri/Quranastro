@@ -383,8 +383,8 @@ img#qrImage {display:block; max-width:100%;}
 
 #fullscreenOverlay.show img {
   transform: scale(1);
-  width: max-content;
-  height: max-content;
+  width: fit-content;
+  height: fit-content;
 }
 
 
