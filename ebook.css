@@ -334,7 +334,7 @@ body::before {
 }
 .cta-form{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
 .cta-form input{
-  padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:#fff; font:inherit
+  padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:#fff; font:inherit;  min-width: 0;
 }
 .cta-form .note{color:var(--muted); margin-left:6px}
 .btn{
@@ -349,6 +349,7 @@ body::before {
     .cta-box {
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
     }}
 
 
