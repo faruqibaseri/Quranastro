@@ -59,84 +59,113 @@ document.querySelectorAll(".mobile__toggle").forEach(btn => {
   });
 });
 
-let currentSlide = 0;
+const imageContainer = document.querySelector('.image');
 const slides = document.querySelectorAll('.image img');
 const dots = document.querySelectorAll('.dot');
-const slider = document.querySelector('.image-slider');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
 
+let currentSlide = 0;
+let autoSlideInterval = null;
+let autoSlidePaused = false;
+
+// === Show slide ===
 function showSlide(index) {
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = (index + slides.length) % slides.length;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+  currentSlide = index;
+
+  imageContainer.style.transform = `translateX(-${index * 100}%)`;
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
 }
 
-// swipe handling
-let startX = 0;
-let endX = 0;
+// === Auto-slide ===
+function startAutoSlide() {
+  stopAutoSlide(); // ensure no duplicate intervals
+  autoSlideInterval = setInterval(() => {
+    if (!autoSlidePaused) {
+      showSlide(currentSlide + 1);
+    }
+  }, 4000);
+}
 
-slider.addEventListener('touchstart', (e) => {
-  startX = e.touches[0].clientX;
+function stopAutoSlide() {
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = null;
+}
+
+function pauseAutoSlideTemporarily() {
+  autoSlidePaused = true;
+  clearTimeout(pauseTimer);
+  pauseTimer = setTimeout(() => {
+    autoSlidePaused = false;
+  }, 2); // resume autoplay after 5s
+}
+
+let pauseTimer;
+
+// === Dots navigation ===
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const index = parseInt(dot.dataset.index);
+    showSlide(index);
+    pauseAutoSlideTemporarily();
+  });
 });
 
-slider.addEventListener('touchend', (e) => {
+// === Swipe functionality ===
+let startX = 0;
+let endX = 0;
+let isSwiping = false;
+
+imageContainer.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+  isSwiping = true;
+  pauseAutoSlideTemporarily();
+});
+
+imageContainer.addEventListener('touchmove', e => {
+  if (!isSwiping) return;
+  endX = e.touches[0].clientX;
+});
+
+imageContainer.addEventListener('touchend', e => {
+  if (!isSwiping) return;
   endX = e.changedTouches[0].clientX;
   handleSwipe();
+  isSwiping = false;
 });
 
 function handleSwipe() {
   const diff = startX - endX;
   if (Math.abs(diff) > 50) {
-    if (diff > 0) {
-
-      showSlide(currentSlide + 1);
-    } else {
-
-      showSlide(currentSlide - 1);
-    }
+    if (diff > 0) showSlide(currentSlide + 1);
+    else showSlide(currentSlide - 1);
   }
 }
 
-
-
-const images = document.querySelectorAll(".image img");
-const fullscreenBtn = document.getElementById("fullscreenBtn");
-
-// Function to show a specific image
-function showSlide(index) {
-  images.forEach((img, i) => {
-    img.classList.toggle("active", i === index);
-  });
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
-  });
-  currentSlide = index;
-}
-
-// Fullscreen functionality
-fullscreenBtn.addEventListener("click", function (e) {
+// === Fullscreen ===
+fullscreenBtn.addEventListener('click', e => {
   e.preventDefault();
+  pauseAutoSlideTemporarily();
 
-  const activeImage = document.querySelector(".image img.active");
-  if (!activeImage) return;
+  const overlay = document.createElement('div');
+  overlay.id = 'fullscreenOverlay';
 
-  const overlay = document.createElement("div");
-  overlay.id = "fullscreenOverlay";
-
-  const img = activeImage.cloneNode();
-  overlay.appendChild(img);
+  const activeImg = slides[currentSlide].cloneNode();
+  overlay.appendChild(activeImg);
 
   document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('show'));
 
-  requestAnimationFrame(() => {
-    overlay.classList.add("show");
-  });
-
-  overlay.addEventListener("click", function () {
-    overlay.classList.remove("show");
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('show');
     setTimeout(() => overlay.remove(), 300);
   });
 });
 
-setInterval(() => showSlide(currentSlide + 1), 4000);
+// === Initialize ===
+showSlide(0);
+startAutoSlide();
