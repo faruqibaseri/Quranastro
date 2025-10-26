@@ -363,7 +363,7 @@ body::before {
   background: #ffeaa7;
   color: var(--bpPrimary-700);
   padding: 12px;
-  margin: 15px 0;
+  margin: 35px 0;
   border-left: 5px solid #fdcb6e;
   border-radius: 6px;
   font-style: italic;
