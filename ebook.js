@@ -62,14 +62,42 @@ document.querySelectorAll(".mobile__toggle").forEach(btn => {
 let currentSlide = 0;
 const slides = document.querySelectorAll('.image img');
 const dots = document.querySelectorAll('.dot');
+const slider = document.querySelector('.image-slider');
 
 function showSlide(index) {
   slides[currentSlide].classList.remove('active');
   dots[currentSlide].classList.remove('active');
-  currentSlide = index;
+  currentSlide = (index + slides.length) % slides.length;
   slides[currentSlide].classList.add('active');
   dots[currentSlide].classList.add('active');
 }
+
+// swipe handling
+let startX = 0;
+let endX = 0;
+
+slider.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+slider.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const diff = startX - endX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+
+      showSlide(currentSlide + 1);
+    } else {
+
+      showSlide(currentSlide - 1);
+    }
+  }
+}
+
 
 
 const images = document.querySelectorAll(".image img");
