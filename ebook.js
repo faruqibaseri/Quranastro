@@ -136,25 +136,162 @@ function handleSwipe() {
   }
 }
 
-// === Fullscreen ===
+// === Fullscreen (fixed autoplay resume) ===
 fullscreenBtn.addEventListener('click', e => {
   e.preventDefault();
-  pauseAutoSlideTemporarily();
+
+  // Pause the slider while we create/open the fullscreen view
+  autoSlidePaused = true;       // pause autoplay while fullscreen is open
+  clearTimeout(pauseTimer);     // cancel any temporary resume timer
 
   const overlay = document.createElement('div');
   overlay.id = 'fullscreenOverlay';
 
+  const panWrapper = document.createElement('div');
+  panWrapper.className = 'pan-wrapper';
+
   const activeImg = slides[currentSlide].cloneNode();
-  overlay.appendChild(activeImg);
+  activeImg.draggable = false;
+  activeImg.style.userSelect = "none";
+  activeImg.style.pointerEvents = "none"; // prevent image click events
+  panWrapper.appendChild(activeImg);
+  overlay.appendChild(panWrapper);
+
+  // Zoom controls
+  const zoomControls = document.createElement('div');
+  zoomControls.className = 'zoom-controls';
+  zoomControls.innerHTML = `
+    <button class="zoom-btn" id="zoomIn">+</button>
+    <button class="zoom-btn" id="zoomOut">−</button>
+  `;
+  overlay.appendChild(zoomControls);
 
   document.body.appendChild(overlay);
   requestAnimationFrame(() => overlay.classList.add('show'));
 
-  overlay.addEventListener('click', () => {
-    overlay.classList.remove('show');
-    setTimeout(() => overlay.remove(), 300);
+  // === pan / zoom variables ===
+  let scale = 1, minScale = 1, maxScale = 5;
+  let startX = 0, startY = 0, currentX = 0, currentY = 0;
+  let isDragging = false, hasDragged = false;
+  let initialDistance = 0;
+
+  function updateTransform() {
+    panWrapper.style.transform = `translate(${currentX}px, ${currentY}px) scale(${scale})`;
+  }
+
+  function recenterImage() {
+    currentX = 0;
+    currentY = 0;
+    panWrapper.style.transition = "transform 0.3s ease";
+    updateTransform();
+    setTimeout(() => (panWrapper.style.transition = "transform 0.1s ease"), 300);
+  }
+
+  // Wheel zoom
+  overlay.addEventListener('wheel', e => {
+    e.preventDefault();
+    const zoomAmount = e.deltaY * -0.0015;
+    scale = Math.min(Math.max(scale + zoomAmount, minScale), maxScale);
+    updateTransform();
+    if (scale <= 1.01) recenterImage();
+  }, { passive: false });
+
+  // Pointer (mouse/touch) pan on wrapper
+  panWrapper.addEventListener('pointerdown', e => {
+    if (scale === 1) return; // don't pan at base zoom
+    isDragging = true;
+    hasDragged = false;
+    startX = e.clientX - currentX;
+    startY = e.clientY - currentY;
+    panWrapper.setPointerCapture(e.pointerId);
+    panWrapper.style.cursor = 'grabbing';
   });
+
+  panWrapper.addEventListener('pointermove', e => {
+    if (!isDragging) return;
+    currentX = e.clientX - startX;
+    currentY = e.clientY - startY;
+    updateTransform();
+    hasDragged = true;
+  });
+
+  panWrapper.addEventListener('pointerup', e => {
+    isDragging = false;
+    try { panWrapper.releasePointerCapture(e.pointerId); } catch (err) {}
+    panWrapper.style.cursor = scale > 1 ? 'grab' : 'default';
+    setTimeout(() => (hasDragged = false), 50);
+  });
+
+  // Touch pinch zoom
+  overlay.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) {
+      initialDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    }
+  }, { passive: true });
+
+  overlay.addEventListener('touchmove', e => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const newDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      const zoomFactor = newDistance / initialDistance;
+      scale = Math.min(Math.max(scale * zoomFactor, minScale), maxScale);
+      initialDistance = newDistance;
+      updateTransform();
+      if (scale <= 1.01) recenterImage();
+    } else if (e.touches.length === 1 && scale > 1 && isDragging) {
+      // single-finger pan on touch (we already handle pointer events, but keep safe)
+      currentX = e.touches[0].clientX - startX;
+      currentY = e.touches[0].clientY - startY;
+      updateTransform();
+    }
+  }, { passive: false });
+
+  // Zoom buttons
+  document.getElementById('zoomIn').addEventListener('click', ev => {
+    ev.stopPropagation();
+    scale = Math.min(scale + 0.2, maxScale);
+    updateTransform();
+  });
+
+  document.getElementById('zoomOut').addEventListener('click', ev => {
+    ev.stopPropagation();
+    scale = Math.max(scale - 0.2, minScale);
+    updateTransform();
+    if (scale <= 1.01) recenterImage();
+  });
+
+  // Close overlay: only when clicking the background (not after dragging)
+overlay.addEventListener('click', e => {
+  if (!hasDragged && scale === 1) {
+    overlay.classList.remove('show');
+    setTimeout(() => {
+      overlay.remove();
+      autoSlidePaused = false;
+      if (!autoSlideInterval) startAutoSlide();
+    }, 300);
+  }
 });
+  // If user closes with Escape key, also resume autoplay
+  function handleEscClose(ev) {
+    if (ev.key === 'Escape') {
+      overlay.classList.remove('show');
+      setTimeout(() => {
+        overlay.remove();
+        autoSlidePaused = false;
+        if (!autoSlideInterval) startAutoSlide();
+      }, 300);
+      window.removeEventListener('keydown', handleEscClose);
+    }
+  }
+  window.addEventListener('keydown', handleEscClose);
+});
+
 
 // === Initialize ===
 showSlide(0);
