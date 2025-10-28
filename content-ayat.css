@@ -267,7 +267,13 @@ img{display:block; max-width:100%; height:auto}
 .media .meta {
   margin-top: 10px;
   font-size: 0.9rem;
-  color:white
+  color:white;
+  max-width: 200px;
+}
+
+.media a {
+text-decoration: none;
+color: #999999;
 }
 
 
